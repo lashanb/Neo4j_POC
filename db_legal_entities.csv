@@ -1,0 +1,6 @@
+dbEntityId,name,region,country,lei
+DB1,DB Legal Entity 1,AMER,UK,DBLEI001
+DB2,DB Legal Entity 2,EMEA,US,DBLEI002
+DB3,DB Legal Entity 3,EMEA,SG,DBLEI003
+DB4,DB Legal Entity 4,EMEA,UK,DBLEI004
+DB5,DB Legal Entity 5,AMER,CN,DBLEI005
