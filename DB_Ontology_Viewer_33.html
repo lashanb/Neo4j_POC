@@ -1,0 +1,2674 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ontology Viewer Enhanced</title>
+  <script src="https://unpkg.com/vis-network@9.1.2/dist/vis-network.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <style>
+    body {
+        font-family: sans-serif;
+        margin: 0;
+        overflow: hidden; /* Prevent body scrollbars */
+    }
+
+    #main-container {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    #viewer-container {
+      flex: 3; /* Initial size ratio */
+      min-width: 300px; /* Minimum width */
+      height: 100vh;
+      padding: 15px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      background-color: #0a58ca;
+      position: relative;
+    }
+
+    #resizer {
+        flex-basis: 5px;
+        background-color: #dee2e6;
+        cursor: col-resize;
+        height: 100vh;
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+    }
+
+    #sidebar {
+      flex: 1; /* Initial size ratio */
+      min-width: 300px; /* Minimum width */
+      height: 100vh;
+      padding: 15px;
+      box-sizing: border-box;
+      background-color: #f8f9fa;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    #sidebar-tabs {
+        flex-shrink: 0;
+    }
+
+    #viewer-title {
+      text-align: center;
+      margin-bottom: 5px;
+      flex-shrink: 0;
+      color: #fff;
+    }
+
+    #file-name-display {
+        text-align: center;
+        margin-top: -5px;
+        margin-bottom: 10px;
+        flex-shrink: 0;
+        color: #e0e0e0;
+        font-weight: normal;
+        font-style: italic;
+    }
+
+    #network-wrapper {
+        position: absolute;
+        top: 80px;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+    }
+
+    #network {
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      border: none;
+      border-radius: .375rem;
+    }
+
+    #node-count-display {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(255, 255, 255, 0.85);
+        padding: 8px 12px;
+        border-radius: 5px;
+        z-index: 10;
+        font-size: 0.8rem;
+        max-height: 200px;
+        overflow-y: auto;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* --- START: SCROLLING FIX --- */
+    #sidebar-tab-content {
+        flex-grow: 1;
+        min-height: 0;
+        position: relative;
+    }
+
+    .tab-pane {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .scrollable-tab-content {
+        flex-grow: 1;
+        overflow-y: auto;
+        padding-right: 15px;
+        min-height: 0;
+    }
+    #ai-chat-container {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+    }
+    #ai-chat-window {
+        flex-grow: 1;
+        overflow-y: auto;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: .375rem;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-height: 0;
+    }
+    /* --- END: SCROLLING FIX --- */
+
+
+    /* Custom Scrollbar Styling */
+    .scrollable-tab-content::-webkit-scrollbar,
+    #ai-chat-window::-webkit-scrollbar {
+      width: 8px;
+    }
+    .scrollable-tab-content::-webkit-scrollbar-track,
+    #ai-chat-window::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+    .scrollable-tab-content::-webkit-scrollbar-thumb,
+    #ai-chat-window::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 10px;
+    }
+    .scrollable-tab-content::-webkit-scrollbar-thumb:hover,
+    #ai-chat-window::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+
+
+    .chat-message {
+        padding: 8px 12px;
+        border-radius: 18px;
+        max-width: 85%;
+        line-height: 1.4;
+        word-wrap: break-word;
+    }
+    .user-message {
+        background-color: #0d6efd;
+        color: white;
+        align-self: flex-end;
+        border-bottom-right-radius: 4px;
+    }
+    .ai-message {
+        background-color: #e9ecef;
+        color: #212529;
+        align-self: flex-start;
+        border-bottom-left-radius: 4px;
+    }
+    .loading-spinner {
+        display: none;
+        width: 1.5rem;
+        height: 1.5rem;
+        border: 3px solid rgba(0,0,0,.1);
+        border-top-color: #0d6efd;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        align-self: flex-start;
+        margin: 10px;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Compact Sidebar Styles */
+    #sidebar, #sidebar .form-label, #sidebar .form-control, #sidebar .form-select, #sidebar .btn, #sidebar .form-check-label, #sidebar .small {
+        font-size: 0.875rem; /* 14px */
+    }
+    #sidebar h5 {
+        font-size: 1rem;
+        margin-top: 0.8rem;
+        margin-bottom: 0.2rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    #sidebar .form-label {
+        margin-bottom: 0.1rem;
+    }
+    #sidebar .mt-2, #sidebar .mt-1 {
+        margin-top: 0.25rem !important;
+    }
+    #sidebar hr {
+        margin: 0.75rem 0;
+    }
+    .select2-container .select2-selection--single, .select2-container .select2-selection--multiple {
+        font-size: 0.875rem;
+        min-height: calc(1.5em + .5rem + 2px);
+    }
+    .select2-results__option {
+        font-size: 0.875rem;
+    }
+
+    .active-indicator {
+        color: #198754; /* Green */
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+    .clear-btn {
+        font-size: 0.7rem;
+        padding: .1rem .3rem;
+        line-height: 1;
+    }
+
+    /* Custom Details Popup */
+    #details-popup {
+        display: none;
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.95);
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        padding: 15px;
+        z-index: 10;
+        max-width: 350px;
+        word-wrap: break-word;
+        font-size: 0.875rem;
+    }
+    #details-popup-close {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        border: none;
+        background: none;
+        font-size: 24px;
+        font-weight: bold;
+        color: #6c757d;
+        cursor: pointer;
+        padding: 0;
+        line-height: 1;
+    }
+    #details-popup-content p {
+        margin-bottom: 0.5rem;
+    }
+    #details-popup-content ul {
+        list-style-type: none;
+        padding-left: 10px;
+        margin-bottom: 0;
+    }
+    #details-popup-content li {
+        padding: 2px 0;
+    }
+
+    .property-filter-container {
+        padding-left: 1.5rem;
+        margin-top: 0.5rem;
+    }
+    .filter-pill {
+        display: inline-flex;
+        align-items: center;
+        background-color: #e2e3e5;
+        border: 1px solid #d6d8db;
+        border-radius: 1rem;
+        padding: 0.15rem 0.5rem;
+        margin-right: 0.25rem;
+        margin-bottom: 0.25rem;
+        font-size: 0.75rem;
+    }
+    .remove-filter {
+        margin-left: 0.35rem;
+        border: none;
+        background: none;
+        font-weight: bold;
+        cursor: pointer;
+        padding: 0;
+        line-height: 1;
+        color: #6c757d;
+    }
+    .property-toggle-arrow {
+        cursor: pointer;
+        color: #6c757d;
+        text-decoration: none;
+    }
+    .accordion-button {
+      font-size: 0.875rem;
+      padding: 0.75rem 1rem;
+    }
+    .accordion-body {
+        font-size: 0.85rem;
+    }
+    .color-box {
+        width: 16px;
+        height: 16px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 8px;
+    }
+    
+    /* --- START: NEW QUERY BUILDER STYLES --- */
+    #query-builder-container, #aggregation-builder-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .aggregation-row {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+    
+    #query-tab-pane, #query-tab-pane .form-select, #query-tab-pane .form-control, #query-tab-pane .btn, #query-tab-pane .input-group-text, #query-tab-pane .form-check-label {
+        font-size: 0.75rem; /* 12px */
+    }
+    #query-tab-pane h5 {
+        font-size: 0.9rem;
+        margin-top: 0.6rem;
+        margin-bottom: 0.1rem;
+    }
+    #query-tab-pane hr {
+        margin: 0.5rem 0;
+    }
+
+    #cypher-query-display {
+        background-color: #212529 !important;
+        color: #f8f9fa !important;
+        font-family: monospace;
+        font-size: 0.7rem;
+        resize: vertical;
+        min-height: 100px;
+        margin-top: 10px;
+    }
+
+    .query-output-item .form-check {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    
+    .query-part-summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px;
+        background-color: #e9ecef;
+        border: 1px solid #dee2e6;
+        border-radius: .375rem;
+        font-size: 0.8rem;
+    }
+    .query-part-summary-text {
+        flex-grow: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-right: 10px;
+    }
+    .query-part-summary .btn-icon {
+        background: none;
+        border: none;
+        padding: 0 4px;
+        cursor: pointer;
+        color: #6c757d;
+    }
+    .query-part-summary .btn-icon:hover {
+        color: #212529;
+    }
+    .query-part-editor {
+        border: 1px solid #dee2e6;
+        border-top: none;
+        border-radius: 0 0 .375rem .375rem;
+        padding: 10px;
+        background-color: #fff;
+        margin-top: -1px;
+    }
+    /* --- END: NEW QUERY BUILDER STYLES --- */
+
+    /* Query Result Modal Table Styles */
+    #queryResultModalBody table {
+        width: 100%;
+        font-size: 0.8rem;
+    }
+    #queryResultModalBody th, #queryResultModalBody td {
+        border: 1px solid #dee2e6;
+        padding: 8px;
+        white-space: pre-wrap;
+        word-break: break-all;
+    }
+    #queryResultModalBody th {
+        background-color: #f8f9fa;
+    }
+
+  </style>
+</head>
+<body>
+
+<div id="main-container">
+    <div id="viewer-container">
+      <h4 id="viewer-title">Ontology Viewer</h4>
+      <h6 id="file-name-display"></h6>
+      <div id="network-wrapper">
+        <div id="network"></div>
+         <div id="details-popup">
+            <button id="details-popup-close">&times;</button>
+            <div id="details-popup-content"></div>
+        </div>
+        <div id="node-count-display"></div>
+      </div>
+    </div>
+
+    <div id="resizer"></div>
+
+    <div id="sidebar">
+      <ul class="nav nav-tabs" id="sidebar-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="upload-tab" data-bs-toggle="tab" data-bs-target="#upload-tab-pane" type="button" role="tab" aria-controls="upload-tab-pane" aria-selected="true">Upload</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="analysis-tab" data-bs-toggle="tab" data-bs-target="#analysis-tab-pane" type="button" role="tab" aria-controls="analysis-tab-pane" aria-selected="false">Analysis</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="query-tab" data-bs-toggle="tab" data-bs-target="#query-tab-pane" type="button" role="tab" aria-controls="query-tab-pane" aria-selected="false">Query</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="ask-ai-tab" data-bs-toggle="tab" data-bs-target="#ask-ai-tab-pane" type="button" role="tab" aria-controls="ask-ai-tab-pane" aria-selected="false">Ask AI</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="help-tab" data-bs-toggle="tab" data-bs-target="#help-tab-pane" type="button" role="tab" aria-controls="help-tab-pane" aria-selected="false">Help</button>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="sidebar-tab-content">
+        <div class="tab-pane fade show active" id="upload-tab-pane" role="tabpanel" aria-labelledby="upload-tab" tabindex="0">
+          <div class="scrollable-tab-content">
+              <h5 class="mt-3"><strong>💾 Load Data Source</strong></h5>
+              <button id="btnLoadFromDb" class="btn btn-secondary w-100 mt-2" onclick="loadFromNeo4j()">Load from Database</button>
+
+              <input type="file" id="uploadOntology" accept=".json" class="d-none" />
+              <button id="btnLoadOntology" class="btn btn-secondary w-100 mt-2">Load Ontology JSON</button>
+
+              <input type="file" id="uploadLayout" accept=".json" class="d-none" />
+              <button id="btnLoadLayout" class="btn btn-secondary w-100 mt-2">Load Layout</button>
+
+              <input type="file" id="uploadCypher" accept=".txt,.cypher" class="d-none" />
+              <button id="btnLoadCypher" class="btn btn-secondary w-100 mt-2">Load Cypher File</button>
+
+              <input type="file" id="uploadOwl" accept=".owl,.rdf,.xml,.txt,.ttl" class="d-none" />
+              <button id="btnLoadOwl" class="btn btn-secondary w-100 mt-2">Load OWL File</button>
+
+              <button id="btnLoadCsv" class="btn btn-secondary w-100 mt-2" data-bs-toggle="modal" data-bs-target="#csvUploadModal">Upload Using CSV</button>
+              
+              <hr>
+
+              <h5 class="mt-3"><strong>🧠 Smart Search Settings</strong></h5>
+              <small class="text-muted">This is optional and enhances the Live Search feature.</small>
+              <input type="file" id="uploadSynonyms" accept=".json" class="d-none" />
+              <button id="btnLoadSynonyms" class="btn btn-secondary w-100 mt-2">Load Synonym Dictionary</button>
+
+              <hr>
+
+              <h5 class="mt-3"><strong>⚡ Performance Settings</strong></h5>
+              <small class="text-muted">Toggle these options at any time for large graphs.</small>
+
+              <div class="form-check mt-2">
+                <input class="form-check-input" type="checkbox" value="" id="physicsToggle">
+                <label class="form-check-label" for="physicsToggle">
+                  <strong>Optimize Physics</strong>
+                </label>
+                <div class="form-text mt-0">Faster layout algorithm; less "floaty".</div>
+              </div>
+
+              <div class="form-check mt-2">
+                <input class="form-check-input" type="checkbox" value="" id="renderToggle">
+                <label class="form-check-label" for="renderToggle">
+                  <strong>Simplify Rendering</strong>
+                </label>
+                <div class="form-text mt-0">Uses simple dots and straight lines to draw faster.</div>
+              </div>
+
+              <div class="form-check mt-2">
+                <input class="form-check-input" type="checkbox" value="" id="clusterToggle">
+                <label class="form-check-label" for="clusterToggle">
+                  <strong>Enable Clustering</strong>
+                </label>
+                <div class="form-text mt-0">Groups dense nodes together for an easier overview.</div>
+              </div>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="analysis-tab-pane" role="tabpanel" aria-labelledby="analysis-tab" tabindex="0">
+          <div class="scrollable-tab-content">
+              <h5>
+                <strong>Live Search</strong>
+                <span id="live-search-active-indicator" class="active-indicator" style="display:none;">✔️</span>
+                <button id="clear-live-search" class="btn btn-sm btn-outline-danger clear-btn" style="display:none;">Clear</button>
+              </h5>
+              <label for="elasticSearchInput" class="form-label mt-1">Search Nodes &amp; Relationships:</label>
+              <input type="text" id="elasticSearchInput" class="form-control" placeholder="Type to search..." onkeyup="applyAllFilters()">
+              <hr>
+
+              <h5>
+                <strong>Relationships Finder</strong>
+                <span id="depth-filter-active-indicator" class="active-indicator" style="display:none;">✔️</span>
+                <button id="clear-depth-filter" class="btn btn-sm btn-outline-danger clear-btn" style="display:none;">Clear</button>
+              </h5>
+              <label for="nodeSelect" class="form-label mt-2">Select Starting Node(s):</label>
+              <select id="nodeSelect" class="form-select" multiple>
+                <option value="">-- Load Data First --</option>
+              </select>
+
+              <label for="depthInput" class="form-label mt-2">Relationship Depth:</label>
+              <div class="input-group">
+                  <input type="number" id="depthInput" class="form-control" value="1" min="0" title="Set depth for filtering">
+                  <button class="btn btn-secondary" onclick="activateDepthFilter()">🎯 Filter by Depth</button>
+              </div>
+              <hr>
+
+              <h5>
+                <strong>Advanced Search</strong>
+                <span id="advanced-search-active-indicator" class="active-indicator" style="display:none;">✔️</span>
+                <button id="clear-advanced-search" class="btn btn-sm btn-outline-danger clear-btn" style="display:none;">Clear</button>
+              </h5>
+              <div class="d-flex justify-content-start gap-2 mb-2">
+                  <a href="#" onclick="selectAllNodeTypes(event)" class="small">Select All</a>
+                  <a href="#" onclick="deselectAllNodeTypes(event)" class="small">Deselect All</a>
+              </div>
+              <div id="node-type-filter-container">
+                <small class="text-muted">Load data to see types.</small>
+              </div>
+              <hr>
+
+              <h5><strong>🛣️ Find Path</strong></h5>
+              <div class="row g-2">
+                <div class="col-6">
+                  <label for="pathFromTypeSelect" class="form-label">'From' Node Type:</label>
+                  <select id="pathFromTypeSelect" class="form-select">
+                      <option value="">-- Load Data First --</option>
+                  </select>
+                </div>
+                <div class="col-6">
+                  <label for="pathToTypeSelect" class="form-label">'To' Node Type:</label>
+                  <select id="pathToTypeSelect" class="form-select">
+                      <option value="">-- Load Data First --</option>
+                  </select>
+                </div>
+                <div class="col-6">
+                  <label for="pathFromNodeSelect" class="form-label">'From' Node:</label>
+                  <select id="pathFromNodeSelect" class="form-select" disabled>
+                      <option value="">-- Select Type First --</option>
+                  </select>
+                </div>
+                <div class="col-6">
+                  <label for="pathToNodeSelect" class="form-label">'To' Node:</label>
+                  <select id="pathToNodeSelect" class="form-select" disabled>
+                    <option value="">-- Select Type First --</option>
+                  </select>
+                </div>
+              </div>
+              <button class="btn btn-info w-100 mt-3" onclick="showRelationshipPath()">🔎 Show Path</button>
+              <hr>
+
+              <h5><strong>Actions</strong></h5>
+              <button class="btn btn-warning w-100 mt-2" onclick="resetView()">🔄 Reset All Filters & View</button>
+              <button class="btn btn-primary w-100 mt-2" onclick="downloadLayout()">💾 Save Layout</button>
+          </div>
+        </div>
+        
+        <div class="tab-pane fade" id="query-tab-pane" role="tabpanel" aria-labelledby="query-tab" tabindex="0">
+            <div class="scrollable-tab-content">
+                <h5 class="mt-3"><strong>🔍 Cypher Query Builder</strong></h5>
+                <div id="query-builder-container">
+                    <!-- Query parts will be added here dynamically -->
+                </div>
+                <div class="d-flex gap-2 mt-3">
+                    <button class="btn btn-sm btn-outline-primary" id="add-node-btn">Add Node</button>
+                    <button class="btn btn-sm btn-outline-secondary" id="add-rel-btn" disabled>Add Relationship</button>
+                </div>
+                <hr>
+                <h5><strong>Aggregations</strong></h5>
+                <div id="aggregation-builder-container">
+                    <!-- Aggregation rows will be added here -->
+                </div>
+                <button class="btn btn-sm btn-outline-info mt-2" id="add-aggregation-btn">Add Aggregation</button>
+                <hr>
+                <h5><strong>Query Output (RETURN)</strong></h5>
+                <div id="query-output-container">
+                    <small class="text-muted">Add nodes/relationships to the query to select output.</small>
+                </div>
+                <hr>
+                <h5><strong>Generated Query</strong></h5>
+                <textarea id="cypher-query-display" class="form-control" rows="4">MATCH (n) RETURN n LIMIT 25</textarea>
+                <button class="btn btn-success w-100 mt-3" onclick="runGeneratedQuery()">Run Query</button>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="ask-ai-tab-pane" role="tabpanel" aria-labelledby="ask-ai-tab" tabindex="0">
+          <h5 class="mt-3"><strong>🤖 AI Ontology Assistant</strong></h5>
+          <div id="ai-chat-container">
+              <div id="ai-chat-window">
+                  <div class="ai-message">Ask a question about the loaded ontology...</div>
+              </div>
+              <div class="input-group">
+                  <input type="text" id="ai-chat-input" class="form-control" placeholder="e.g., 'What is a Customer?'" onkeydown="if(event.key==='Enter') askAIChat();">
+                  <button class="btn btn-primary" onclick="askAIChat()">Send</button>
+              </div>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="help-tab-pane" role="tabpanel" aria-labelledby="help-tab" tabindex="0">
+            <div class="scrollable-tab-content">
+              <h5 class="mt-3"><strong>🙋‍♂️ Help Guide</strong></h5>
+              <p class="text-muted" style="font-size: 0.85rem;">Welcome to the Ontology Viewer! This tool helps you visualize and analyze graph-based data.</p>
+              <div class="accordion mt-2" id="helpAccordion">
+                
+                <div class="accordion-item">
+                  <h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><strong>1. Loading Data</strong></button></h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#helpAccordion">
+                    <div class="accordion-body">
+                      Use the <strong>Upload</strong> tab to load your graph data. Several formats are supported:
+                      <ul>
+                        <li><strong>Load Ontology JSON:</strong> The primary format, a JSON file with "nodes" and "edges" arrays.</li>
+                        <li><strong>Load Layout:</strong> A previously saved JSON file that includes node positions.</li>
+                        <li><strong>Load Cypher/OWL/CSV:</strong> Support for other common graph and data formats.</li>
+                      </ul>
+                      For large graphs, you can toggle the <strong>Performance Settings</strong> on this tab *before* loading to improve responsiveness.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><strong>2. Smart Search (Optional)</strong></button></h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                    <div class="accordion-body">
+                      You can enhance the search functionality by loading a <strong>Synonym Dictionary</strong> from the "Upload" tab.
+                      <ul>
+                        <li>The dictionary must be a JSON file where keys are words and values are arrays of their synonyms.</li>
+                        <li>When loaded, both the main <strong>Live Search</strong> and the <strong>"Node contains"</strong> filter in Advanced Search will use these synonyms. For example, if "business" is a synonym for "commercial", searching for "business" will also find nodes containing "commercial".</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><strong>3. Interacting with the Graph</strong></button></h2>
+                  <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                    <div class="accordion-body">
+                      The main viewer is interactive:
+                      <ul>
+                        <li><strong>Click:</strong> Click a node or edge to see its details in a popup. This also selects the node in the "Relationship Finder".</li>
+                        <li><strong>Drag:</strong> Rearrange nodes by dragging them. Use "Save Layout" to save your new positions.</li>
+                        <li><strong>Zoom & Pan:</strong> Use your mouse wheel to zoom in and out. Click and drag the background to pan across the graph.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour"><strong>4. Searching & Filtering</strong></button></h2>
+                  <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                    <div class="accordion-body">
+                      The <strong>Analysis</strong> tab contains powerful tools to explore your data.
+                      <ul>
+                        <li><strong>Live Search:</strong> A global search across all nodes and their properties. It's a "word-based" search, meaning it will find nodes that contain all the words in your query. It is also enhanced by the synonym dictionary.</li>
+                        <li><strong>Relationship Finder:</strong> Finds all nodes within a certain number of connections ("depth") from your selected starting node(s).</li>
+                        <li><strong>Advanced Search:</strong> Provides granular filtering options for each node type.
+                            <ul>
+                                <li>Each node type has a color key matching the graph.</li>
+                                <li>You can filter by specific properties, perform a smart "Node contains" search (with synonyms), or find an exact "Name is" match.</li>
+                                <li>Adding multiple filter pills for a single node type works as an <strong>OR</strong> condition (e.g., find nodes with Risk Rating "Low" OR Industry "Retail").</li>
+                            </ul>
+                        </li>
+                         <li><strong>Filter Logic:</strong> The Relationship Finder and Advanced Search filters work together with <strong>AND</strong> logic. The final view will only show nodes that satisfy the conditions of all active filters.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive"><strong>5. Finding Paths</strong></button></h2>
+                  <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                    <div class="accordion-body">
+                      The <strong>Find Path</strong> tool highlights the shortest path between any two nodes.
+                      <ul>
+                        <li>First, select the Type for the 'From' and 'To' nodes.</li>
+                        <li>Then, select the specific start and end nodes from the dropdowns.</li>
+                        <li>Click "Show Path" to isolate the path. This temporarily overrides other filters. Use "Reset All Filters & View" to return to the previous view.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="accordion-item">
+                  <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven"><strong>6. Query Builder</strong></button></h2>
+                  <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                    <div class="accordion-body">
+                      The <strong>Query</strong> tab allows you to build Cypher queries visually.
+                      <ul>
+                        <li>Click <strong>Add Node</strong> to start your query pattern.</li>
+                        <li>Select a <strong>Node Type</strong> and add property filters using operators like <code>=</code>, <code>&gt;</code>, <code>&lt;</code>, etc.</li>
+                        <li>Click <strong>Add Relationship</strong> to connect to another node.</li>
+                        <li>Use the <strong>Aggregations</strong> section to perform calculations like <code>COUNT</code>, <code>AVG</code>, or <code>SUM</code> on your results.</li>
+                        <li>The generated Cypher query updates automatically. Click <strong>Run Query</strong> to execute it (note: this is a mock action).</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix"><strong>7. Ask AI Assistant</strong></button></h2>
+                  <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                    <div class="accordion-body">
+                      Use the <strong>Ask AI</strong> tab to ask natural language questions about the loaded ontology. The AI will analyze the graph data to provide concise answers. For example, you can ask "What is a Customer?" or "What is the path between Alice Johnson and L001?".
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <a href="#" id="further-details-link" class="btn btn-outline-primary w-100 mt-3" target="_blank" rel="noopener noreferrer">Further details here</a>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="csvUploadModal" tabindex="-1" aria-labelledby="csvUploadModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="csvUploadModalLabel">Upload Ontology from CSV</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="nodesCsvFile" class="form-label">Nodes CSV File</label>
+          <input class="form-control" type="file" id="nodesCsvFile" accept=".csv">
+        </div>
+        <div class="mb-3">
+          <label for="edgesCsvFile" class="form-label">Edges CSV File</label>
+          <input class="form-control" type="file" id="edgesCsvFile" accept=".csv">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="handleCsvUpload()">Upload</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="limitModal" tabindex="-1" aria-labelledby="limitModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="limitModalLabel">Node Limit Exceeded</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>The loaded data has a large number of nodes.</p>
+        <p>To ensure performance, only the <strong>first 500 nodes</strong> and their direct relationships are being displayed initially. All analysis will be performed on the complete dataset.</p>
+      </div>
+       <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="customAlertModal" tabindex="-1" aria-labelledby="customAlertModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="customAlertModalLabel">Alert</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="customAlertModalBody">
+        ...
+      </div>
+       <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Query Result Modal -->
+<div class="modal fade" id="queryResultModal" tabindex="-1" aria-labelledby="queryResultModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="queryResultModalLabel">Query Results</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="queryResultModalBody">
+        <!-- Results will be injected here -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  let fullGraph = { nodes: [], edges: [] };
+  let typeProperties = {};
+  let aiChatHistory = [];
+  let limitModal;
+  let csvUploadModal;
+  let customAlertModal;
+  let queryResultModal;
+  let synonymDict = {};
+  let queryBuilderPartCounter = 0;
+
+
+  // State object for the depth filter
+  let depthFilterState = {
+      active: false,
+      nodeIds: new Set()
+  };
+
+  let network;
+  const container = document.getElementById("network");
+  const detailsPopup = document.getElementById('details-popup');
+  const detailsPopupContent = document.getElementById('details-popup-content');
+  const detailsPopupClose = document.getElementById('details-popup-close');
+  const NODE_LIMIT = 500;
+
+  function buildOptions() {
+      const isPhysicsOptimized = document.getElementById('physicsToggle').checked;
+      const isRenderOptimized = document.getElementById('renderToggle').checked;
+
+      const nodeOptions = {
+          shape: isRenderOptimized ? "dot" : "ellipse",
+          font: { color: "#000" }
+      };
+
+      if (isRenderOptimized) {
+          nodeOptions.size = 10;
+      }
+
+      return {
+          nodes: nodeOptions,
+          edges: {
+              arrows: "to",
+              font: { align: "middle" },
+              smooth: {
+                  enabled: !isRenderOptimized,
+                  type: "dynamic"
+              }
+          },
+          physics: {
+              enabled: true,
+              solver: isPhysicsOptimized ? "barnesHut" : "forceAtlas2Based",
+              barnesHut: {
+                  gravitationalConstant: -8000,
+                  springConstant: 0.001,
+                  avoidOverlap: 0.1
+              },
+              stabilization: false
+          },
+          groups: {},
+          interaction: {
+              dragNodes: true,
+              dragView: true,
+              zoomView: true,
+              selectConnectedEdges: false,
+          }
+      };
+  }
+
+  function initNetwork() {
+    const initialOptions = buildOptions();
+    network = new vis.Network(container, { nodes: new vis.DataSet([]), edges: new vis.DataSet([]) }, initialOptions);
+
+    network.on("stabilized", function () {
+      if (document.getElementById('physicsToggle').checked) {
+        network.setOptions({ physics: false });
+      }
+    });
+
+    network.on("dragEnd", function (params) {
+      if (params.nodes.length > 0) {
+        const nodeId = params.nodes[0];
+        const position = network.getPositions([nodeId])[nodeId];
+        network.body.data.nodes.update({id: nodeId, x: position.x, y: position.y, physics: false});
+      }
+    });
+
+    network.on("click", function (params) {
+        let content = '';
+        detailsPopup.style.display = 'none';
+
+        if (params.nodes.length > 0) {
+            const nodeId = params.nodes[0];
+            const node = fullGraph.nodes.find(n => n.id === nodeId);
+            if (node) {
+                $('#nodeSelect').val([nodeId]).trigger('change');
+                const nodeType = node.labels[0];
+                $('#pathFromTypeSelect').val(nodeType).trigger('change');
+                setTimeout(() => {
+                    $('#pathFromNodeSelect').val(nodeId).trigger('change');
+                }, 100);
+
+                let propertiesList = '';
+                if (node.properties && typeof node.properties === 'object' && Object.keys(node.properties).length > 0) {
+                    for (const [key, value] of Object.entries(node.properties)) {
+                        const displayValue = Array.isArray(value) ? value.join(', ') : value;
+                        propertiesList += `<li><strong>${key}:</strong> ${displayValue}</li>`;
+                    }
+                } else {
+                    propertiesList = '<li>No properties defined.</li>';
+                }
+
+                content = `
+                    <p><strong>Node:</strong> ${node.label}</p>
+                    <p><strong>Type(s):</strong> ${node.labels.join(', ')}</p>
+                    <p><strong>Description:</strong> ${node.description || 'N/A'}</p>
+                    <div>
+                        <strong>Properties:</strong>
+                        <ul>${propertiesList}</ul>
+                    </div>
+                `;
+            }
+        } else if (params.edges.length > 0) {
+            const edgeId = params.edges[0];
+            const edge = fullGraph.edges.find(e => e.id === edgeId);
+            const fromNode = fullGraph.nodes.find(n => n.id === edge.from);
+            const toNode = fullGraph.nodes.find(n => n.id === edge.to);
+            if (edge) {
+                let propertiesList = '';
+                if (edge.properties && Object.keys(edge.properties).length > 0) {
+                    propertiesList += '<div><strong>Properties:</strong><ul>';
+                    for (const [key, value] of Object.entries(edge.properties)) {
+                        const displayValue = Array.isArray(value) ? value.join(', ') : value;
+                        propertiesList += `<li><strong>${key}:</strong> ${displayValue}</li>`;
+                    }
+                    propertiesList += '</ul></div>';
+                }
+
+                content = `
+                    <p><strong>Relationship:</strong> ${edge.label || 'related to'}</p>
+                    <p><strong>From:</strong> ${fromNode ? fromNode.label : 'N/A'}</p>
+                    <p><strong>To:</strong> ${toNode ? toNode.label : 'N/A'}</p>
+                    <p><strong>Description:</strong> ${edge.description || 'No description available.'}</p>
+                    ${propertiesList}
+                `;
+            }
+        }
+
+        if (content) {
+            detailsPopupContent.innerHTML = content;
+            const popupWidth = detailsPopup.offsetWidth;
+            const popupHeight = detailsPopup.offsetHeight;
+            const containerWidth = container.offsetWidth;
+            const containerHeight = container.offsetHeight;
+            let top = params.pointer.DOM.y + 15;
+            let left = params.pointer.DOM.x + 15;
+            if (left + popupWidth > containerWidth) {
+                left = params.pointer.DOM.x - popupWidth - 15;
+            }
+            if (top + popupHeight > containerHeight) {
+                top = params.pointer.DOM.y - popupHeight - 15;
+            }
+            detailsPopup.style.top = `${top}px`;
+            detailsPopup.style.left = `${left}px`;
+            detailsPopup.style.display = 'block';
+        }
+    });
+  }
+
+  function downloadLayout() {
+    if (!network || network.body.data.nodes.length === 0) {
+        showCustomAlert("No graph is loaded to save a layout.");
+        return;
+    }
+
+    network.storePositions();
+    const nodesToSave = network.body.data.nodes.get({
+        fields: ['id', 'x', 'y', 'label', 'description', 'group', 'physics', 'properties', 'labels']
+    });
+    const edgesToSave = network.body.data.edges.get();
+    const graphToSave = { nodes: nodesToSave, edges: edgesToSave };
+    const blob = new Blob([JSON.stringify(graphToSave, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "ontology-layout.json";
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function updateDisplayedGraph(nodesToShow, edgesToShow) {
+      network.setData({
+          nodes: new vis.DataSet(nodesToShow),
+          edges: new vis.DataSet(edgesToShow)
+      });
+      updateNodeCountDisplay(nodesToShow);
+  }
+
+  function updateNodeCountDisplay(nodes) {
+    const countDisplay = document.getElementById('node-count-display');
+    if (!nodes || nodes.length === 0) {
+        countDisplay.innerHTML = 'No nodes to display.';
+        return;
+    }
+
+    const counts = {};
+    nodes.forEach(node => {
+        const type = node.group || 'Undefined';
+        counts[type] = (counts[type] || 0) + 1;
+    });
+
+    let html = '<strong>Visible Nodes:</strong><br>';
+    Object.entries(counts).sort((a,b) => a[0].localeCompare(b[0])).forEach(([type, count]) => {
+        html += `${type}: ${count}<br>`;
+    });
+    countDisplay.innerHTML = html;
+  }
+
+  let filterTimeout;
+  function triggerAdvancedFilter() {
+      $('#elasticSearchInput').val('');
+      applyAllFilters();
+  }
+
+  function applyAllFilters() {
+      clearTimeout(filterTimeout);
+      filterTimeout = setTimeout(() => {
+        const liveSearchTerm = $('#elasticSearchInput').val().trim();
+        
+        const advancedSearchState = { active: false, filters: {} };
+        const selectedTypes = new Set();
+        $('#node-type-filter-container .form-check-input:checked').each(function() {
+            selectedTypes.add($(this).val());
+        });
+        if ($('#node-type-filter-container .form-check-input').length > 0 && $('#node-type-filter-container .form-check-input').length !== selectedTypes.size) {
+            advancedSearchState.active = true;
+        }
+        $('.active-filters-container').each(function() {
+            const pills = $(this).find('.filter-pill');
+            if (pills.length > 0) {
+                advancedSearchState.active = true;
+                const nodeType = $(this).data('type');
+                if (!advancedSearchState.filters[nodeType]) {
+                    advancedSearchState.filters[nodeType] = [];
+                }
+                pills.each(function() {
+                    advancedSearchState.filters[nodeType].push({
+                        prop: $(this).data('prop'),
+                        value: $(this).data('value')
+                    });
+                });
+            }
+        });
+
+        const isDepthActive = depthFilterState.active;
+        const isAdvancedActive = advancedSearchState.active;
+
+        $('#live-search-active-indicator, #clear-live-search').toggle(!!liveSearchTerm && !isDepthActive && !isAdvancedActive);
+        $('#depth-filter-active-indicator, #clear-depth-filter').toggle(isDepthActive);
+        $('#advanced-search-active-indicator, #clear-advanced-search').toggle(isAdvancedActive);
+
+        let filteredNodes;
+
+        if (isDepthActive || isAdvancedActive) {
+            filteredNodes = fullGraph.nodes.filter(node => {
+                if (isDepthActive && !depthFilterState.nodeIds.has(node.id)) {
+                    return false;
+                }
+
+                if (isAdvancedActive) {
+                    const hasSelectedType = node.labels.some(label => selectedTypes.has(label));
+                    if (!hasSelectedType) return false;
+
+                    const relevantFilters = node.labels.flatMap(label => advancedSearchState.filters[label] || []);
+                    
+                    if (relevantFilters.length > 0) {
+                        const matchesAnyRelevantFilter = relevantFilters.some(filter => {
+                            const filterValue = String(filter.value).toLowerCase();
+                            if (filter.prop === '__node_contains__') {
+                                const queryWords = filterValue.split(/\s+/).filter(w => w.length > 0);
+                                const searchGroups = queryWords.map(word => {
+                                    const terms = synonymDict[word] ? new Set(synonymDict[word]) : new Set([word]);
+                                    return Array.from(terms);
+                                });
+                                const nodeText = [
+                                    node.label,
+                                    node.description,
+                                    ...(node.properties ? Object.values(node.properties).map(v => Array.isArray(v) ? v.join(' ') : v) : [])
+                                ].join(' ').toLowerCase();
+                                if (!nodeText) return false;
+                                const nodeWords = new Set(nodeText.split(/[\s(),.-]+/g).filter(w => w.length > 0));
+                                if (nodeWords.size === 0) return false;
+                                return searchGroups.every(group => {
+                                    return group.some(term => {
+                                        for (const nodeWord of nodeWords) {
+                                            if (nodeWord.startsWith(term)) {
+                                                return true;
+                                            }
+                                        }
+                                        return false;
+                                    });
+                                });
+                            } else if (filter.prop === '__name_is__') {
+                                return node.label.toLowerCase() === filterValue;
+                            } else {
+                                const nodePropValue = node.properties[filter.prop];
+                                if (nodePropValue === undefined) return false;
+                                const nodeValues = (Array.isArray(nodePropValue) ? nodePropValue : [nodePropValue]).map(v => String(v).toLowerCase());
+                                return nodeValues.some(nodeValue => nodeValue.includes(filterValue));
+                            }
+                        });
+                        if (!matchesAnyRelevantFilter) return false;
+                    }
+                }
+                
+                return true;
+            });
+        } 
+        else if (liveSearchTerm) {
+            const queryWords = liveSearchTerm.toLowerCase().split(/\s+/).filter(w => w.length > 0);
+
+            const searchGroups = queryWords.map(word => {
+                const terms = synonymDict[word] ? new Set(synonymDict[word]) : new Set([word]);
+                return Array.from(terms);
+            });
+
+            filteredNodes = fullGraph.nodes.filter(node => {
+                const nodeText = [
+                    node.label,
+                    node.description,
+                    ...(node.properties ? Object.values(node.properties).map(v => Array.isArray(v) ? v.join(' ') : v) : [])
+                ].join(' ').toLowerCase();
+
+                if (!nodeText) return false;
+                
+                const nodeWords = new Set(nodeText.split(/[\s(),.-]+/g).filter(w => w.length > 0));
+                if (nodeWords.size === 0) return false;
+
+                return searchGroups.every(group => {
+                    return group.some(term => {
+                        for (const nodeWord of nodeWords) {
+                            if (nodeWord.startsWith(term)) {
+                                return true;
+                            }
+                        }
+                        return false;
+                    });
+                });
+            });
+        }
+        else {
+            if (fullGraph.nodes.length > NODE_LIMIT) {
+                filteredNodes = fullGraph.nodes.slice(0, NODE_LIMIT);
+            } else {
+                filteredNodes = fullGraph.nodes;
+            }
+        }
+
+        const nodeIdsToShow = new Set(filteredNodes.map(n => n.id));
+        const edgesToShow = fullGraph.edges.filter(edge =>
+            nodeIdsToShow.has(edge.from) && nodeIdsToShow.has(edge.to)
+        );
+        updateDisplayedGraph(filteredNodes, edgesToShow);
+      }, 300);
+  }
+
+  function activateDepthFilter() {
+    let startNodes = $('#nodeSelect').val();
+    if (startNodes) {
+        startNodes = startNodes.filter(id => id && id.length > 0);
+    }
+    if ((!startNodes || startNodes.length === 0) && network) {
+        startNodes = network.getSelectedNodes();
+    }
+    if (!startNodes || startNodes.length === 0) {
+      showCustomAlert("Please select at least one starting node from the list or by clicking on the graph.");
+      return;
+    }
+    const maxDepth = parseInt(document.getElementById('depthInput').value, 10);
+    if (isNaN(maxDepth) || maxDepth < 0) {
+      showCustomAlert("Please enter a valid, non-negative depth.");
+      return;
+    }
+    
+    depthFilterState.active = true;
+    depthFilterState.nodeIds.clear();
+    startNodes.forEach(id => depthFilterState.nodeIds.add(id));
+
+    let currentLevel = [...startNodes];
+    for (let i=0; i < maxDepth; i++) {
+        const nextLevel = [];
+        currentLevel.forEach(nodeId => {
+            fullGraph.edges.forEach(edge => {
+                if(edge.from === nodeId && !depthFilterState.nodeIds.has(edge.to)) {
+                    depthFilterState.nodeIds.add(edge.to);
+                    nextLevel.push(edge.to);
+                } else if (edge.to === nodeId && !depthFilterState.nodeIds.has(edge.from)) {
+                    depthFilterState.nodeIds.add(edge.from);
+                    nextLevel.push(edge.from);
+                }
+            });
+        });
+        currentLevel = nextLevel;
+    }
+
+    triggerAdvancedFilter();
+  }
+
+  function findShortestPath(from, to) {
+      const adj = new Map();
+      fullGraph.nodes.forEach(node => adj.set(node.id, []));
+      fullGraph.edges.forEach(edge => {
+          if (adj.has(edge.from) && adj.has(edge.to)) {
+              adj.get(edge.from).push(edge.to);
+              adj.get(edge.to).push(edge.from);
+          }
+      });
+      const queue = [[from, [from]]];
+      const visited = new Set([from]);
+      while (queue.length > 0) {
+          const [currentNode, path] = queue.shift();
+          if (currentNode === to) return path;
+          const neighbors = adj.get(currentNode) || [];
+          for (const neighbor of neighbors) {
+              if (!visited.has(neighbor)) {
+                  visited.add(neighbor);
+                  const newPath = [...path, neighbor];
+                  queue.push([neighbor, newPath]);
+              }
+          }
+      }
+      return null;
+  }
+
+  function showRelationshipPath() {
+    const fromNodeId = $('#pathFromNodeSelect').val();
+    const toNodeId = $('#pathToNodeSelect').val();
+    if (!fromNodeId || !toNodeId) {
+      showCustomAlert("Please select both a 'From' and a 'To' node.");
+      return;
+    }
+    if (fromNodeId === toNodeId) {
+      showCustomAlert("'From' and 'To' nodes cannot be the same.");
+      return;
+    }
+    const shortestPath = findShortestPath(fromNodeId, toNodeId);
+    if (!shortestPath) {
+      showCustomAlert(`No path found between the selected nodes.`);
+      return;
+    }
+    const nodesInPath = new Set(shortestPath);
+    const filteredNodes = fullGraph.nodes.filter(n => nodesInPath.has(n.id));
+    const filteredEdges = fullGraph.edges.filter(e => {
+        const fromInPath = nodesInPath.has(e.from);
+        const toInPath = nodesInPath.has(e.to);
+        if (fromInPath && toInPath) {
+            for(let i = 0; i < shortestPath.length - 1; i++) {
+                if ((shortestPath[i] === e.from && shortestPath[i+1] === e.to) || (shortestPath[i] === e.to && shortestPath[i+1] === e.from)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    });
+    updateDisplayedGraph(filteredNodes, filteredEdges);
+  }
+
+  function clearLiveSearch() {
+    $('#elasticSearchInput').val('');
+    applyAllFilters();
+  }
+  
+  function clearDepthFilter() {
+    depthFilterState.active = false;
+    depthFilterState.nodeIds.clear();
+    $('#nodeSelect').val(null).trigger('change');
+    $('#depthInput').val(1);
+    applyAllFilters();
+  }
+
+  function clearAdvancedSearch() {
+    $('#node-type-filter-container .form-check-input').prop('checked', true);
+    $('.active-filters-container').empty();
+    $('.property-filter-container').hide();
+    applyAllFilters();
+  }
+
+  function resetView() {
+    if (!network) return;
+    $('#elasticSearchInput').val('');
+    depthFilterState.active = false;
+    depthFilterState.nodeIds.clear();
+    $('#nodeSelect').val(null).trigger('change');
+    $('#depthInput').val(1);
+    $('#node-type-filter-container .form-check-input').prop('checked', true);
+    $('.active-filters-container').empty();
+    $('.property-filter-container').hide();
+    
+    // Reset Query Builder
+    $('#query-builder-container').empty();
+    $('#aggregation-builder-container').empty();
+    $('#query-output-container').html('<small class="text-muted">Add nodes/relationships to the query to select output.</small>');
+    queryBuilderPartCounter = 0;
+    updateAddRelButtonState();
+    generateCypherQuery();
+    
+    applyAllFilters();
+    
+    network.once('stabilizationIterationsDone', function () {
+        network.fit();
+    });
+  }
+
+  function handleClustering() {
+    if (!network || fullGraph.nodes.length === 0) return;
+
+    if (document.getElementById('clusterToggle').checked) {
+        if (fullGraph.nodes.length > 200) {
+            const clusterOptions = {
+                joinCondition: function(nodeOptions) {
+                    return nodeOptions.group === this.group;
+                },
+                clusterNodeProperties: {
+                    shape: 'diamond', color: '#FFA500', label: 'Cluster', allowSingleNodeCluster: true
+                }
+            };
+            network.cluster(clusterOptions);
+        }
+    } else {
+        const clusterNodeIds = network.body.data.nodes.getIds({
+            filter: function(node) {
+                return network.isCluster(node.id);
+            }
+        });
+        clusterNodeIds.forEach(clusterId => {
+            network.openCluster(clusterId);
+        });
+    }
+  }
+
+  const aiChatWindow = document.getElementById('ai-chat-window');
+  const aiChatInput = document.getElementById('ai-chat-input');
+
+  function renderChatHistory() {
+      aiChatWindow.innerHTML = '';
+      aiChatHistory.forEach(message => {
+          const messageDiv = document.createElement('div');
+          messageDiv.classList.add('chat-message');
+          messageDiv.classList.add(message.role === 'user' ? 'user-message' : 'ai-message');
+          messageDiv.innerText = message.parts[0].text;
+          aiChatWindow.appendChild(messageDiv);
+      });
+      aiChatWindow.scrollTop = aiChatWindow.scrollHeight;
+  }
+
+  async function askAIChat() {
+    const question = aiChatInput.value.trim();
+    if (!question) return;
+
+    if (fullGraph.nodes.length === 0) {
+        showCustomAlert("Please load data from the database or a file first.");
+        return;
+    }
+
+    aiChatHistory.push({ role: 'user', parts: [{ text: question }] });
+    renderChatHistory();
+    aiChatInput.value = '';
+
+    const loadingSpinner = document.createElement('div');
+    loadingSpinner.classList.add('loading-spinner');
+    loadingSpinner.style.display = 'block';
+    aiChatWindow.appendChild(loadingSpinner);
+    aiChatWindow.scrollTop = aiChatWindow.scrollHeight;
+
+    try {
+        // Send the question to YOUR backend server
+        const response = await fetch('http://localhost:3000/api/ask', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ question: question })
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || `Server responded with status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        const answer = result.answer; // Get the answer from your backend's response
+
+        aiChatHistory.push({ role: 'model', parts: [{ text: answer }]});
+        
+    } catch (error) {
+        console.error("Error calling backend:", error);
+        const errorMessage = "Sorry, I couldn't get a response from the backend. Please check the console for details.";
+        aiChatHistory.push({ role: 'model', parts: [{ text: errorMessage }]});
+    } finally {
+        const spinner = aiChatWindow.querySelector('.loading-spinner');
+        if (spinner) aiChatWindow.removeChild(spinner);
+        renderChatHistory(); // Render the final history including the answer or error
+    }
+  }
+
+  async function loadFromNeo4j() {
+      document.getElementById('file-name-display').innerText = `(Loading from Database...)`;
+      try {
+        const response = await fetch('http://localhost:3000/api/graph', { method: 'POST', headers: { 'Content-Type': 'application/json' } });
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Failed to fetch from server: ${response.status}. ${errorText}`);
+        }
+        const graphData = await response.json();
+        processAndRenderGraph(graphData, "Neo4j Database");
+        resetOntologyLoadButtons();
+        $('#btnLoadFromDb').removeClass('btn-secondary').addClass('btn-success');
+      } catch(err) {
+        showCustomAlert("It looks like the data base connection is not active, please use another method to load your Ontology", "Connection Error");
+        document.getElementById('file-name-display').innerText = ``;
+        console.error(err);
+      }
+  }
+
+  function processAndRenderGraph(graph, sourceName) {
+    try {
+        if (!graph || !Array.isArray(graph.nodes) || !Array.isArray(graph.edges)) {
+            throw new Error("Input data is not a valid graph object.");
+        }
+        document.getElementById('file-name-display').innerText = `(Source: ${sourceName})`;
+
+        const newOptions = buildOptions();
+        network.setOptions(newOptions);
+        
+        // Step 1: Collect all unique labels first from both `labels` and `group` properties
+        const allNodeLabels = new Set();
+        graph.nodes.forEach(n => {
+            if (n.labels && Array.isArray(n.labels)) {
+                n.labels.forEach(label => allNodeLabels.add(label));
+            }
+            if (n.group) {
+                allNodeLabels.add(n.group);
+            }
+        });
+
+        // Step 2: Create dynamicGroups based on all unique labels/groups
+        const dynamicGroups = {};
+        const pastelColors = ['#a8e6cf', '#dcedc1', '#ffd3b6', '#ffaaa5', '#ff8b94', '#b8a9c9', '#f6eac2', '#b2d8d8', '#ffc0cb', '#fde2e4'];
+        let colorIndex = 0;
+        Array.from(allNodeLabels).sort().forEach(label => {
+            if (!dynamicGroups[label]) {
+                dynamicGroups[label] = { color: { background: pastelColors[colorIndex % pastelColors.length], border: '#555' }, font: { color: '#000' } };
+                colorIndex++;
+            }
+        });
+
+        typeProperties = {};
+        const processedNodes = graph.nodes.map(n => {
+            let properties = (n.properties || n.Properties) && typeof (n.properties || n.Properties) === 'object' ? (n.properties || n.Properties) : {};
+            const nodeLabels = (n.labels && n.labels.length > 0) ? n.labels : [n.group || "Undefined"];
+            const group = n.group || nodeLabels[0]; 
+
+            nodeLabels.forEach(label => {
+                if (!typeProperties[label]) typeProperties[label] = new Set();
+                Object.keys(properties).forEach(prop => typeProperties[label].add(prop));
+            });
+            return { ...n, properties: properties, labels: nodeLabels, group: group };
+        });
+
+        fullGraph = {
+          nodes: processedNodes,
+          edges: graph.edges.map((e, index) => ({
+            id: e.id || `${e.from}-${e.to}-${index}`,
+            from: e.from, to: e.to, label: e.label, arrows: "to",
+            description: e.description || "", properties: e.properties || {}
+          }))
+        };
+
+        if (fullGraph.nodes.length > NODE_LIMIT) {
+            if (limitModal) limitModal.show();
+        }
+
+        network.setOptions({ groups: dynamicGroups });
+
+        const $typeFilterContainer = $('#node-type-filter-container');
+        $typeFilterContainer.empty();
+        const nodeTypes = Array.from(allNodeLabels).sort();
+        nodeTypes.forEach(type => {
+            const color = dynamicGroups[type].color.background;
+            const itemHtml = `
+                <div class="node-type-filter-item mb-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="${type}" id="type-check-${type}" checked onchange="triggerAdvancedFilter()">
+                            <label class="form-check-label" for="type-check-${type}">${type}</label>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <span class="color-box" style="background-color: ${color};"></span>
+                            <a href="#" class="property-toggle-arrow" data-type="${type}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="property-filter-container" data-type="${type}" style="display: none;">
+                        <div class="active-filters-container mb-2" data-type="${type}"></div>
+                        <div class="input-group input-group-sm mb-2">
+                            <select class="property-select form-select"><option value="">-- Select Property --</option></select>
+                            <input type="text" class="property-value-input form-control" placeholder="Value...">
+                            <button class="btn btn-outline-secondary add-filter-btn" type="button">+</button>
+                        </div>
+                        <div class="input-group input-group-sm mb-2">
+                            <span class="input-group-text" style="font-size: .75rem;">Node contains</span>
+                            <input type="text" class="node-contains-value-input form-control" placeholder="Text...">
+                            <button class="btn btn-outline-secondary add-node-contains-filter-btn" type="button">+</button>
+                        </div>
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-text" style="font-size: .75rem;">Name is</span>
+                            <input type="text" class="name-is-value-input form-control" placeholder="Exact Text...">
+                            <button class="btn btn-outline-secondary add-name-is-filter-btn" type="button">+</button>
+                        </div>
+                    </div>
+                </div>`;
+            $typeFilterContainer.append(itemHtml);
+        });
+
+        $('.add-filter-btn').on('click', handleAddPropertyFilter);
+        $('.add-node-contains-filter-btn').on('click', handleAddNodeContainsFilter);
+        $('.add-name-is-filter-btn').on('click', handleAddNameIsFilter);
+        $typeFilterContainer.on('click', '.remove-filter', handleRemoveFilter);
+
+        const typeOptions = '<option value="">-- Select Type --</option>' + nodeTypes.map(type => `<option value="${type}">${type}</option>`).join('');
+        $('#pathFromTypeSelect, #pathToTypeSelect').html(typeOptions);
+
+        const allNodeOptions = fullGraph.nodes.sort((a,b) => a.label.localeCompare(b.label)).map(n => `<option value="${n.id}">${n.label}</option>`).join('');
+        $('#nodeSelect').html(allNodeOptions).val(null).trigger('change');
+        
+        // **FIX START**: Replace event trigger loop with direct population
+        $('#pathFromTypeSelect, #pathToTypeSelect').val('');
+        populateNodeDropdown(null, $('#pathFromNodeSelect'));
+        populateNodeDropdown(null, $('#pathToNodeSelect'));
+        // **FIX END**
+
+        aiChatHistory = [];
+        aiChatWindow.innerHTML = '<div class="ai-message">Ask a question about the loaded data...</div>';
+
+        resetView();
+        document.getElementById('uploadLayout').value = '';
+
+        handleClustering();
+
+      } catch (err) {
+        showCustomAlert("Invalid data format received.");
+        console.error("Error in processAndRenderGraph:", err);
+      }
+  }
+
+  document.getElementById("uploadOntology").addEventListener("change", function (event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      try {
+        let fileContent = e.target.result;
+        let fixedContent = fileContent.replace(/,\s*([}\]])/g, "$1");
+        const graph = JSON.parse(fixedContent);
+        if (!graph || !Array.isArray(graph.nodes) || !Array.isArray(graph.edges)) {
+            throw new Error("Invalid JSON format. Missing 'nodes' or 'edges' array.");
+        }
+        const fileNameWithoutExt = file.name.split('.').slice(0, -1).join('.') || file.name;
+        processAndRenderGraph(graph, fileNameWithoutExt);
+        resetOntologyLoadButtons();
+        $('#btnLoadOntology').removeClass('btn-secondary').addClass('btn-success').text(file.name);
+      } catch (err) {
+        console.error("Failed to parse JSON:", err);
+        showCustomAlert("The file does not appear to be valid JSON. Please check that it contains both 'nodes' and 'edges' arrays.", "JSON Parse Error");
+      }
+    };
+    reader.readAsText(file);
+  });
+  
+  function processSynonyms(synonymData) {
+    synonymDict = {}; // Clear existing dictionary
+    for (const key in synonymData) {
+        if (Array.isArray(synonymData[key])) {
+            const allSynonyms = new Set([key.toLowerCase(), ...synonymData[key].map(s => String(s).toLowerCase())]);
+            allSynonyms.forEach(word => {
+                synonymDict[word] = Array.from(allSynonyms);
+            });
+        }
+    }
+  }
+
+  document.getElementById("uploadSynonyms").addEventListener("change", function (event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      try {
+        const synonyms = JSON.parse(e.target.result);
+        if (typeof synonyms !== 'object' || synonyms === null || Array.isArray(synonyms)) {
+            throw new Error("Invalid JSON format. Expected a key-value object.");
+        }
+        processSynonyms(synonyms);
+        $('#btnLoadSynonyms').removeClass('btn-secondary').addClass('btn-success').text(file.name);
+      } catch (err) {
+        console.error("Failed to parse synonym JSON:", err);
+        showCustomAlert("The synonym file does not appear to be a valid JSON object.", "JSON Parse Error");
+      }
+    };
+    reader.readAsText(file);
+  });
+
+  document.getElementById("uploadLayout").addEventListener("change", function (event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      try {
+        let fileContent = e.target.result;
+        let fixedContent = fileContent.replace(/,\s*([}\]])/g, "$1");
+        const graphData = JSON.parse(fixedContent);
+        if (!graphData || !Array.isArray(graphData.nodes)) {
+             throw new Error("Layout file must contain a 'nodes' array.");
+        }
+        if (!Array.isArray(graphData.edges)) {
+            graphData.edges = []; 
+        }
+        processAndRenderGraph(graphData, file.name);
+        resetOntologyLoadButtons();
+        $('#btnLoadLayout').removeClass('btn-secondary').addClass('btn-success').text(file.name);
+      } catch (err) {
+        console.error("Failed to parse JSON:", err);
+        showCustomAlert("The file does not appear to be a valid JSON. Please check that it contains a 'nodes' array.", "JSON Parse Error");
+      } finally {
+        event.target.value = '';
+      }
+    };
+    reader.readAsText(file);
+  });
+
+  document.getElementById("uploadCypher").addEventListener("change", function (event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      try {
+        const cypherText = e.target.result;
+        const graph = parseCypher(cypherText);
+        if (graph.nodes.length === 0 && graph.edges.length === 0) {
+            throw new Error("Cypher file did not produce any nodes or edges.");
+        }
+        const fileNameWithoutExt = file.name.split('.').slice(0, -1).join('.') || file.name;
+        processAndRenderGraph(graph, fileNameWithoutExt);
+        resetOntologyLoadButtons();
+        $('#btnLoadCypher').removeClass('btn-secondary').addClass('btn-success').text(file.name);
+      } catch (err) {
+        showCustomAlert("The file uploaded does not follow the format required, please check and try again");
+        console.error(err);
+      }
+    };
+    reader.readAsText(file);
+  });
+
+  // ========== UPDATED OWL/TURTLE LOADER ==========
+  document.getElementById("uploadOwl").addEventListener("change", function (event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      try {
+        const fileContent = e.target.result;
+        let graph;
+
+        // Check if the file content starts with Turtle's @prefix or @base directive
+        if (fileContent.trim().match(/^@prefix|@base/i)) {
+          graph = parseTurtle(fileContent);
+        } else {
+          // Fallback to the original XML parser
+          graph = parseOwl(fileContent);
+        }
+
+        if (graph.nodes.length === 0) {
+            throw new Error("The parser did not produce any nodes from the file.");
+        }
+        const fileNameWithoutExt = file.name.split('.').slice(0, -1).join('.') || file.name;
+        processAndRenderGraph(graph, fileNameWithoutExt);
+        resetOntologyLoadButtons();
+        $('#btnLoadOwl').removeClass('btn-secondary').addClass('btn-success').text(file.name);
+      } catch (err) {
+        showCustomAlert("The file format is not a valid or supported OWL (RDF/XML or Turtle) format. Please check and try again.", "Parsing Error");
+        console.error(err);
+      }
+    };
+    reader.readAsText(file);
+  });
+
+  // ========== NEW TURTLE PARSER FUNCTION ==========
+  function parseTurtle(fileContent) {
+    const prefixes = {};
+    const nodes = new Map();
+    const edges = [];
+    
+    // First, parse all prefix and base lines
+    const directiveRegex = /@(\w+)\s+(.*?)\s*\./g;
+    let match;
+    while ((match = directiveRegex.exec(fileContent)) !== null) {
+      if (match[1].toLowerCase() === 'prefix') {
+        const parts = match[2].trim().split(/\s+/);
+        if (parts.length === 2) {
+          const prefix = parts[0].slice(0, -1); // remove trailing ':'
+          const uri = parts[1].slice(1, -1); // remove <>
+          prefixes[prefix] = uri;
+        }
+      }
+    }
+    
+    // Function to expand a prefixed name (e.g., "dprod:DataProduct")
+    const expandPrefix = (name) => {
+        if (!name || !name.includes(':')) return name;
+        const [prefix, local] = name.split(':', 2);
+        return prefixes[prefix] ? name : name; // Keep prefixed name for display
+    };
+    
+    // Clean up the content for easier parsing
+    const content = fileContent
+        .replace(directiveRegex, '') // Remove prefix/base lines
+        .replace(/#.*$/gm, '')    // Remove comments
+        .trim();
+
+    // Process each subject block
+    const subjectBlocks = content.split(/\s\.\s*/).filter(block => block.trim());
+
+    subjectBlocks.forEach(block => {
+      const parts = block.trim().split(/\s+/);
+      if (parts.length < 3) return;
+
+      const subjectId = expandPrefix(parts[0]);
+      if (!nodes.has(subjectId)) {
+          nodes.set(subjectId, { id: subjectId, label: subjectId.split(/[:#\/]/).pop(), labels: ["Thing"], properties: {}, description: "" });
+      }
+
+      // Process predicate-object pairs, handling semicolons
+      const predicateObjectPairs = block.substring(parts[0].length).trim().split(';');
+      
+      predicateObjectPairs.forEach(pairStr => {
+        const pair = pairStr.trim().split(/\s+/);
+        if (pair.length < 2) return;
+        
+        const predicate = expandPrefix(pair[0]);
+        const objectStr = pair.slice(1).join(' ');
+
+        // Handle multiple objects for the same predicate, handling commas
+        const objects = objectStr.split(',').map(o => o.trim());
+
+        objects.forEach(obj => {
+          const subjectNode = nodes.get(subjectId);
+          
+          if (predicate === 'a' || predicate === 'rdf:type') {
+            const type = obj.split(/[:#\/]/).pop();
+            if (!subjectNode.labels.includes(type)) {
+                if (subjectNode.labels[0] === 'Thing' && type !== 'Thing') {
+                    subjectNode.labels = [type];
+                } else if (type !== 'Thing') {
+                    subjectNode.labels.push(type);
+                }
+            }
+          } else if (obj.startsWith('"')) { // It's a literal property
+            const literalValue = obj.replace(/^"|"(@[\w-]+)?(\^\^.+)?"$/g, '');
+            const propName = predicate.split(/[:#\/]/).pop();
+            if (['label', 'title', 'name'].includes(propName.toLowerCase())) {
+                subjectNode.label = literalValue;
+            } else if (['description', 'comment'].includes(propName.toLowerCase())) {
+                subjectNode.description = (subjectNode.description ? subjectNode.description + "\n" : "") + literalValue;
+            } else {
+                if (subjectNode.properties[propName]) {
+                    if (Array.isArray(subjectNode.properties[propName])) {
+                        subjectNode.properties[propName].push(literalValue);
+                    } else {
+                        subjectNode.properties[propName] = [subjectNode.properties[propName], literalValue];
+                    }
+                } else {
+                    subjectNode.properties[propName] = literalValue;
+                }
+            }
+          } else { // It's a relationship (edge)
+            const objectId = expandPrefix(obj);
+            if (!nodes.has(objectId)) {
+              nodes.set(objectId, { id: objectId, label: objectId.split(/[:#\/]/).pop(), labels: ["Thing"], properties: {}, description: "" });
+            }
+            edges.push({
+              from: subjectId,
+              to: objectId,
+              label: predicate.split(/[:#\/]/).pop()
+            });
+          }
+        });
+      });
+    });
+
+    // Finalize node groups based on labels
+    nodes.forEach(node => {
+        node.group = node.labels.find(l => l !== 'Class' && l !== 'ObjectProperty' && l !== 'DatatypeProperty') || node.labels[0] || 'Thing';
+    });
+    
+    return { nodes: Array.from(nodes.values()), edges: edges };
+  }
+
+  function parseOwl(fileContent) {
+    if (fileContent.trim().startsWith("CREATE (n:")) {
+        console.warn("The file appears to be a Cypher script, not OWL. Parsing as Cypher.");
+        return parseCypher(fileContent);
+    }
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(fileContent, "application/xml");
+    if (xmlDoc.getElementsByTagName("parsererror").length > 0) {
+        const error = xmlDoc.getElementsByTagName("parsererror")[0];
+        console.error("XML Parsing Error:", error.textContent);
+        throw new Error("Failed to parse XML. Please ensure the file is a valid OWL (RDF/XML) or Cypher script.");
+    }
+    const nodeMap = new Map();
+    const edges = [];
+    const ns = { owl: "http://www.w3.org/2002/07/owl#", rdf: "http://www.w3.org/1999/02/22-rdf-syntax-ns#", rdfs: "http://www.w3.org/2000/01/rdf-schema#" };
+    const cleanId = (id) => id.startsWith('#') ? id.substring(1) : id;
+    const classes = xmlDoc.getElementsByTagNameNS(ns.owl, "Class");
+    for (const cls of classes) {
+        const about = cls.getAttributeNS(ns.rdf, "about");
+        if (about) {
+            const id = cleanId(about);
+            if (!nodeMap.has(id)) {
+                const labelNode = cls.getElementsByTagNameNS(ns.rdfs, "label")[0];
+                const label = labelNode ? labelNode.textContent : id;
+                nodeMap.set(id, { id: id, label: label, labels: ["Class"], properties: {} });
+            }
+        }
+    }
+    const individuals = xmlDoc.getElementsByTagNameNS(ns.owl, "NamedIndividual");
+    for (const ind of individuals) {
+        const about = ind.getAttributeNS(ns.rdf, "about");
+        if (about) {
+            const id = cleanId(about);
+            const properties = {};
+            const individualLabels = new Set();
+            let label = id;
+            for (const child of ind.children) {
+                if (child.hasAttributeNS(ns.rdf, "resource")) {
+                     if (child.namespaceURI === ns.rdf && child.localName === 'type') {
+                        const resource = child.getAttributeNS(ns.rdf, "resource");
+                        if (resource && resource !== `${ns.owl}NamedIndividual`) individualLabels.add(resource.split('#').pop());
+                    }
+                } else {
+                    const propName = child.localName;
+                    const propValue = child.textContent;
+                    properties[propName] = propValue;
+                    if (propName.toLowerCase() === 'label') label = propValue;
+                }
+            }
+            nodeMap.set(id, { id: id, label: label, labels: individualLabels.size > 0 ? Array.from(individualLabels) : ["Individual"], properties: properties });
+        }
+    }
+    for (const cls of classes) {
+        const about = cls.getAttributeNS(ns.rdf, "about");
+        if (about) {
+            const sourceId = cleanId(about);
+            const subClassOfNodes = cls.getElementsByTagNameNS(ns.rdfs, "subClassOf");
+            for (const sub of subClassOfNodes) {
+                const targetResource = sub.getAttributeNS(ns.rdf, "resource");
+                if (targetResource) edges.push({ from: sourceId, to: cleanId(targetResource), label: "subClassOf" });
+            }
+        }
+    }
+    for (const ind of individuals) {
+        const about = ind.getAttributeNS(ns.rdf, "about");
+        if (about) {
+            const sourceId = cleanId(about);
+            for (const child of ind.children) {
+                const resource = child.getAttributeNS(ns.rdf, "resource");
+                if (resource && !(child.namespaceURI === ns.rdf && child.localName === 'type')) {
+                    edges.push({ from: sourceId, to: cleanId(resource), label: child.localName });
+                }
+            }
+        }
+    }
+    return { nodes: Array.from(nodeMap.values()), edges: edges };
+  }
+
+  function parseCypher(text) {
+    const nodes = []; const edges = []; const lines = text.split(';');
+    const nodeRegex = /CREATE \(.+?:(.+?) \{(.+?)\}\)/;
+    const edgeRegex = /MATCH \(a \{id: "([^"]+)"\}\), \(b \{id: "([^"]+)"\}\) CREATE \(a\)-\[:(.+?) (?:\{(.+?)\})?\]->\(b\)/;
+    lines.forEach(line => {
+        const trimmedLine = line.trim();
+        if (trimmedLine.startsWith('CREATE')) {
+            const match = trimmedLine.match(nodeRegex);
+            if (match) {
+                const labels = match[1].split(':').map(l => l.trim());
+                const propsText = match[2]; const properties = {};
+                const propRegex = /(\w+):\s*"([^"]*)"/g;
+                let propMatch;
+                while ((propMatch = propRegex.exec(propsText)) !== null) properties[propMatch[1]] = propMatch[2];
+                nodes.push({ id: properties.id, label: properties.label || properties.id, labels: labels, properties: properties, description: properties.description || "" });
+            }
+        } else if (trimmedLine.startsWith('MATCH')) {
+            const match = trimmedLine.match(edgeRegex);
+            if (match) {
+                const [from, to, label, propsText] = [match[1], match[2], match[3], match[4] || ""];
+                const properties = {};
+                const propRegex = /(\w+):\s*"([^"]*)"/g;
+                let propMatch;
+                while ((propMatch = propRegex.exec(propsText)) !== null) properties[propMatch[1]] = propMatch[2];
+                edges.push({ from, to, label, description: properties.description || "" });
+            }
+        }
+    });
+    return { nodes, edges };
+  }
+
+  function populateNodeDropdown(type, $nodeDropdown) {
+    if (!type) {
+        $nodeDropdown.html('<option value="">-- Select Type First --</option>').prop('disabled', true);
+    } else {
+        const filteredNodes = fullGraph.nodes.filter(n => n.labels.includes(type)).sort((a,b) => a.label.localeCompare(b.label));
+        const options = filteredNodes.map(n => `<option value="${n.id}">${n.label}</option>`).join('');
+        $nodeDropdown.html(options).prop('disabled', false);
+    }
+    // **FIX**: Use a more specific event for select2 to avoid recursive loops
+    $nodeDropdown.val(null).trigger('change.select2');
+  }
+
+  function initResizer() {
+    const resizer = document.getElementById('resizer');
+    const leftPanel = document.getElementById('viewer-container');
+    const rightPanel = document.getElementById('sidebar');
+    let isResizing = false;
+    resizer.addEventListener('mousedown', (e) => {
+        isResizing = true;
+        document.body.style.cursor = 'col-resize';
+        document.body.style.userSelect = 'none';
+        document.addEventListener('mousemove', handleMouseMove);
+        document.addEventListener('mouseup', stopResize);
+    });
+    function handleMouseMove(e) {
+        if (!isResizing) return;
+        const container = document.getElementById('main-container');
+        const [leftPanelMinWidth, rightPanelMinWidth, totalWidth] = [300, 300, container.offsetWidth];
+        let newLeftWidth = e.clientX - container.offsetLeft;
+        if (newLeftWidth < leftPanelMinWidth) newLeftWidth = leftPanelMinWidth;
+        if (totalWidth - newLeftWidth - resizer.offsetWidth < rightPanelMinWidth) newLeftWidth = totalWidth - rightPanelMinWidth - resizer.offsetWidth;
+        const [newLeftFlex, newRightFlex] = [newLeftWidth, totalWidth - newLeftWidth - resizer.offsetWidth];
+        leftPanel.style.flex = `0 0 ${newLeftFlex}px`;
+        rightPanel.style.flex = `1 1 ${newRightFlex}px`;
+        if (network) setTimeout(() => network.fit(), 50);
+    }
+    function stopResize() {
+        isResizing = false;
+        document.body.style.cursor = 'default';
+        document.body.style.userSelect = 'auto';
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseup', stopResize);
+    }
+}
+
+  function resetOntologyLoadButtons() {
+      $('#btnLoadFromDb, #btnLoadOntology, #btnLoadLayout, #btnLoadCypher, #btnLoadOwl, #btnLoadCsv').removeClass('btn-success').addClass('btn-secondary');
+      $('#btnLoadOntology').text('Load Ontology JSON');
+      $('#btnLoadLayout').text('Load Layout');
+      $('#btnLoadCypher').text('Load Cypher File');
+      $('#btnLoadOwl').text('Load OWL File');
+      $('#btnLoadCsv').text('Upload Using CSV');
+  }
+
+  function handleCsvUpload() {
+      const [nodesFile, edgesFile] = [document.getElementById('nodesCsvFile').files[0], document.getElementById('edgesCsvFile').files[0]];
+      if (!nodesFile || !edgesFile) {
+          showCustomAlert("Please select both a nodes and an edges CSV file.");
+          return;
+      }
+      const [reader1, reader2] = [new FileReader(), new FileReader()];
+      const promise1 = new Promise(resolve => reader1.onload = e => resolve(e.target.result));
+      const promise2 = new Promise(resolve => reader2.onload = e => resolve(e.target.result));
+      reader1.readAsText(nodesFile);
+      reader2.readAsText(edgesFile);
+      Promise.all([promise1, promise2]).then(([nodesCsv, edgesCsv]) => {
+          try {
+              const nodesData = parseCsv(nodesCsv);
+              const edgesData = parseCsv(edgesCsv);
+              if (nodesData.length < 2) throw new Error("Nodes CSV must contain a header and at least one data row.");
+              const nodesHeader = nodesData.shift();
+              const edgesHeader = edgesData.length > 0 ? edgesData.shift() : [];
+              const labelToIdMap = new Map();
+              const nodes = nodesData.map(row => {
+                  const nodeLabel = row[2].replace(/[\[\]]/g, '');
+                  const nodeId = row[1].replace(/[\[\]]/g, '');
+                  labelToIdMap.set(nodeLabel, nodeId);
+                  const properties = {};
+                  for (let i = 4; i < nodesHeader.length; i++) if (row[i] && row[i].trim()) properties[nodesHeader[i]] = row[i].trim();
+                  return { id: nodeId, label: nodeLabel, labels: [row[0]], description: row[3], properties: properties };
+              });
+              const edges = edgesData.map(row => {
+                  const [fromLabel, toLabel] = [row[0], row[2]];
+                  const [fromId, toId] = [labelToIdMap.get(fromLabel), labelToIdMap.get(toLabel)];
+                  if (!fromId || !toId) { console.warn(`Could not find nodes for edge: ${fromLabel} -> ${toLabel}`); return null; }
+                  const properties = {};
+                  for (let i = 4; i < edgesHeader.length; i++) if (row[i] && row[i].trim()) properties[edgesHeader[i]] = row[i].trim();
+                  return { from: fromId, to: toId, label: row[1], description: row[3], properties: properties };
+              }).filter(e => e !== null);
+              processAndRenderGraph({ nodes, edges }, "CSV Files");
+              resetOntologyLoadButtons();
+              $('#btnLoadCsv').removeClass('btn-secondary').addClass('btn-success');
+              csvUploadModal.hide();
+          } catch (e) {
+              showCustomAlert("The file uploaded does not follow the format required, please check and try again");
+              console.error(e);
+          }
+      });
+  }
+
+  function parseCsv(csvText) {
+      const rows = [];
+      const lines = csvText.split('\n');
+      lines.forEach(line => {
+          if (line.trim() === '') return;
+          const row = []; let field = ''; let inQuotes = false;
+          for (let i = 0; i < line.length; i++) {
+              const char = line[i];
+              if (char === '"' && (i === 0 || line[i-1] !== '\\')) inQuotes = !inQuotes;
+              else if (char === ',' && !inQuotes) { row.push(field); field = ''; }
+              else field += char;
+          }
+          row.push(field);
+          rows.push(row.map(f => f.replace(/^"|"$/g, '').replace(/""/g, '"')));
+      });
+      return rows;
+  }
+
+  function showCustomAlert(message, title = "Alert") {
+      document.getElementById('customAlertModalLabel').textContent = title;
+      document.getElementById('customAlertModalBody').textContent = message;
+      customAlertModal.show();
+  }
+  
+    // --- START: REWRITTEN QUERY BUILDER FUNCTIONS ---
+    function addQueryPart(type) {
+        const container = $('#query-builder-container');
+        const lastPart = container.children().last();
+
+        if (container.find('.query-part-container').length === 0) {
+            $('#query-output-container').empty();
+        }
+        const partId = `query-part-${queryBuilderPartCounter++}`;
+        const varName = String.fromCharCode(97 + container.find('.query-part-container').length);
+        
+        const isFirstPart = container.children().length === 0;
+
+        let partHtml = `
+            <div class="query-part-container mb-2" id="${partId}" data-type="${type}" data-var="${varName}">
+                <div class="query-part-summary">
+                    <span class="query-part-summary-text"></span>
+                    <div class="query-part-controls">
+                        <button class="btn-icon" onclick="toggleQueryEditor('${partId}')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16"><path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/><path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg>
+                        </button>
+                        <button class="btn-icon" onclick="removeQueryPart('${partId}')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="query-part-editor" style="display: none;"></div>
+            </div>`;
+        
+        container.append(partHtml);
+        
+        // Add to output selection
+        let outputHtml = '';
+        if (type === 'node') {
+             outputHtml = `
+                <div class="query-output-item" id="output-item-${partId}">
+                    <div class="form-check">
+                        <input class="form-check-input output-variable" type="checkbox" value="${varName}" id="output-check-${varName}" onchange="generateCypherQuery()" checked>
+                        <label class="form-check-label" for="output-check-${varName}">
+                            <strong>${varName} (Node)</strong>
+                        </label>
+                        <a href="#" class="property-toggle-arrow ms-2" onclick="toggleOutputProperties('${partId}', event)">[+]</a>
+                    </div>
+                    <div class="query-output-properties" id="output-properties-${partId}" style="display:none; padding-left: 20px;">
+                        <small class="text-muted">Select a node type to see properties.</small>
+                    </div>
+                </div>`;
+        } else { // relationship
+            outputHtml = `
+                <div class="query-output-item" id="output-item-${partId}">
+                    <div class="form-check">
+                        <input class="form-check-input output-variable" type="checkbox" value="${varName}" id="output-check-${varName}" onchange="generateCypherQuery()" checked>
+                        <label class="form-check-label" for="output-check-${varName}">
+                            <strong>${varName} (Relationship)</strong>
+                        </label>
+                    </div>
+                </div>`;
+        }
+        $('#query-output-container').append(outputHtml);
+
+
+        // Immediately open the editor for the new part
+        toggleQueryEditor(partId, true); 
+        updateAddRelButtonState();
+        generateCypherQuery();
+    }
+
+    function removeQueryPart(partId) {
+        $(`#${partId}`).remove();
+        $(`#output-item-${partId}`).remove();
+        // Re-assign variable names
+        $('#query-builder-container .query-part-container').each(function(index) {
+            const oldId = this.id;
+            const newVar = String.fromCharCode(97 + index);
+            $(this).data('var', newVar);
+            
+            const outputItem = $(`#output-item-${oldId}`);
+            outputItem.find('.output-variable').val(newVar).attr('id', `output-check-${newVar}`);
+            outputItem.find('label').attr('for', `output-check-${newVar}`).find('strong').text(`${newVar} (${$(this).data('type')})`);
+        });
+
+        if ($('#query-builder-container .query-part-container').length === 0) {
+            $('#query-output-container').html('<small class="text-muted">Add nodes/relationships to the query to select output.</small>');
+        }
+        updateAddRelButtonState();
+        generateCypherQuery();
+    }
+
+    function toggleQueryEditor(partId, forceOpen = false) {
+        const part = $(`#${partId}`);
+        const editor = part.find('.query-part-editor');
+        
+        if (editor.is(':visible') && !forceOpen) {
+            editor.slideUp(200, () => editor.empty());
+            updateQuerySummary(partId);
+            generateCypherQuery();
+        } else {
+            // Build editor content on the fly
+            const type = part.data('type');
+            let editorHtml = '';
+            if (type === 'node') {
+                const nodeTypes = Object.keys(typeProperties).sort();
+                const typeOptions = nodeTypes.map(t => `<option value="${t}">${t}</option>`).join('');
+                editorHtml = `
+                    <label class="form-label">Node Type</label>
+                    <select class="form-select form-select-sm mb-2 query-node-type">
+                        <option value="">-- Any Node --</option>
+                        ${typeOptions}
+                    </select>
+                    <label class="form-label mt-2">Property Filters</label>
+                    <div class="query-property-filters mb-2"></div>
+                    <div class="input-group input-group-sm">
+                        <select class="form-select query-property-select" disabled><option>-- Select Property --</option></select>
+                        <select class="form-select query-operator-select" style="max-width: 70px;" disabled>
+                            <option value="=">=</option><option value="<>">&lt;&gt;</option><option value=">">&gt;</option><option value="<">&lt;</option><option value=">=">&gt;=</option><option value="<=">&lt;=</option><option value="CONTAINS">CONTAINS</option>
+                        </select>
+                        <input type="text" class="form-control query-property-value" placeholder="Value..." disabled>
+                        <button class="btn btn-outline-secondary add-filter-btn" disabled>+</button>
+                    </div>
+                    <button class="btn btn-sm btn-primary w-100 mt-3" onclick="toggleQueryEditor('${partId}')">Done</button>
+                `;
+            } else { // relationship
+                const relTypes = [...new Set(fullGraph.edges.map(e => e.label || 'related to'))].sort();
+                const relOptions = relTypes.map(t => `<option value="${t}">${t}</option>`).join('');
+                 editorHtml = `
+                    <label class="form-label">Relationship</label>
+                    <div class="input-group input-group-sm">
+                        <select class="form-select form-select-sm query-rel-type">
+                            <option value="">-- Any Relationship --</option>
+                            ${relOptions}
+                        </select>
+                        <select class="form-select form-select-sm query-rel-direction" style="max-width: 70px;">
+                            <option value="->">--&gt;</option><option value="<-">&lt;--</option><option value="-">---</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-sm btn-primary w-100 mt-3" onclick="toggleQueryEditor('${partId}')">Done</button>
+                `;
+            }
+            editor.html(editorHtml);
+            
+            // Re-attach event listeners and populate data
+            editor.find('.query-node-type').on('change', () => updateQueryNodeProperties(partId));
+            editor.find('.add-filter-btn').on('click', () => addQueryPropertyFilter(partId));
+            
+            // Restore saved state
+            const savedData = part.data('saved-state') || {};
+            if (type === 'node') {
+                editor.find('.query-node-type').val(savedData.nodeType || '');
+                updateQueryNodeProperties(partId); // This will populate properties
+                if (savedData.filters) {
+                    savedData.filters.forEach(f => {
+                         const filterHtml = `<span class="filter-pill" data-prop="${f.prop}" data-op="${f.op}" data-value="${f.value}">
+                            ${f.prop} ${f.op} "${f.value}"
+                            <button class="remove-filter" onclick="$(this).parent().remove()">&times;</button>
+                        </span>`;
+                        editor.find('.query-property-filters').append(filterHtml);
+                    });
+                }
+            } else {
+                 editor.find('.query-rel-type').val(savedData.relType || '');
+                 editor.find('.query-rel-direction').val(savedData.direction || '->');
+            }
+
+            editor.slideDown(200);
+        }
+    }
+
+    function updateQuerySummary(partId) {
+        const part = $(`#${partId}`);
+        const summaryText = part.find('.query-part-summary-text');
+        const type = part.data('type');
+        const varName = part.data('var');
+        const editor = part.find('.query-part-editor');
+        
+        let savedState = {};
+        let summary = '';
+
+        if (type === 'node') {
+            const nodeType = editor.find('.query-node-type').val();
+            savedState.nodeType = nodeType;
+            summary = `Node (${varName}${nodeType ? ':' + nodeType : ''})`;
+            
+            savedState.filters = [];
+            let filterSummaries = [];
+            editor.find('.filter-pill').each(function() {
+                const filterData = $(this).data();
+                savedState.filters.push(filterData);
+                filterSummaries.push(`${filterData.prop} ${filterData.op} "${filterData.value}"`);
+            });
+
+            if (filterSummaries.length > 0) {
+                summary += ` { ${filterSummaries.join(', ')} }`;
+            }
+        } else { // relationship
+            const relType = editor.find('.query-rel-type').val();
+            const direction = editor.find('.query-rel-direction').val();
+            savedState.relType = relType;
+            savedState.direction = direction;
+            const [start, end] = direction === '<-' ? ['<-', '-'] : (direction === '->' ? ['-', '->'] : ['-', '-']);
+            summary = `${start}[${varName}${relType ? ':' + relType : ''}]${end}`;
+        }
+        
+        part.data('saved-state', savedState);
+        summaryText.text(summary);
+        summaryText.attr('title', summary); // For full text on hover
+    }
+
+    function updateQueryNodeProperties(partId) {
+        const part = $(`#${partId}`);
+        const editor = part.find('.query-part-editor');
+        const nodeType = editor.find('.query-node-type').val();
+        const propSelect = editor.find('.query-property-select');
+        const valueInput = editor.find('.query-property-value');
+        const addBtn = editor.find('.add-filter-btn');
+        const opSelect = editor.find('.query-operator-select');
+
+        propSelect.empty().append('<option>-- Select Property --</option>');
+        
+        // Update output properties as well
+        const outputPropertiesContainer = $(`#output-properties-${partId}`);
+        outputPropertiesContainer.empty();
+        const varName = part.data('var');
+
+        if (nodeType && typeProperties[nodeType]) {
+            const props = Array.from(typeProperties[nodeType]).sort();
+            props.forEach(p => {
+                propSelect.append(`<option value="${p}">${p}</option>`);
+                const propHtml = `<div class="form-check"><input class="form-check-input output-property" type="checkbox" value="${varName}.${p}" onchange="generateCypherQuery()"><label class="form-check-label">${p}</label></div>`;
+                outputPropertiesContainer.append(propHtml);
+            });
+            propSelect.prop('disabled', false);
+            valueInput.prop('disabled', false);
+            addBtn.prop('disabled', false);
+            opSelect.prop('disabled', false);
+        } else {
+            propSelect.prop('disabled', true);
+            valueInput.prop('disabled', true);
+            addBtn.prop('disabled', true);
+            opSelect.prop('disabled', true);
+            outputPropertiesContainer.html('<small class="text-muted">No properties for this type.</small>');
+        }
+    }
+
+    function addQueryPropertyFilter(partId) {
+        const editor = $(`#${partId}`).find('.query-part-editor');
+        const prop = editor.find('.query-property-select').val();
+        const op = editor.find('.query-operator-select').val();
+        const value = editor.find('.query-property-value').val().trim();
+
+        if (prop && value) {
+            const filterHtml = `<span class="filter-pill" data-prop="${prop}" data-op="${op}" data-value="${value}">
+                ${prop} ${op} "${value}"
+                <button class="remove-filter" onclick="$(this).parent().remove()">&times;</button>
+            </span>`;
+            editor.find('.query-property-filters').append(filterHtml);
+            editor.find('.query-property-value').val('');
+        }
+    }
+
+    function generateCypherQuery() {
+        let matchClause = "MATCH ";
+        let whereClauses = [];
+        let returnClause = "RETURN ";
+        
+        const parts = $('#query-builder-container .query-part-container');
+        
+        if (parts.length === 0) {
+            $('#cypher-query-display').val("MATCH (n) RETURN n LIMIT 25");
+            return;
+        }
+
+        let patternParts = [];
+        parts.each(function() {
+            const part = $(this);
+            const varName = part.data('var');
+            const type = part.data('type');
+            const state = part.data('saved-state') || {};
+            
+            if (type === 'node') {
+                patternParts.push(`(${varName}${state.nodeType ? `:${state.nodeType}` : ''})`);
+                if (state.filters) {
+                    state.filters.forEach(f => {
+                        let value = f.value;
+                         if (isNaN(parseFloat(value)) || !isFinite(value)) {
+                            value = `"${value.replace(/"/g, '\\"')}"`;
+                        }
+                        whereClauses.push(`${varName}.${f.prop} ${f.op} ${value}`);
+                    });
+                }
+            } else { // relationship
+                const [start, end] = state.direction === '<-' ? ['<-', '-'] : (state.direction === '->' ? ['-', '->'] : ['-', '-']);
+                patternParts.push(`${start}[${varName}${state.relType ? `:${state.relType}` : ''}]${end}`);
+            }
+        });
+        
+        // This simple join assumes a linear pattern, e.g., (a)-[b]->(c)
+        matchClause += patternParts.join('');
+
+        // Aggregations
+        const aggregations = $('#aggregation-builder-container .aggregation-row');
+        if (aggregations.length > 0) {
+            let aggReturnParts = [];
+            aggregations.each(function() {
+                const func = $(this).find('.agg-function').val();
+                const nodeVar = $(this).find('.agg-node').val();
+                const prop = $(this).find('.agg-property').val();
+
+                if (func === 'COUNT') {
+                    aggReturnParts.push(`count(${nodeVar}) AS ${func.toLowerCase()}_${nodeVar}`);
+                } else if (prop) {
+                    aggReturnParts.push(`${func.toLowerCase()}(toFloat(${nodeVar}.${prop})) AS ${func.toLowerCase()}_${prop}`);
+                }
+            });
+            returnClause += aggReturnParts.length > 0 ? aggReturnParts.join(', ') : '*';
+            $('#query-output-container').css('opacity', '0.5');
+        } else {
+            let returnParts = [];
+            $('#query-output-container .form-check-input:checked').each(function() {
+                returnParts.push($(this).val());
+            });
+            returnClause += returnParts.length > 0 ? returnParts.join(', ') : '*';
+            $('#query-output-container').css('opacity', '1');
+        }
+        
+        let finalQuery = matchClause;
+        if (whereClauses.length > 0) {
+            finalQuery += `\nWHERE ` + whereClauses.join(' AND ');
+        }
+        finalQuery += `\n${returnClause}`;
+
+        $('#cypher-query-display').val(finalQuery);
+    }
+    
+    function displayTableResults(results) {
+        const modalBody = $('#queryResultModalBody');
+        modalBody.empty();
+
+        if (!results || results.length === 0) {
+            modalBody.html('<p class="text-center text-muted">The query returned no results.</p>');
+            queryResultModal.show();
+            return;
+        }
+
+        let table = '<table class="table table-bordered table-hover"><thead><tr>';
+        const headers = Object.keys(results[0]);
+        headers.forEach(header => {
+            table += `<th>${header}</th>`;
+        });
+        table += '</tr></thead><tbody>';
+
+        results.forEach(row => {
+            table += '<tr>';
+            headers.forEach(header => {
+                let cellData = row[header];
+                if (typeof cellData === 'object' && cellData !== null) {
+                    cellData = JSON.stringify(cellData, null, 2);
+                }
+                table += `<td>${cellData}</td>`;
+            });
+            table += '</tr>';
+        });
+
+        table += '</tbody></table>';
+        modalBody.html(table);
+        queryResultModal.show();
+    }
+
+    async function runGeneratedQuery() {
+        const query = $('#cypher-query-display').val();
+        const runButton = $('.btn-success:contains("Run Query")');
+        const originalButtonText = runButton.html();
+        
+        runButton.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Running...').prop('disabled', true);
+
+        try {
+            const response = await fetch('http://localhost:3000/api/query', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ query: query })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || `Server responded with status: ${response.status}`);
+            }
+
+            const result = await response.json();
+            
+            if (result.type === 'graph') {
+                processAndRenderGraph(result.data, "Query Result");
+                showCustomAlert("Graph results have been loaded into the viewer.", "Query Successful");
+            } else if (result.type === 'table') {
+                displayTableResults(result.data);
+            } else {
+                 throw new Error("Unknown result type from server.");
+            }
+
+        } catch (error) {
+            console.error("Error running query:", error);
+            showCustomAlert(`Failed to run query: ${error.message}`, "Query Error");
+        } finally {
+            runButton.html(originalButtonText).prop('disabled', false);
+        }
+    }
+    // --- END: REWRITTEN QUERY BUILDER FUNCTIONS ---
+
+    function toggleOutputProperties(partId, event) {
+        event.preventDefault();
+        const container = $(`#output-properties-${partId}`);
+        const link = $(event.target);
+        container.slideToggle(200);
+        link.text(link.text() === '[+]' ? '[-]' : '[+]');
+    }
+
+    function addAggregation() {
+        const container = $('#aggregation-builder-container');
+        const aggId = `agg-row-${$('.aggregation-row').length}`;
+        const nodeParts = $('#query-builder-container .query-part-container[data-type="node"]');
+        if (nodeParts.length === 0) {
+            showCustomAlert("Please add at least one node to the query before adding an aggregation.");
+            return;
+        }
+
+        let nodeOptions = '';
+        nodeParts.each(function() {
+            const varName = $(this).data('var');
+            const nodeType = ($(this).data('saved-state') || {}).nodeType || 'Node';
+            nodeOptions += `<option value="${varName}" data-node-type="${nodeType}">${varName} (${nodeType})</option>`;
+        });
+
+        const aggHtml = `
+            <div class="aggregation-row" id="${aggId}">
+                <select class="form-select form-select-sm agg-function" style="flex:2;" onchange="toggleAggProperty('${aggId}')">
+                    <option value="COUNT">COUNT</option><option value="SUM">SUM</option><option value="AVG">AVG</option><option value="MIN">MIN</option><option value="MAX">MAX</option>
+                </select>
+                <select class="form-select form-select-sm agg-node" style="flex:2;" onchange="updateAggProperties('${aggId}')">${nodeOptions}</select>
+                <select class="form-select form-select-sm agg-property" style="flex:3;" onchange="generateCypherQuery()" disabled><option value="">-- (Node) --</option></select>
+                <button class="btn-close btn-sm" onclick="$(this).parent().remove(); generateCypherQuery();"></button>
+            </div>`;
+        container.append(aggHtml);
+        updateAggProperties(aggId);
+        toggleAggProperty(aggId);
+        generateCypherQuery();
+    }
+
+    function toggleAggProperty(aggId) {
+        const row = $(`#${aggId}`);
+        const func = row.find('.agg-function').val();
+        const propSelect = row.find('.agg-property');
+        propSelect.prop('disabled', func === 'COUNT').val('');
+        generateCypherQuery();
+    }
+
+    function updateAggProperties(aggId) {
+        const row = $(`#${aggId}`);
+        const nodeType = row.find('.agg-node option:selected').data('node-type');
+        const propSelect = row.find('.agg-property');
+        propSelect.empty().append('<option value="">-- (Node) --</option>');
+
+        if (nodeType && typeProperties[nodeType]) {
+            Array.from(typeProperties[nodeType]).sort().forEach(p => propSelect.append(`<option value="${p}">${p}</option>`));
+        }
+        generateCypherQuery();
+    }
+    
+    function updateAddRelButtonState() {
+        const lastPart = $('#query-builder-container .query-part-container').last();
+        const addRelBtn = $('#add-rel-btn');
+        if (lastPart.length && lastPart.data('type') === 'node') {
+            addRelBtn.prop('disabled', false);
+        } else {
+            addRelBtn.prop('disabled', true);
+        }
+    }
+
+  $('#pathFromTypeSelect').on('change', function() { populateNodeDropdown($(this).val(), $('#pathFromNodeSelect')); });
+  $('#pathToTypeSelect').on('change', function() { populateNodeDropdown($(this).val(), $('#pathToNodeSelect')); });
+  $('#nodeSelect').on('change', function () {
+    let selectedIds = $(this).val();
+    if (selectedIds && selectedIds.length > 0) { network.selectNodes(selectedIds); network.fit({ nodes: selectedIds, animation: true }); }
+    else if (network) { network.unselectAll(); }
+  });
+  function selectAllNodeTypes(event) { event.preventDefault(); $('#node-type-filter-container .form-check-input').prop('checked', true); triggerAdvancedFilter(); }
+  function deselectAllNodeTypes(event) { event.preventDefault(); $('#node-type-filter-container .form-check-input').prop('checked', false); triggerAdvancedFilter(); }
+  
+  $('#node-type-filter-container').on('click', '.property-toggle-arrow', function(e) {
+    e.preventDefault();
+    const type = $(this).data('type');
+    const controls = $(this).closest('.node-type-filter-item').find('.property-filter-container');
+    const select = controls.find('.property-select');
+    if (select.children().length <= 1) {
+        const props = Array.from(typeProperties[type] || []).sort();
+        props.forEach(prop => select.append(`<option value="${prop}">${prop}</option>`));
+    }
+    controls.slideToggle(200);
+  });
+  
+  function handleAddPropertyFilter(event) {
+      const button = $(event.currentTarget);
+      const controls = button.closest('.property-filter-container');
+      const prop = controls.find('.property-select').val();
+      const valuesString = controls.find('.property-value-input').val().trim();
+      if (!prop || !valuesString) return;
+      const values = valuesString.split(',').map(v => v.trim()).filter(v => v);
+      values.forEach(value => {
+        if (controls.find(`.filter-pill[data-prop="${prop}"][data-value="${value.toLowerCase()}"]`).length > 0) return;
+        const pill = `<span class="filter-pill" data-prop="${prop}" data-value="${value.toLowerCase()}">${prop}: "${value}"<button class="remove-filter">&times;</button></span>`;
+        controls.find('.active-filters-container').append(pill);
+      });
+      controls.find('.property-value-input').val('');
+      triggerAdvancedFilter();
+  }
+  function handleAddNodeContainsFilter(event) {
+      const button = $(event.currentTarget);
+      const controls = button.closest('.property-filter-container');
+      const textValue = controls.find('.node-contains-value-input').val().trim();
+      if (!textValue) return;
+      const propIdentifier = "__node_contains__";
+      if (controls.find(`.filter-pill[data-prop="${propIdentifier}"][data-value="${textValue.toLowerCase()}"]`).length > 0) return;
+      const pill = `<span class="filter-pill" data-prop="${propIdentifier}" data-value="${textValue.toLowerCase()}">Node contains: "${textValue}"<button class="remove-filter">&times;</button></span>`;
+      controls.find('.active-filters-container').append(pill);
+      controls.find('.node-contains-value-input').val('');
+      triggerAdvancedFilter();
+  }
+  function handleAddNameIsFilter(event) {
+      const button = $(event.currentTarget);
+      const controls = button.closest('.property-filter-container');
+      const textValue = controls.find('.name-is-value-input').val().trim();
+      if (!textValue) return;
+      const propIdentifier = "__name_is__";
+      if (controls.find(`.filter-pill[data-prop="${propIdentifier}"][data-value="${textValue.toLowerCase()}"]`).length > 0) return;
+      const pill = `<span class="filter-pill" data-prop="${propIdentifier}" data-value="${textValue.toLowerCase()}">Name is: "${textValue}"<button class="remove-filter">&times;</button></span>`;
+      controls.find('.active-filters-container').append(pill);
+      controls.find('.name-is-value-input').val('');
+      triggerAdvancedFilter();
+  }
+  function handleRemoveFilter(event) { 
+      $(event.currentTarget).closest('.filter-pill').remove(); 
+      triggerAdvancedFilter(); 
+  }
+
+  $(document).ready(function() {
+    limitModal = new bootstrap.Modal(document.getElementById('limitModal'));
+    csvUploadModal = new bootstrap.Modal(document.getElementById('csvUploadModal'));
+    customAlertModal = new bootstrap.Modal(document.getElementById('customAlertModal'));
+    queryResultModal = new bootstrap.Modal(document.getElementById('queryResultModal'));
+    $('#nodeSelect').select2({ placeholder: "Select starting node(s) for depth filter", allowClear: true });
+    $('#pathFromNodeSelect').select2({ placeholder: "Select 'From' node", allowClear: true });
+    $('#pathToNodeSelect').select2({ placeholder: "Select 'To' node", allowClear: true });
+    detailsPopupClose.addEventListener('click', () => { detailsPopup.style.display = 'none'; });
+    $('#btnLoadOntology').on('click', () => $('#uploadOntology').click());
+    $('#btnLoadLayout').on('click', () => $('#uploadLayout').click());
+    $('#btnLoadCypher').on('click', () => $('#uploadCypher').click());
+    $('#btnLoadOwl').on('click', () => $('#uploadOwl').click());
+    $('#btnLoadSynonyms').on('click', () => $('#uploadSynonyms').click());
+    $('#node-type-filter-container').on('keydown', '.property-value-input, .node-contains-value-input, .name-is-value-input', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            $(this).siblings('button').click();
+        }
+    });
+    
+    $('#physicsToggle, #renderToggle').on('change', function() {
+        if (!network || fullGraph.nodes.length === 0) return;
+        const newOptions = buildOptions();
+        network.setOptions(newOptions);
+        if (!document.getElementById('physicsToggle').checked) {
+            network.setOptions({ physics: true });
+        }
+    });
+
+    $('#clusterToggle').on('change', function() {
+        if (!network || fullGraph.nodes.length === 0) return;
+        handleClustering();
+    });
+
+    $('#clear-live-search').on('click', clearLiveSearch);
+    $('#clear-depth-filter').on('click', clearDepthFilter);
+    $('#clear-advanced-search').on('click', clearAdvancedSearch);
+    
+    // Query Builder Event Listeners
+    $('#add-node-btn').on('click', () => addQueryPart('node'));
+    $('#add-rel-btn').on('click', () => addQueryPart('relationship'));
+    $('#add-aggregation-btn').on('click', addAggregation);
+    $('#query-tab-pane').on('keydown', '.query-property-value', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            const partId = $(this).closest('.query-part-container').attr('id');
+            addQueryPropertyFilter(partId);
+        }
+    });
+
+
+    document.getElementById('further-details-link').href = "https://www.example.com";
+    initNetwork();
+    initResizer();
+  });
+</script>
+
+</body>
+</html>
