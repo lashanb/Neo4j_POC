@@ -1,0 +1,137 @@
+________________________________________
+1️⃣ DB Legal Entities
+LOAD CSV WITH HEADERS FROM 'file:///db_legal_entities.csv' AS row
+MERGE (db:DBLegalEntity {dbEntityId: row.dbEntityId})
+SET db.name = row.name,
+    db.region = row.region,
+    db.country = row.country,
+    db.lei = row.lei;
+________________________________________
+2️⃣ Clients
+LOAD CSV WITH HEADERS FROM 'file:///clients.csv' AS row
+MERGE (c:ClientCorporate {clientId: row.clientId})
+SET c.name = row.name,
+    c.industry = row.industry,
+    c.country = row.country,
+    c.lei = row.lei;
+________________________________________
+3️⃣ Individuals
+LOAD CSV WITH HEADERS FROM 'file:///individuals.csv' AS row
+MERGE (p:Individual {personId: row.personId})
+SET p.name = row.name,
+    p.role = row.role,
+    p.nationality = row.nationality;
+
+WITH row, p
+MATCH (c:ClientCorporate {clientId: row.clientId})
+MERGE (p)-[:UBO_OR_DIRECTOR_OF]->(c);
+Note: The relationship UBO_OR_DIRECTOR_OF can represent both UBO and Director roles.
+________________________________________
+4️⃣ Contracts
+LOAD CSV WITH HEADERS FROM 'file:///contracts.csv' AS row
+MERGE (k:Contract {contractId: row.contractId})
+SET k.contractType = row.contractType,
+    k.startDate = date(row.startDate),
+    k.endDate = date(row.endDate),
+    k.currency = row.currency,
+    k.amount = toFloat(row.amount),
+    k.status = row.status;
+
+WITH row, k
+MATCH (db:DBLegalEntity {dbEntityId: row.dbEntityId})
+MERGE (db)-[:HAS_CONTRACT]->(k);
+
+WITH row, k
+MATCH (c:ClientCorporate {clientId: row.clientId})
+MERGE (c)-[:HAS_CONTRACT]->(k);
+________________________________________
+5️⃣ Contract Collateral Relationships
+LOAD CSV WITH HEADERS FROM 'file:///contract_collateral.csv' AS row
+MATCH (k:Contract {contractId: row.contractId})
+MATCH (coll:Contract {contractId: row.collateralId})
+MERGE (k)-[:COLLATERALIZED_BY]->(coll);
+________________________________________
+6️⃣ Transactions
+LOAD CSV WITH HEADERS FROM 'file:///transactions.csv' AS row
+MERGE (t:Transaction {txnId: row.txnId})
+SET t.date = date(row.date),
+    t.amount = toFloat(row.amount),
+    t.currency = row.currency,
+    t.txnType = row.txnType;
+
+WITH row, t
+MATCH (k:Contract {contractId: row.contractId})
+MERGE (k)-[:MADE]->(t);
+
+WITH row, t
+MATCH (m:Merchant {merchantId: row.merchantId})
+MERGE (t)-[:TO]->(m);
+________________________________________
+7️⃣ Merchants
+LOAD CSV WITH HEADERS FROM 'file:///merchants.csv' AS row
+MERGE (m:Merchant {merchantId: row.merchantId})
+SET m.name = row.name,
+    m.industry = row.industry,
+    m.country = row.country;
+________________________________________
+8️⃣ Jurisdictions
+LOAD CSV WITH HEADERS FROM 'file:///jurisdictions.csv' AS row
+MERGE (j:Jurisdiction {jurisdictionId: row.jurisdictionId})
+SET j.name = row.name,
+    j.isoCode = row.isoCode;
+________________________________________
+9️⃣ Entity ↔ Jurisdiction
+LOAD CSV WITH HEADERS FROM 'file:///entity_jurisdiction.csv' AS row
+WITH row
+CALL {
+    WITH row
+    OPTIONAL MATCH (db:DBLegalEntity {dbEntityId: row.entityId})
+    WHERE row.entityType = 'DB'
+    MERGE (db)-[:REGISTERED_IN]->(j:Jurisdiction {jurisdictionId: row.jurisdictionId})
+    
+    RETURN count(*) AS _
+}
+CALL {
+    WITH row
+    OPTIONAL MATCH (c:ClientCorporate {clientId: row.entityId})
+    WHERE row.entityType = 'Client'
+    MERGE (c)-[:REGISTERED_IN]->(j:Jurisdiction {jurisdictionId: row.jurisdictionId})
+    
+    RETURN count(*) AS _
+};
+________________________________________
+🔟 Tariffs
+LOAD CSV WITH HEADERS FROM 'file:///tariffs.csv' AS row
+MERGE (t:Tariff {tariffId: row.tariffId})
+SET t.HSCode = row.HSCode,
+    t.description = row.description,
+    t.ratePct = toFloat(row.ratePct);
+________________________________________
+1️⃣1️⃣ Events (Enriched)
+LOAD CSV WITH HEADERS FROM 'file:///events_enriched.csv' AS row
+MERGE (e:Event {eventId: row.eventId})
+SET e.headline = row.headline,
+    e.source = row.source,
+    e.date = date(row.date),
+    e.type = row.type,
+    e.industry = row.industry,
+    e.country = row.country;
+
+WITH row, e
+// Link to client if present
+WHERE row.clientId IS NOT NULL
+MATCH (c:ClientCorporate {clientId: row.clientId})
+MERGE (e)-[:AFFECTS]->(c);
+
+WITH row, e
+// Link to DB legal entity if present
+WHERE row.dbEntityId IS NOT NULL
+MATCH (db:DBLegalEntity {dbEntityId: row.dbEntityId})
+MERGE (e)-[:AFFECTS]->(db);
+________________________________________
+1️⃣2️⃣ Tariff ↔ Transaction Link
+LOAD CSV WITH HEADERS FROM 'file:///tariff_transaction.csv' AS row
+MATCH (t:Tariff {tariffId: row.tariffId})
+MATCH (txn:Transaction {txnId: row.txnId})
+MERGE (t)-[:APPLIES_TO]->(txn);
+
