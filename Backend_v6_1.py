@@ -14,9 +14,9 @@ from neo4j.spatial import Point
 #NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD", "truck-question-distribution")
 #GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
-NEO4J_URI = "bolt://44.222.181.211:7687"
+NEO4J_URI = "bolt://34.234.211.218:7687"
 NEO4J_USER = "neo4j"
-NEO4J_PASSWORD = "soils-memorandum-hazard"
+NEO4J_PASSWORD = "diesel-profile-fatigues"
 GEMINI_API_KEY = "AIzaSyC0NsgOFm0fnV5BejUaY98Ti5XTHxkXkec" # Replace with your key if needed
 app = Flask(__name__)
 CORS(app)
@@ -172,7 +172,7 @@ def get_graph_data(tx):
     """
     nodes = {}
     edges = []
-    nodes_result = tx.run("MATCH (n) RETURN n")
+    nodes_result = tx.run("MATCH (n) RETURN n LIMIT 100")
     for record in nodes_result:
         node = record["n"]
         node_id = str(node.element_id)
@@ -186,7 +186,7 @@ def get_graph_data(tx):
                 "labels": node_labels,
                 "properties": props
             }
-    edges_result = tx.run("MATCH ()-[r]->() RETURN r")
+    edges_result = tx.run("MATCH ()-[r]->() RETURN r LIMIT 100")
     for record in edges_result:
         rel = record["r"]
         edges.append({
