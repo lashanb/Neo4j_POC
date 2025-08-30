@@ -1,0 +1,8 @@
+# View all nodes
+MATCH (n) RETURN n
+
+# View all nodes and relationships
+MATCH (n)-[r]->(m) RETURN n, r, m
+
+# Delete all nodes and relationships
+MATCH (n) DETACH DELETE n
