@@ -78,7 +78,7 @@ CALL {
     WHERE row.entityType = 'DB'
     MERGE (db)-[:REGISTERED_IN]->(j:Jurisdiction {jurisdictionId: row.jurisdictionId})
     
-    RETURN count(*) AS _
+    RETURN count(*) AS db_count
 }
 CALL {
     WITH row
@@ -86,7 +86,7 @@ CALL {
     WHERE row.entityType = 'Client'
     MERGE (c)-[:REGISTERED_IN]->(j:Jurisdiction {jurisdictionId: row.jurisdictionId})
     
-    RETURN count(*) AS _
+    RETURN count(*) AS client_count
 };
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/tariffs.csv' AS row
