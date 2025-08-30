@@ -29,7 +29,8 @@ SET k.contractType = row.contractType,
     k.endDate = date(row.endDate),
     k.currency = row.currency,
     k.amount = toFloat(row.amount),
-    k.status = row.status
+    k.status = row.status,
+    k.name = row.contractId
 
 WITH row, k
 MATCH (db:DBLegalEntity {dbEntityId: row.dbEntityId})
@@ -44,12 +45,19 @@ MATCH (k:Contract {contractId: row.contractId})
 MATCH (coll:Contract {contractId: row.collateralId})
 MERGE (k)-[:COLLATERALIZED_BY]->(coll);
 
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/merchants.csv' AS row
+MERGE (m:Merchant {merchantId: row.merchantId})
+SET m.name = row.name,
+    m.industry = row.industry,
+    m.country = row.country;
+
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/transactions.csv' AS row
 MERGE (t:Transaction {txnId: row.txnId})
 SET t.date = date(row.date),
     t.amount = toFloat(row.amount),
     t.currency = row.currency,
-    t.txnType = row.txnType
+    t.txnType = row.txnType,
+    t.name = row.txnId
 
 WITH row, t
 MATCH (k:Contract {contractId: row.contractId})
@@ -58,12 +66,6 @@ MERGE (k)-[:MADE]->(t)
 WITH row, t
 MATCH (m:Merchant {merchantId: row.merchantId})
 MERGE (t)-[:TO]->(m);
-
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/merchants.csv' AS row
-MERGE (m:Merchant {merchantId: row.merchantId})
-SET m.name = row.name,
-    m.industry = row.industry,
-    m.country = row.country;
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/jurisdictions.csv' AS row
 MERGE (j:Jurisdiction {jurisdictionId: row.jurisdictionId})
@@ -88,7 +90,8 @@ LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/
 MERGE (t:Tariff {tariffId: row.tariffId})
 SET t.HSCode = row.HSCode,
     t.description = row.description,
-    t.ratePct = toFloat(row.ratePct);
+    t.ratePct = toFloat(row.ratePct),
+    t.name = row.tariffId ;
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/events_enriched.csv' AS row
 MERGE (e:Event {eventId: row.eventId})
@@ -97,7 +100,8 @@ SET e.headline = row.headline,
     e.date = date(row.date),
     e.type = row.type,
     e.industry = row.industry,
-    e.country = row.country
+    e.country = row.country,
+    e.name = row.eventId
 
 WITH row, e
 WHERE row.clientId IS NOT NULL
