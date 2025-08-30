@@ -71,23 +71,16 @@ SET j.name = row.name,
     j.isoCode = row.isoCode;
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/entity_jurisdiction.csv' AS row
-WITH row
-CALL {
-    WITH row
-    OPTIONAL MATCH (db:DBLegalEntity {dbEntityId: row.entityId})
-    WHERE row.entityType = 'DB'
-    MERGE (db)-[:REGISTERED_IN]->(j:Jurisdiction {jurisdictionId: row.jurisdictionId})
-    
-    RETURN count(*) AS db_count
-}
-CALL {
-    WITH row
-    OPTIONAL MATCH (c:ClientCorporate {clientId: row.entityId})
-    WHERE row.entityType = 'Client'
-    MERGE (c)-[:REGISTERED_IN]->(j:Jurisdiction {jurisdictionId: row.jurisdictionId})
-    
-    RETURN count(*) AS client_count
-};
+WHERE row.entityType = 'DB'
+MATCH (db:DBLegalEntity {dbEntityId: row.entityId})
+MATCH (j:Jurisdiction {jurisdictionId: row.jurisdictionId})
+MERGE (db)-[:REGISTERED_IN]->(j);
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/entity_jurisdiction.csv' AS row
+WHERE row.entityType = 'Client'
+MATCH (c:ClientCorporate {clientId: row.entityId})
+MATCH (j:Jurisdiction {jurisdictionId: row.jurisdictionId})
+MERGE (c)-[:REGISTERED_IN]->(j);
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/tariffs.csv' AS row
 MERGE (t:Tariff {tariffId: row.tariffId})
