@@ -22,7 +22,7 @@ WITH row, p
 MATCH (c:ClientCorporate {clientId: row.clientId})
 MERGE (p)-[:UBO_OR_DIRECTOR_OF]->(c);
 
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/contracts.csv' AS row
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/contracts_new.csv' AS row
 MERGE (k:Contract {contractId: row.contractId})
 SET k.contractType = row.contractType,
     k.startDate = date(row.startDate),
@@ -39,9 +39,18 @@ WITH row, k
 MATCH (c:ClientCorporate {clientId: row.clientId})
 MERGE (c)-[:HAS_CONTRACT]->(k);
 
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/collateral.csv' AS row
+MERGE (coll:Collateral {contractId: row.contractId})
+SET coll.contractType = row.contractType,
+    coll.startDate = date(row.startDate),
+    coll.endDate = date(row.endDate),
+    coll.currency = row.currency,
+    coll.amount = toFloat(row.amount),
+    coll.status = row.status;
+
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/contract_collateral.csv' AS row
 MATCH (k:Contract {contractId: row.contractId})
-MATCH (coll:Contract {contractId: row.collateralId})
+MATCH (coll:Collateral {contractId: row.collateralId})
 MERGE (k)-[:COLLATERALIZED_BY]->(coll);
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/transactions.csv' AS row
