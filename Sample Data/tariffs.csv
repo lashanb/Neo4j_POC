@@ -1,2 +1,6 @@
 tariffId,HSCode,description,ratePct
 TARIFF1,HS1299,Pharmaceuticals,4.37
+TARIFF2,HS7201,Steel,7.5
+TARIFF3,HS7601,Aluminium,5.0
+TARIFF4,HS8703,Motor Vehicles,10.0
+TARIFF5,HS0800,Agriculture,3.2
