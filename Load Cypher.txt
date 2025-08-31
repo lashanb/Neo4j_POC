@@ -112,15 +112,15 @@ SET ne.headline = row.headline,
     ne.country = row.country,
     ne.name = row.headline
 
-WITH row, e
+WITH row, ne
 WHERE row.clientId IS NOT NULL
 MATCH (c:ClientCorporate {clientId: row.clientId})
-MERGE (e)-[:AFFECTS]->(c)
+MERGE (ne)-[:AFFECTS]->(c)
 
-WITH row, e
+WITH row, ne
 WHERE row.dbEntityId IS NOT NULL
 MATCH (db:DBLegalEntity {dbEntityId: row.dbEntityId})
-MERGE (e)-[:AFFECTS]->(db);
+MERGE (ne)-[:AFFECTS]->(db);
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/tariff_transaction.csv' AS row
 MATCH (t:Tariff {tariffId: row.tariffId})
