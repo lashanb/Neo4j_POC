@@ -103,14 +103,14 @@ SET t.HSCode = row.HSCode,
     t.name = row.tariffId ;
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/events_enriched.csv' AS row
-MERGE (e:Event {eventId: row.eventId})
-SET e.headline = row.headline,
-    e.source = row.source,
-    e.date = date(row.date),
-    e.type = row.type,
-    e.industry = row.industry,
-    e.country = row.country,
-    e.name = row.eventId
+MERGE (ne:NewsEvent {eventId: row.eventId})
+SET ne.headline = row.headline,
+    ne.source = row.source,
+    ne.date = date(row.date),
+    ne.type = row.type,
+    ne.industry = row.industry,
+    ne.country = row.country,
+    ne.name = row.headline
 
 WITH row, e
 WHERE row.clientId IS NOT NULL
