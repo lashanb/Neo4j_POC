@@ -1,0 +1,5 @@
+![Querying - Cypher Query](https://github.com/user-attachments/assets/d48a41db-3497-4ca5-93f0-aedb6578281a)
+![Querying - Nodel selection](https://github.com/user-attachments/assets/ef36bbc3-732d-4a34-97c8-7561d45ba398)
+![Querying - Relationship selection](https://github.com/user-attachments/assets/a6546378-ffcd-450d-a4bf-97cebcab27f9)
+![Querying - Results](https://github.com/user-attachments/assets/d3695c7a-150b-4fc9-9e96-881702dcc18b)
+![ASK AI](https://github.com/user-attachments/assets/5fbd4033-46a2-4f9d-aaf4-32f7759a9ccc)
