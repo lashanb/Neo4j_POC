@@ -1,0 +1,96 @@
+1Here are some insightful queries that a graph database can handle efficiently, but would be very difficult and slow for a traditional SQL database, based on the knowledge graph you've created:
+
+### 1. Identifying Concentrated Risk and Complex Relationships
+
+**Query:** "Show me all clients who are exposed to the same high-risk news event, and also share a common board member or UBO, even if they don't have a direct contractual relationship with the same DB entity. Find the shortest path of connections between these clients."
+
+**Cypher Query:**
+
+```cypher
+MATCH (c1:ClientCorporate)<-[:UBO_OR_DIRECTOR_OF]-(p:Individual)-[:UBO_OR_DIRECTOR_OF]->(c2:ClientCorporate),
+      (event:NewsEvent)-[:AFFECTS]->(c1),
+      (event)-[:AFFECTS]->(c2)
+WHERE event.type = 'Negative' AND c1 <> c2
+WITH c1, c2, event, p
+MATCH path = shortestPath((c1)-[*]-(c2))
+RETURN c1.name AS client1,
+       c2.name AS client2,
+       p.name AS sharedPerson,
+       event.headline AS highRiskEvent,
+       [node in nodes(path) | labels(node) + {name: node.name}] AS connectionPath
+LIMIT 10
+```
+
+### 2. Understanding the "Blast Radius" of an Event
+
+**Query:** "A negative news event has just occurred affecting 'DB Entity 1'. Show me all the clients, contracts, and collateral that are potentially at risk. Go out 3 to 5 levels of connection from the event."
+
+**Cypher Query:**
+
+```cypher
+MATCH (event:NewsEvent {type: 'Negative'})-[:AFFECTS]->(db:DBLegalEntity {name: 'DB Entity 1'})
+MATCH path = (db)-[*3..5]-(relatedNode)
+WHERE relatedNode:ClientCorporate OR relatedNode:Contract OR relatedNode:Collateral
+RETURN db.name AS sourceEntity,
+       event.headline AS triggeringEvent,
+       relatedNode.name AS affectedEntity,
+       labels(relatedNode) AS entityType,
+       length(path) AS degreesOfSeparation
+```
+
+### 3. Detecting Circular Relationships and Potential Fraud
+
+**Query:** "Are there any 'circular' financing schemes where a loan from one DB entity is indirectly funding a company that is providing collateral for another loan from the same DB entity, through a chain of transactions and related parties?"
+
+**Cypher Query:**
+
+```cypher
+MATCH (db:DBLegalEntity)-[:HAS_CONTRACT]->(k1:Contract),
+      path = (k1)-[:MADE]->(:Transaction)-[:TO*1..4]-(:Merchant)<-[:TO]-(:Transaction)<-[:MADE]-(k2:Contract),
+      (k2)-[:COLLATERALIZED_BY]->(:Collateral),
+      (k2)<-[:HAS_CONTRACT]-(db)
+WHERE k1 <> k2
+RETURN db.name AS dbEntity,
+       k1.contractId AS sourceContract,
+       k2.contractId AS destinationContract,
+       [node in nodes(path) | labels(node) + {name: node.name}] AS transactionPath
+LIMIT 5
+```
+
+### 4. Holistic Client Risk Profile
+
+**Query:** "Create a 'risk score' for each client based on a combination of factors: the number of negative news events affecting them, the number of contracts they have with low collateralization (e.g., value < 50% of contract amount), and whether they are registered in a high-risk jurisdiction. Show me the top 10 riskiest clients."
+
+**Cypher Query:**
+
+```cypher
+// Define high-risk jurisdictions
+WITH ['J01', 'J05'] AS highRiskJurisdictions
+
+MATCH (c:ClientCorporate)
+
+// Count negative news events
+OPTIONAL MATCH (c)<-[:AFFECTS]-(event:NewsEvent {type: 'Negative'})
+WITH c, highRiskJurisdictions, count(event) AS negativeEvents
+
+// Check for registration in high-risk jurisdiction
+OPTIONAL MATCH (c)-[:REGISTERED_IN]->(j:Jurisdiction)
+WHERE j.jurisdictionId IN highRiskJurisdictions
+WITH c, negativeEvents, count(j) AS inHighRiskJurisdiction
+
+// Count contracts with low collateral
+OPTIONAL MATCH (c)-[:HAS_CONTRACT]->(k:Contract)
+OPTIONAL MATCH (k)-[:COLLATERALIZED_BY]->(coll:Collateral)
+WITH c, negativeEvents, inHighRiskJurisdiction, k, SUM(coll.value) AS totalCollateralValue
+WHERE k.amount > 0 AND (totalCollateralValue / k.amount) < 0.5
+WITH c, negativeEvents, inHighRiskJurisdiction, count(k) AS lowCollateralContracts
+
+// Calculate risk score
+WITH c,
+     (negativeEvents * 10) + (inHighRiskJurisdiction * 20) + (lowCollateralContracts * 5) AS riskScore
+WHERE riskScore > 0
+RETURN c.name AS client,
+       riskScore
+ORDER BY riskScore DESC
+LIMIT 10
+```

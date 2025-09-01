@@ -1,0 +1,229 @@
+
+{
+  "nodes": [
+    {
+      "id": "DBLegalEntity",
+      "label": "DB Legal Entity",
+      "group": "Legal Entity",
+      "labels": ["DBLegalEntity", "Legal Entity"],
+      "description": "A legal entity of the bank.",
+      "properties": {
+        "dbEntityId": ["string"],
+        "name": ["string"],
+        "region": ["string"],
+        "country": ["string"],
+        "lei": ["string"]
+      }
+    },
+    {
+      "id": "ClientCorporate",
+      "label": "Corporate Client",
+      "group": "Client",
+      "labels": ["ClientCorporate", "Client"],
+      "description": "A corporate client of the bank.",
+      "properties": {
+        "clientId": ["string"],
+        "name": ["string"],
+        "industry": ["string"],
+        "country": ["string"],
+        "lei": ["string"]
+      }
+    },
+    {
+      "id": "Individual",
+      "label": "Individual",
+      "group": "Person",
+      "labels": ["Individual", "Person"],
+      "description": "An individual person, such as a UBO or director.",
+      "properties": {
+        "personId": ["string"],
+        "name": ["string"],
+        "role": ["string"],
+        "nationality": ["string"]
+      }
+    },
+    {
+      "id": "Contract",
+      "label": "Contract",
+      "group": "Agreement",
+      "labels": ["Contract", "Agreement"],
+      "description": "A contract between the bank and a client.",
+      "properties": {
+        "contractId": ["string"],
+        "contractType": ["string"],
+        "startDate": ["date"],
+        "endDate": ["date"],
+        "currency": ["string"],
+        "amount": ["float"],
+        "status": ["string"],
+        "name": ["string"]
+      }
+    },
+    {
+      "id": "Collateral",
+      "label": "Collateral",
+      "group": "Asset",
+      "labels": ["Collateral", "Asset"],
+      "description": "An asset used as collateral for a contract.",
+      "properties": {
+        "contractId": ["string"],
+        "contractType": ["string"],
+        "startDate": ["date"],
+        "endDate": ["date"],
+        "currency": ["string"],
+        "amount": ["float"],
+        "status": ["string"]
+      }
+    },
+    {
+      "id": "Merchant",
+      "label": "Merchant",
+      "group": "Third Party",
+      "labels": ["Merchant", "Third Party"],
+      "description": "A merchant involved in a transaction.",
+      "properties": {
+        "merchantId": ["string"],
+        "name": ["string"],
+        "industry": ["string"],
+        "country": ["string"]
+      }
+    },
+    {
+      "id": "Transaction",
+      "label": "Transaction",
+      "group": "Event",
+      "labels": ["Transaction", "Event"],
+      "description": "A financial transaction.",
+      "properties": {
+        "txnId": ["string"],
+        "date": ["date"],
+        "amount": ["float"],
+        "currency": ["string"],
+        "txnType": ["string"],
+        "name": ["string"]
+      }
+    },
+    {
+      "id": "Jurisdiction",
+      "label": "Jurisdiction",
+      "group": "Location",
+      "labels": ["Jurisdiction", "Location"],
+      "description": "A legal jurisdiction.",
+      "properties": {
+        "jurisdictionId": ["string"],
+        "name": ["string"],
+        "isoCode": ["string"]
+      }
+    },
+    {
+      "id": "Tariff",
+      "label": "Tariff",
+      "group": "Regulation",
+      "labels": ["Tariff", "Regulation"],
+      "description": "A tariff that can be applied to a transaction.",
+      "properties": {
+        "tariffId": ["string"],
+        "HSCode": ["string"],
+        "description": ["string"],
+        "ratePct": ["float"],
+        "name": ["string"]
+      }
+    },
+    {
+      "id": "NewsEvent",
+      "label": "News Event",
+      "group": "Event",
+      "labels": ["NewsEvent", "Event"],
+      "description": "A news event that may affect a legal entity.",
+      "properties": {
+        "eventId": ["string"],
+        "headline": ["string"],
+        "source": ["string"],
+        "date": ["date"],
+        "type": ["string"],
+        "industry": ["string"],
+        "country": ["string"],
+        "name": ["string"]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "Individual",
+      "to": "ClientCorporate",
+      "label": "UBO_OR_DIRECTOR_OF",
+      "description": "An individual is a UBO or director of a corporate client.",
+      "arrows": "to"
+    },
+    {
+      "from": "DBLegalEntity",
+      "to": "Contract",
+      "label": "HAS_CONTRACT",
+      "description": "A DB legal entity has a contract.",
+      "arrows": "to"
+    },
+    {
+      "from": "ClientCorporate",
+      "to": "Contract",
+      "label": "HAS_CONTRACT",
+      "description": "A corporate client has a contract.",
+      "arrows": "to"
+    },
+    {
+      "from": "Contract",
+      "to": "Collateral",
+      "label": "COLLATERALIZED_BY",
+      "description": "A contract is collateralized by an asset.",
+      "arrows": "to"
+    },
+    {
+      "from": "Contract",
+      "to": "Transaction",
+      "label": "MADE",
+      "description": "A contract made a transaction.",
+      "arrows": "to"
+    },
+    {
+      "from": "Transaction",
+      "to": "Merchant",
+      "label": "TO",
+      "description": "A transaction is made to a merchant.",
+      "arrows": "to"
+    },
+    {
+      "from": "DBLegalEntity",
+      "to": "Jurisdiction",
+      "label": "REGISTERED_IN",
+      "description": "A DB legal entity is registered in a jurisdiction.",
+      "arrows": "to"
+    },
+    {
+      "from": "ClientCorporate",
+      "to": "Jurisdiction",
+      "label": "REGISTERED_IN",
+      "description": "A corporate client is registered in a jurisdiction.",
+      "arrows": "to"
+    },
+    {
+      "from": "NewsEvent",
+      "to": "ClientCorporate",
+      "label": "AFFECTS",
+      "description": "A news event affects a corporate client.",
+      "arrows": "to"
+    },
+    {
+      "from": "NewsEvent",
+      "to": "DBLegalEntity",
+      "label": "AFFECTS",
+      "description": "A news event affects a DB legal entity.",
+      "arrows": "to"
+    },
+    {
+      "from": "Tariff",
+      "to": "Transaction",
+      "label": "APPLIES_TO",
+      "description": "A tariff applies to a transaction.",
+      "arrows": "to"
+    }
+  ]
+}
