@@ -8,17 +8,17 @@
 
 ```cypher
 MATCH (c1:ClientCorporate)<-[:UBO_OR_DIRECTOR_OF]-(p:Individual)-[:UBO_OR_DIRECTOR_OF]->(c2:ClientCorporate),
-      (event:NewsEvent)-[:AFFECTS]->(c1),
-      (event)-[:AFFECTS]->(c2)
-WHERE event.type = 'Negative' AND c1 <> c2
-WITH c1, c2, event, p
-MATCH path = shortestPath((c1)-[*]-(c2))
-RETURN c1.name AS client1,
+        (event:NewsEvent)-[:AFFECTS]->(c1),
+       (event)-[:AFFECTS]->(c2)
+ WHERE event.type = 'Tariff' AND c1 <> c2
+ WITH c1, c2, event, p
+ MATCH path = shortestPath((c1)-[*]-(c2))
+ RETURN c1.name AS client1,
        c2.name AS client2,
-       p.name AS sharedPerson,
+        p.name AS sharedPerson,
        event.headline AS highRiskEvent,
-       [node in nodes(path) | labels(node) + {name: node.name}] AS connectionPath
-LIMIT 10
+        [node in nodes(path) | labels(node) + {name: node.name}] AS connectionPath
+ LIMIT 10
 ```
 
 ### 2. Understanding the "Blast Radius" of an Event
@@ -28,13 +28,13 @@ LIMIT 10
 **Cypher Query:**
 
 ```cypher
-MATCH (event:NewsEvent {type: 'Negative'})-[:AFFECTS]->(db:DBLegalEntity {name: 'DB Entity 1'})
-MATCH path = (db)-[*3..5]-(relatedNode)
+MATCH (event:NewsEvent {type: 'Tariff'})-[:AFFECTS]->(db:DBLegalEntity {name: 'DB Legal Entity 1'})
+MATCH path = (db)-[*1..3]-(relatedNode)
 WHERE relatedNode:ClientCorporate OR relatedNode:Contract OR relatedNode:Collateral
 RETURN db.name AS sourceEntity,
-       event.headline AS triggeringEvent,
+        event.headline AS triggeringEvent,
        relatedNode.name AS affectedEntity,
-       labels(relatedNode) AS entityType,
+        labels(relatedNode) AS entityType,
        length(path) AS degreesOfSeparation
 ```
 
@@ -46,14 +46,14 @@ RETURN db.name AS sourceEntity,
 
 ```cypher
 MATCH (db:DBLegalEntity)-[:HAS_CONTRACT]->(k1:Contract),
-      path = (k1)-[:MADE]->(:Transaction)-[:TO*1..4]-(:Merchant)<-[:TO]-(:Transaction)<-[:MADE]-(k2:Contract),
-      (k2)-[:COLLATERALIZED_BY]->(:Collateral),
-      (k2)<-[:HAS_CONTRACT]-(db)
+ path = (k1)-[:MADE]->(:Transaction)-[:TO*1..4]-(:Merchant)<-[:TO]-(:Transaction)<-[:MADE]-(k2:Contract),
+(k2)-[:COLLATERALIZED_BY]->(:Collateral),
+(k2)<-[:HAS_CONTRACT]-(db)
 WHERE k1 <> k2
 RETURN db.name AS dbEntity,
-       k1.contractId AS sourceContract,
-       k2.contractId AS destinationContract,
-       [node in nodes(path) | labels(node) + {name: node.name}] AS transactionPath
+k1.contractId AS sourceContract,
+k2.contractId AS destinationContract,
+[node in nodes(path) | labels(node) + {name: node.name}] AS transactionPath
 LIMIT 5
 ```
 
@@ -68,29 +68,29 @@ LIMIT 5
 WITH ['J01', 'J05'] AS highRiskJurisdictions
 
 MATCH (c:ClientCorporate)
-
+ 
 // Count negative news events
-OPTIONAL MATCH (c)<-[:AFFECTS]-(event:NewsEvent {type: 'Negative'})
+OPTIONAL MATCH (c)<-[:AFFECTS]-(event:NewsEvent {type: 'Tariff'})
 WITH c, highRiskJurisdictions, count(event) AS negativeEvents
 
 // Check for registration in high-risk jurisdiction
 OPTIONAL MATCH (c)-[:REGISTERED_IN]->(j:Jurisdiction)
 WHERE j.jurisdictionId IN highRiskJurisdictions
 WITH c, negativeEvents, count(j) AS inHighRiskJurisdiction
-
+ 
 // Count contracts with low collateral
 OPTIONAL MATCH (c)-[:HAS_CONTRACT]->(k:Contract)
-OPTIONAL MATCH (k)-[:COLLATERALIZED_BY]->(coll:Collateral)
+ OPTIONAL MATCH (k)-[:COLLATERALIZED_BY]->(coll:Collateral)
 WITH c, negativeEvents, inHighRiskJurisdiction, k, SUM(coll.value) AS totalCollateralValue
-WHERE k.amount > 0 AND (totalCollateralValue / k.amount) < 0.5
-WITH c, negativeEvents, inHighRiskJurisdiction, count(k) AS lowCollateralContracts
+ WHERE k.amount > 0 AND (totalCollateralValue / k.amount) < 0.5
+ WITH c, negativeEvents, inHighRiskJurisdiction, count(k) AS lowCollateralContracts
 
 // Calculate risk score
 WITH c,
-     (negativeEvents * 10) + (inHighRiskJurisdiction * 20) + (lowCollateralContracts * 5) AS riskScore
-WHERE riskScore > 0
+      (negativeEvents * 10) + (inHighRiskJurisdiction * 20) + (lowCollateralContracts * 5) AS riskScore
+  WHERE riskScore > 0
 RETURN c.name AS client,
-       riskScore
-ORDER BY riskScore DESC
-LIMIT 10
+        riskScore
+ ORDER BY riskScore DESC
+ LIMIT 10
 ```
