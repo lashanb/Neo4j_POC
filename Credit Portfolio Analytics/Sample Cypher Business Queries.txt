@@ -2,7 +2,10 @@
 
 ### 1. Identifying Concentrated Risk and Complex Relationships
 
-**Query:** "Show me all clients who are exposed to the same high-risk news event, and also share a common board member or UBO, even if they don't have a direct contractual relationship with the same DB entity. Find the shortest path of connections between these clients."
+**Query:** "Show me all clients who are exposed to the same high-risk news event, 
+and also share a common board member or UBO, even if they don't have a direct 
+contractual relationship with the same DB entity. Find the shortest path of 
+connections between these clients."
 
 **Cypher Query:**
 
@@ -23,7 +26,9 @@ MATCH (c1:ClientCorporate)<-[:UBO_OR_DIRECTOR_OF]-(p:Individual)-[:UBO_OR_DIRECT
 
 ### 2. Understanding the "Blast Radius" of an Event
 
-**Query:** "A negative news event has just occurred affecting 'DB Entity 1'. Show me all the clients, contracts, and collateral that are potentially at risk. Go out 3 to 5 levels of connection from the event."
+**Query:** "A negative news event has just occurred affecting 'DB Entity 1'. 
+Show me all the clients, contracts, and collateral that are potentially at risk. 
+Go out 3 to 5 levels of connection from the event."
 
 **Cypher Query:**
 
@@ -40,7 +45,10 @@ RETURN db.name AS sourceEntity,
 
 ### 3. Detecting Circular Relationships and Potential Fraud
 
-**Query:** "Are there any 'circular' financing schemes where a loan from one DB entity is indirectly funding a company that is providing collateral for another loan from the same DB entity, through a chain of transactions and related parties?"
+**Query:** "Are there any 'circular' financing schemes where a loan from one 
+DB entity is indirectly funding a company that is providing collateral for 
+another loan from the same DB entity, through a chain of transactions and 
+related parties?"
 
 **Cypher Query:**
 
@@ -59,7 +67,10 @@ LIMIT 5
 
 ### 4. Holistic Client Risk Profile
 
-**Query:** "Create a 'risk score' for each client based on a combination of factors: the number of negative news events affecting them, the number of contracts they have with low collateralization (e.g., value < 50% of contract amount), and whether they are registered in a high-risk jurisdiction. Show me the top 10 riskiest clients."
+**Query:** "Create a 'risk score' for each client based on a combination 
+of factors: the number of negative news events affecting them, the number 
+of contracts they have with low collateralization (e.g., value < 50% of contract amount), 
+and whether they are registered in a high-risk jurisdiction. Show me the top 10 riskiest clients."
 
 **Cypher Query:**
 
