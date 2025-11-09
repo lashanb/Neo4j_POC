@@ -1,0 +1,24 @@
+{
+  "movie": [
+    "film",
+    "picture",
+    "motion picture"
+  ],
+  "romance": [
+    "Love",
+    "passion",
+    "affection",
+	"desire"
+  ],
+  "business": [
+    "commercial",
+    "corporate",
+    "company",
+    "enterprise"
+  ],
+  "actor": [
+    "performer",
+    "actress",
+    "star"
+  ]
+}
