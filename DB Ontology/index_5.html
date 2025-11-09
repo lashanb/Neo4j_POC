@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DB Ontology</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- START: NAVY THEME --- */
+
+        /* Base styles for the entire page */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            background-color: #192a40; /* Dark Navy Base */
+            color: #e0e0e0; /* Light gray text */
+            line-height: 1.6;
+        }
+
+        /* Header section styles */
+        .header-container {
+            background-color: #1f3250; /* Lighter Navy */
+            color: white;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            border-bottom: 1px solid rgba(74, 127, 214, 0.2);
+        }
+
+        .header-text h1 {
+            margin: 0;
+            font-size: 3em;
+            font-weight: 700;
+        }
+
+        .header-text p {
+            margin: 5px 0 0 0;
+            font-size: 1.2em;
+            font-weight: 300; /* Thinner font for sleekness */
+            opacity: 0.8;
+        }
+
+        /* --- Logo Box for Image --- */
+        .logo-box {
+            background-color: #4A7FD6; /* Fallback if image is transparent */
+            width: 150px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            overflow: hidden; /* Important for the image */
+        }
+        
+        .logo-box img {
+            width: 100%; /* Make image fill the box width */
+            height: 100%; /* Make image fill the box height */
+            object-fit: cover; /* Crop image to fit, don't stretch */
+        }
+        /* --- End Logo Box --- */
+
+        /* Main content area layout */
+        .content-container {
+            display: flex;
+            padding: 30px 50px;
+            gap: 40px;
+        }
+
+        /* Styles for the two main panels */
+        .left-panel, .right-panel {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .left-panel h2, .right-panel h2, .video-section h2 {
+            font-size: 1.8em;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #ffffff; /* Bright white headings */
+            border-bottom: 2px solid rgba(74, 127, 214, 0.3); /* Subtle blue border */
+            padding-bottom: 10px;
+        }
+
+        /* Grid layout for the blue cards */
+        .blue-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        /* Styling for the blue cards (Glassmorphism) */
+        .blue-card {
+            display: block;
+            /* Semi-transparent "glass" background */
+            background-color: rgba(74, 127, 214, 0.1);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(74, 127, 214, 0.3);
+            text-decoration: none;
+            backdrop-filter: blur(5px); /* The "glass" effect */
+        }
+
+        .blue-card:hover {
+            background-color: rgba(74, 127, 214, 0.2);
+            border-color: rgba(74, 127, 214, 0.7);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        .blue-card h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #fff; /* Brighter title */
+        }
+
+        .blue-card p {
+            font-size: 0.9em;
+            line-height: 1.4;
+            margin-bottom: 0;
+            opacity: 0.8;
+        }
+
+        /* Search bar styles */
+        .search-bar {
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(74, 127, 214, 0.3);
+            background-color: #1f3250; /* New: Lighter Navy */
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+            max-width: 350px;
+            color: #fff; /* Light text */
+        }
+
+        .search-bar input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* --- Carousel Styles --- */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 10px 0;
+        }
+        
+        .carousel-track {
+            display: flex;
+            width: calc((250px + 20px) * 12); 
+            transition: transform 0.5s ease;
+            will-change: transform;
+        }
+        
+        .orange-card {
+            background-color: #008C95;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            flex-shrink: 0;
+            width: 250px;
+            margin-right: 20px;
+            box-sizing: border-box; 
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+			text-decoration: none; /* Removes underline from link */
+    
+        }
+        
+        .orange-card:hover {
+            background-color: #00A9B5;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+        }
+
+        .orange-card h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+            font-weight: 700;
+        }
+
+        .orange-card p {
+            font-size: 0.9em;
+            line-height: 1.4;
+            margin-bottom: 0;
+            opacity: 0.9;
+        }
+
+        /* Carousel Controls */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            /* Semi-transparent "glass" buttons */
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff; /* White arrow */
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.2s ease;
+        }
+
+        .carousel-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .back-btn { left: 0px; }
+        .forward-btn { right: 0px; }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 1024px) {
+            .header-text h1 { font-size: 2.5em; }
+            .header-text p { font-size: 1em; }
+            .content-container {
+                flex-direction: column;
+                padding: 20px 30px;
+            }
+            .blue-cards-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            .search-bar input { max-width: 100%; }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+            .logo-box {
+                width: 120px;
+                height: 60px;
+                font-size: 1.2em;
+            }
+            .header-text h1 { font-size: 2em; }
+            .header-text p { font-size: 0.9em; }
+            .content-container {
+                padding: 20px;
+                gap: 30px;
+            }
+            .left-panel h2, .right-panel h2 { font-size: 1.5em; }
+            .blue-cards-grid { grid-template-columns: 1fr; }
+            .blue-card, .orange-card { padding: 15px; }
+            .blue-card h3, .orange-card h3 { font-size: 1.1em; }
+            .blue-card p, .orange-card p { font-size: 0.9em; }
+        }
+        
+        /* --- Video Section Styles --- */
+        .video-section {
+            padding: 30px 50px;
+            text-align: center;
+            background-color: #192a40; /* New: Dark Navy Base */
+        }
+        
+        .video-section h2 {
+            display: inline-block;
+            border-bottom-color: rgba(74, 127, 214, 0.3);
+        }
+
+        .video-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #000;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .video-wrapper video {
+            display: block;
+            max-width: 100%;
+        }
+        /* --- END: NEW NAVY THEME --- */
+		/* --- START: NEW SEARCH DROPDOWN STYLES --- */
+        #search-results-container {
+            display: none; /* Hidden by default */
+            position: absolute;
+            top: 100%; /* Position it right below the search bar */
+            left: 0;
+            right: 0;
+            background-color: #1f3250; /* Lighter navy background */
+            border: 1px solid rgba(74, 127, 214, 0.3);
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            z-index: 100;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .search-result-item {
+            display: block;
+            padding: 12px 15px;
+            color: #e0e0e0;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(74, 127, 214, 0.2);
+            transition: background-color 0.2s ease;
+        }
+        
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-item:hover {
+            background-color: rgba(74, 127, 214, 0.1);
+            color: #fff;
+        }
+
+        .search-result-item h5 {
+            margin: 0 0 5px 0;
+            font-size: 1em;
+            font-weight: 700;
+            color: #fff;
+        }
+        
+        .search-result-item p {
+            margin: 0;
+            font-size: 0.85em;
+            opacity: 0.7;
+        }
+        /* --- END: NEW SEARCH DROPDOWN STYLES --- */
+    </style>
+</head>
+<body>
+
+    <header class="header-container">
+        <div class="header-text">
+            <h1>Welcome to DB Ontology</h1>
+            <p>Unifying data for better insights</p>
+        </div>
+        
+        <!-- START: NEW LOGO -->
+        <div class="logo-box">
+            <!-- 
+                REPLACE THIS SRC with the URL or path to your logo image.
+                e.g., "https://example.com/logo.png" or "images/my-logo.jpg"
+            -->
+            <img src="YOUR_LOGO_URL_HERE.png" alt="DB Ontology Logo">
+        </div>
+        <!-- END: NEW LOGO -->
+
+    </header>
+
+    <main class="content-container">
+        
+        <section class="left-panel">
+            <h2>What can it do?</h2>
+            <div class="blue-cards-grid">
+                
+                <a href="http://localhost:8000/DB_Ontology_Viewer_50.html#build" target="_blank" class="blue-card">
+                    <h3>Build Ontology</h3>
+                    <p>Build ontologies for your data in friendly UI, Vieweing data ontology make them easy to understand to anyone</p>
+                </a>
+                
+                <a href="http://localhost:8000/DB_Ontology_Viewer_50.html#analysis" target="_blank" class="blue-card">
+                    <h3>Analyse Ontology & Graph Data</h3>
+                    <p>Dive in to details of your ontologies and graph data sets with user friendly analytic tools</p>
+                </a>
+                
+                <a href="#" class="blue-card" onclick="event.preventDefault(); alert('This link is not yet active.');">
+                    <h3>Transform Your Data to Graph</h3>
+                    <p>Map existing data to new graph strcutures (Coming Soon !)</p>
+                </a>
+                
+                <a href="http://localhost:8000/DB_Ontology_Viewer_50.html#query" target="_blank" class="blue-card">
+                    <h3>Query Ontology and Graph Data</h3>
+                    <p>Ability to generate simple graph data queries (Cypher)and reporting from graph data </p>
+                </a>
+                
+                <a href="http://localhost:8000/DB_Ontology_Viewer_50.html#ai" target="_blank" class="blue-card">
+                    <h3>Natural Language querying</h3>
+                    <p>Use AI to query data without need for techinical know how </p>
+                </a>
+                
+                <a href="http://localhost:8000/DB_Ontology_Viewer_50.html#upload" target="_blank" class="blue-card">
+                    <h3>Upload prebuilt Ontologies</h3>
+                    <p>Supports multiple formats to transform existing models or data sets in to ontology & Knowledge Graphs</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="right-panel">
+            <h2>Browse Ontologies & Knowledge Graphs</h2>
+            <div class="search-bar" style="position: relative;">
+                <input type="text" id="ontology-search-input" placeholder="Search ontologies..." autocomplete="off">
+                <div id="search-results-container"></div>
+            </div>
+            
+            <div class="carousel-container">
+                <button class="carousel-btn back-btn" aria-label="Scroll back">&lt;</button>
+                
+                <div class="carousel-track">
+					<a href="http://localhost:8000/DB_Ontology_Viewer_50.html?ontology=Hollywood_Ontology#analysis" target="_blank" class="orange-card">
+						<h3>Hollywood Ontology (Graph DB)</h3>
+						<p>Hollywood Ontology</p>
+					</a>
+					<a href="http://localhost:8000/DB_Ontology_Viewer_50.html?ontology=Movies_Ontology#analysis" target="_blank" class="orange-card">
+						<h3>Movies Ontology (Graph DB)</h3>
+						<p>Movies Ontology</p>
+					</a>
+					<a href="http://localhost:8000/DB_Ontology_Viewer_50.html?ontology=Lending_KnowledgeGraph#analysis" target="_blank" class="orange-card">
+						<h3>Lending KnowledgeGraph (Graph DB)</h3>
+						<p>Lending KnowledgeGraph</p>
+					</a>
+						<a href="http://localhost:8000/DB_Ontology_Viewer_50.html?config=Credit_portfolio_analytics_KnowledgeGraph#analysis" target="_blank" class="orange-card">
+						<h3>Credit analytics KnowledgeGraph (File)</h3>
+						<p>Credit analytics KnowledgeGraph.</p>
+					</a>
+
+				</div>
+                
+                <button class="carousel-btn forward-btn" aria-label="Scroll forward">&gt;</button>
+            </div>
+        </section>
+        
+    </main>
+
+    <section class="video-section">
+        <h2>See it in Action</h2>
+        <div class="video-wrapper">
+            <video controls width="100%">
+                
+                <source src="http://localhost:8000/Videos/Data_Visualization_Animation_Generation.mp4" type="video/mp4">
+                
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- START: NEW SEARCH LOGIC ---
+
+            const searchInput = document.getElementById('ontology-search-input');
+            const resultsContainer = document.getElementById('search-results-container');
+            const carouselTrack = document.querySelector('.carousel-track');
+            const ontologyIndex = [];
+
+            // 1. Scrape data from the *original* orange cards (before cloning)
+            const originalCards = Array.from(carouselTrack.children);
+            originalCards.forEach(card => {
+                ontologyIndex.push({
+                    title: card.querySelector('h3').textContent,
+                    description: card.querySelector('p').textContent,
+                    href: card.href // Get the URL from the <a> tag
+                });
+            });
+
+            // 2. Add event listener to the search input
+            searchInput.addEventListener('keyup', () => {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                
+                if (searchTerm.length < 2) {
+                    resultsContainer.innerHTML = '';
+                    resultsContainer.style.display = 'none';
+                    return;
+                }
+
+                // 3. Filter the index based on the search term
+                const matches = ontologyIndex.filter(item => 
+                    item.title.toLowerCase().includes(searchTerm) || 
+                    item.description.toLowerCase().includes(searchTerm)
+                );
+
+                // 4. Populate the dropdown
+                if (matches.length > 0) {
+                    let resultsHtml = '';
+                    matches.forEach(item => {
+                        resultsHtml += `
+                            <a href="${item.href}" target="_blank" class="search-result-item">
+                                <h5>${item.title}</h5>
+                                <p>${item.description}</p>
+                            </a>
+                        `;
+                    });
+                    resultsContainer.innerHTML = resultsHtml;
+                    resultsContainer.style.display = 'block';
+                } else {
+                    resultsContainer.innerHTML = '<p style="padding: 12px 15px; opacity: 0.7;">No matches found.</p>';
+                    resultsContainer.style.display = 'block';
+                }
+            });
+
+            // 5. Hide dropdown when clicking elsewhere
+            document.addEventListener('click', (e) => {
+                // Hide if the click is *not* the search input and *not* inside the results container
+                if (e.target.id !== 'ontology-search-input' && !resultsContainer.contains(e.target)) {
+                    resultsContainer.style.display = 'none';
+                }
+            });
+
+            // --- END: NEW SEARCH LOGIC ---
+
+
+            // --- START: EXISTING CAROUSEL LOGIC ---
+            
+            const track = carouselTrack; // Use the same variable
+            const forwardBtn = document.querySelector('.forward-btn');
+            const backBtn = document.querySelector('.back-btn');
+            const carouselContainer = document.querySelector('.carousel-container');
+            
+            let cardWidth = 250 + 20; // card width + margin-right (250px + 20px)
+            let isManual = false; // Tracks if user has taken control
+            let autoScrollInterval = null;
+            
+            // --- 1. Clone cards (Uses the same 'originalCards' variable from above) ---
+            const numCards = originalCards.length;
+
+            // Clone and add to end
+            originalCards.forEach(card => {
+                const clone = card.cloneNode(true);
+                track.appendChild(clone);
+            });
+
+            // Clone and add to beginning
+            originalCards.slice().reverse().forEach(card => {
+                const clone = card.cloneNode(true);
+                track.prepend(clone);
+            });
+            
+            // --- 2. Set initial position ---
+            let currentIndex = numCards;
+            track.style.transition = 'none'; // Disable transition for initial set
+            track.style.transform = `translateX(${-currentIndex * cardWidth}px)`;
+            track.offsetHeight; // Force browser reflow
+            track.style.transition = 'transform 0.5s ease'; // Re-enable transition
+
+            // --- 3. Movement functions ---
+            function moveTo(index) {
+                track.style.transform = `translateX(${-index * cardWidth}px)`;
+            }
+
+            function moveForward() {
+                currentIndex++;
+                moveTo(currentIndex);
+            }
+
+            function moveBack() {
+                currentIndex--;
+                moveTo(currentIndex);
+            }
+
+            // --- 4. Stop auto-scroll ---
+            function stopAutoScroll() {
+                if (!isManual) {
+                    isManual = true;
+                    clearInterval(autoScrollInterval);
+                    autoScrollInterval = null; // Clear the interval ID
+                }
+            }
+
+            // --- 5. Add click listeners ---
+            forwardBtn.addEventListener('click', () => {
+                stopAutoScroll();
+                moveForward();
+            });
+
+            backBtn.addEventListener('click', () => {
+                stopAutoScroll();
+                moveBack();
+            });
+            
+            track.addEventListener('click', (e) => {
+                if (e.target.closest('.orange-card')) {
+                    stopAutoScroll();
+                }
+            });
+
+            // --- 6. Handle infinite loop logic on transition end ---
+            track.addEventListener('transitionend', () => {
+                if (currentIndex >= numCards * 2) { 
+                    track.style.transition = 'none';
+                    currentIndex = numCards; 
+                    moveTo(currentIndex);
+                    track.offsetHeight; 
+                    track.style.transition = 'transform 0.5s ease';
+                }
+
+                if (currentIndex < numCards) {
+                    track.style.transition = 'none';
+                    currentIndex = numCards + originalCards.length - 1; 
+                    moveTo(currentIndex);
+                    track.offsetHeight; 
+                    track.style.transition = 'transform 0.5s ease';
+                }
+            });
+
+            // --- 7. Start auto-scroll ---
+            const carouselTrackWidth = track.scrollWidth;
+            const carouselContainerWidth = carouselContainer.offsetWidth;
+
+            if (carouselTrackWidth > carouselContainerWidth) {
+                autoScrollInterval = setInterval(() => {
+                    if (!isManual) {
+                        moveForward();
+                    }
+                }, 3000); 
+            }
+
+            // --- END: EXISTING CAROUSEL LOGIC ---
+        });
+    </script>
+    // ---- Search feature added-------//
+</body>
+</html>
