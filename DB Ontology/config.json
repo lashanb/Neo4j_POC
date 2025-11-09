@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Credit_portfolio_analytics_ontology",
+    "url": "http://localhost:8000/json_files/Credit_portfolio_analytics_ontology.json"
+  },
+  {
+    "name": "Credit_portfolio_analytics_KnowledgeGraph",
+    "url": "http://localhost:8000/json_files/Credit_portfolio_analytics_KnowledgeGraph.json"
+  }
+]
