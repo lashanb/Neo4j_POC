@@ -1,0 +1,51 @@
+ApplicationID,Name,ITOwner,CIO,OwningOrgUnit,ProcessCapability
+APP001,Trading Platform,David Brown,Thomas White,Global Markets,Securities Trading
+APP002,Procurement System,Jane Doe,Robert Johnson,Operations,Spend Management
+APP003,General Ledger,William Rodriguez,Barbara Jackson,Finance,Financial Accounting
+APP004,Online Banking Portal,Jennifer Garcia,Patricia Anderson,Retail Banking,Digital Banking
+APP005,Compliance Tracker,James Wilson,Charles Thomas,Compliance,Regulatory Compliance
+APP006,Mobile Banking App,David Brown,Thomas White,Retail Banking,Digital Banking
+APP007,HR Portal,Karen Moore,Barbara Jackson,Human Resources,Human Capital Management
+APP008,Risk Management Tool,Joseph Thomas,Robert Johnson,Risk Management,Credit Risk Analysis
+APP009,CRM Platform,Linda Martinez,Patricia Anderson,Retail Banking,Customer Relationship Management
+APP010,Loan Origination System,Peter Jones,Charles Thomas,Corporate Banking,Loan Processing
+APP011,Data Warehouse,Susan Miller,Thomas White,Technology,Business Intelligence
+APP012,Customer Onboarding App,Mary Williams,Robert Johnson,Retail Banking,Client Lifecycle Management
+APP013,ERP System,Michael Davis,Patricia Anderson,Technology,Enterprise Resource Planning
+APP014,Billing System,Richard Taylor,Barbara Jackson,Operations,Billing and Invoicing
+APP015,Fraud Detection System,Donna Anderson,Charles Thomas,Risk Management,Fraud Monitoring
+APP016,Trading Platform,John Smith,Thomas White,Investment Banking,Securities Trading
+APP017,Procurement System,Jane Doe,Robert Johnson,Operations,Spend Management
+APP018,General Ledger,William Rodriguez,Barbara Jackson,Finance,Financial Accounting
+APP019,Online Banking Portal,Jennifer Garcia,Patricia Anderson,Retail Banking,Digital Banking
+APP020,Compliance Tracker,James Wilson,Charles Thomas,Compliance,Regulatory Compliance
+APP021,Mobile Banking App,David Brown,Thomas White,Retail Banking,Digital Banking
+APP022,HR Portal,Karen Moore,Barbara Jackson,Human Resources,Human Capital Management
+APP023,Risk Management Tool,Joseph Thomas,Robert Johnson,Risk Management,Credit Risk Analysis
+APP024,CRM Platform,Linda Martinez,Patricia Anderson,Retail Banking,Customer Relationship Management
+APP025,Loan Origination System,Peter Jones,Charles Thomas,Corporate Banking,Loan Processing
+APP026,Data Warehouse,Susan Miller,Thomas White,Technology,Business Intelligence
+APP027,Customer Onboarding App,Mary Williams,Robert Johnson,Retail Banking,Client Lifecycle Management
+APP028,ERP System,Michael Davis,Patricia Anderson,Technology,Enterprise Resource Planning
+APP029,Billing System,Richard Taylor,Barbara Jackson,Operations,Billing and Invoicing
+APP030,Fraud Detection System,Donna Anderson,Charles Thomas,Risk Management,Fraud Monitoring
+APP031,Trading Platform,John Smith,Thomas White,Investment Banking,Securities Trading
+APP032,Procurement System,Jane Doe,Robert Johnson,Operations,Spend Management
+APP033,General Ledger,William Rodriguez,Barbara Jackson,Finance,Financial Accounting
+APP034,Online Banking Portal,Jennifer Garcia,Patricia Anderson,Retail Banking,Digital Banking
+APP035,Compliance Tracker,James Wilson,Charles Thomas,Compliance,Regulatory Compliance
+APP036,Mobile Banking App,.gemini-generated,Thomas White,Retail Banking,Digital Banking
+APP037,HR Portal,Karen Moore,Barbara Jackson,Human Resources,Human Capital Management
+APP038,Risk Management Tool,Joseph Thomas,Robert Johnson,Risk Management,Credit Risk Analysis
+APP039,CRM Platform,Linda Martinez,Patricia Anderson,Retail Banking,Customer Relationship Management
+APP040,Loan Origination System,Peter Jones,Charles Thomas,Corporate Banking,Loan Processing
+APP041,Data Warehouse,Susan Miller,Thomas White,Technology,Business Intelligence
+APP042,Customer Onboarding App,Mary Williams,Robert Johnson,Retail Banking,Client Lifecycle Management
+APP043,ERP System,Michael Davis,Patricia Anderson,Technology,Enterprise Resource Planning
+APP044,Billing System,Richard Taylor,Barbara Jackson,Operations,Billing and Invoicing
+APP045,Fraud Detection System,Donna Anderson,Charles Thomas,Risk Management,Fraud Monitoring
+APP046,Trading Platform,John Smith,Thomas White,Investment Banking,Securities Trading
+APP047,Procurement System,Jane Doe,Robert Johnson,Operations,Spend Management
+APP048,General Ledger,William Rodriguez,Barbara Jackson,Finance,Financial Accounting
+APP049,Online Banking Portal,Jennifer Garcia,Patricia Anderson,Retail Banking,Digital Banking
+APP050,Compliance Tracker,James Wilson,Charles Thomas,Compliance,Regulatory Compliance
