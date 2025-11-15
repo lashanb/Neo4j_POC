@@ -1,0 +1,128 @@
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/db_legal_entities.csv' AS row
+MERGE (db:DBLegalEntity {dbEntityId: row.dbEntityId})
+SET db.name = row.name,
+    db.region = row.region,
+    db.country = row.country,
+    db.lei = row.lei;
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/clients.csv' AS row
+MERGE (c:ClientCorporate {clientId: row.clientId})
+SET c.name = row.name,
+    c.industry = row.industry,
+    c.country = row.country,
+    c.lei = row.lei;
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/individuals.csv' AS row
+MERGE (p:Individual {personId: row.personId})
+SET p.name = row.name,
+    p.role = row.role,
+    p.nationality = row.nationality
+
+WITH row, p
+MATCH (c:ClientCorporate {clientId: row.clientId})
+MERGE (p)-[:UBO_OR_DIRECTOR_OF]->(c);
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/contracts_new.csv' AS row
+MERGE (k:Contract {contractId: row.contractId})
+SET k.contractType = row.contractType,
+    k.startDate = date(row.startDate),
+    k.endDate = date(row.endDate),
+    k.currency = row.currency,
+    k.amount = toFloat(row.amount),
+    k.status = row.status,
+    k.name = row.contractId
+
+WITH row, k
+MATCH (db:DBLegalEntity {dbEntityId: row.dbEntityId})
+MERGE (db)-[:HAS_CONTRACT]->(k)
+
+WITH row, k
+MATCH (c:ClientCorporate {clientId: row.clientId})
+MERGE (c)-[:HAS_CONTRACT]->(k);
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/collateral.csv' AS row
+MERGE (coll:Collateral {contractId: row.contractId})
+SET coll.contractType = row.contractType,
+    coll.startDate = date(row.startDate),
+    coll.endDate = date(row.endDate),
+    coll.currency = row.currency,
+    coll.amount = toFloat(row.amount),
+    coll.status = row.status;
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/contract_collateral.csv' AS row
+MATCH (k:Contract {contractId: row.contractId})
+MATCH (coll:Collateral {contractId: row.collateralId})
+MERGE (k)-[:COLLATERALIZED_BY]->(coll);
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/merchants.csv' AS row
+MERGE (m:Merchant {merchantId: row.merchantId})
+SET m.name = row.name,
+    m.industry = row.industry,
+    m.country = row.country;
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/transactions.csv' AS row
+MERGE (t:Transaction {txnId: row.txnId})
+SET t.date = date(row.date),
+    t.amount = toFloat(row.amount),
+    t.currency = row.currency,
+    t.txnType = row.txnType,
+    t.name = row.txnId
+
+WITH row, t
+MATCH (k:Contract {contractId: row.contractId})
+MERGE (k)-[:MADE]->(t)
+
+WITH row, t
+MATCH (m:Merchant {merchantId: row.merchantId})
+MERGE (t)-[:TO]->(m);
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/jurisdictions.csv' AS row
+MERGE (j:Jurisdiction {jurisdictionId: row.jurisdictionId})
+SET j.name = row.name,
+    j.isoCode = row.isoCode;
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/entity_jurisdiction.csv' AS row
+WITH row
+WHERE row.entityType = 'DB'
+MATCH (db:DBLegalEntity {dbEntityId: row.entityId})
+MATCH (j:Jurisdiction {jurisdictionId: row.jurisdictionId})
+MERGE (db)-[:REGISTERED_IN]->(j);
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/entity_jurisdiction.csv' AS row
+WITH row
+WHERE row.entityType = 'Client'
+MATCH (c:ClientCorporate {clientId: row.entityId})
+MATCH (j:Jurisdiction {jurisdictionId: row.jurisdictionId})
+MERGE (c)-[:REGISTERED_IN]->(j);
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/tariffs.csv' AS row
+MERGE (t:Tariff {tariffId: row.tariffId})
+SET t.HSCode = row.HSCode,
+    t.description = row.description,
+    t.ratePct = toFloat(row.ratePct),
+    t.name = row.tariffId ;
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/events_enriched.csv' AS row
+MERGE (ne:NewsEvent {eventId: row.eventId})
+SET ne.headline = row.headline,
+    ne.source = row.source,
+    ne.date = date(row.date),
+    ne.type = row.type,
+    ne.industry = row.industry,
+    ne.country = row.country,
+    ne.name = row.headline
+
+WITH row, ne
+WHERE row.clientId IS NOT NULL
+MATCH (c:ClientCorporate {clientId: row.clientId})
+MERGE (ne)-[:AFFECTS]->(c)
+
+WITH row, ne
+WHERE row.dbEntityId IS NOT NULL
+MATCH (db:DBLegalEntity {dbEntityId: row.dbEntityId})
+MERGE (ne)-[:AFFECTS]->(db);
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/tariff_transaction.csv' AS row
+MATCH (t:Tariff {tariffId: row.tariffId})
+MATCH (txn:Transaction {txnId: row.txnId})
+MERGE (t)-[:APPLIES_TO]->(txn);
