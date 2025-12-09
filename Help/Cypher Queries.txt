@@ -6,3 +6,19 @@ MATCH (n)-[r]->(m) RETURN n, r, m
 
 # Delete all nodes and relationships
 MATCH (n) DETACH DELETE n
+
+CALL db.schema.visualization();
+
+CALL db.labels();
+CALL db.relationshipTypes();
+CALL db.propertyKeys();
+
+# Query nodes with specific label 
+
+MATCH (n:YourLabel)
+RETURN n
+LIMIT 25;
+
+
+MATCH (n:YourLabel)
+RETURN count(n) AS totalNodes;
