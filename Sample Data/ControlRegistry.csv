@@ -1,101 +1,101 @@
-Control ID,Control Type,Data Feed ID,Data Attribute,EDM Data Class,Application ID
-CTRL001,accuracy,DF01,amount,Loan,APP010
-CTRL002,timeliness,DF02,,Party,APP009
-CTRL003,completeness,DF03,contractId,Transaction,APP001
-CTRL004,validity,DF04,startDate,Loan,APP025
-CTRL005,consistency,DF05,currency,Deposit,APP006
-CTRL006,reconciliation,DF06,clientId,Party,APP012
-CTRL007,accuracy,DF07,txnType,Transaction,APP016
-CTRL008,timeliness,DF08,,Facility,APP008
-CTRL009,completeness,DF09,endDate,Loan,APP040
-CTRL010,validity,DF10,dbEntityId,Party,APP024
-CTRL011,consistency,DF11,merchantId,Transaction,APP031
-CTRL012,reconciliation,DF12,contractType,Loan,APP023
-CTRL013,accuracy,DF01,amount,Deposit,APP004
-CTRL014,timeliness,DF02,,Party,APP039
-CTRL015,completeness,DF03,date,Transaction,APP046
-CTRL016,validity,DF04,status,Loan,APP005
-CTRL017,consistency,DF05,currency,Deposit,APP021
-CTRL018,reconciliation,DF06,clientId,Party,APP027
-CTRL019,accuracy,DF07,txnType,Transaction,APP019
-CTRL020,timeliness,DF08,,Facility,APP038
-CTRL021,completeness,DF09,endDate,Loan,APP025
-CTRL022,validity,DF10,dbEntityId,Party,APP009
-CTRL023,consistency,DF11,merchantId,Transaction,APP001
-CTRL024,reconciliation,DF12,contractType,Loan,APP010
-CTRL025,accuracy,DF01,amount,Deposit,APP006
-CTRL026,timeliness,DF02,,Party,APP012
-CTRL027,completeness,DF03,date,Transaction,APP016
-CTRL028,validity,DF04,status,Loan,APP008
-CTRL029,consistency,DF05,currency,Deposit,APP004
-CTRL030,reconciliation,DF06,clientId,Party,APP024
-CTRL031,accuracy,DF07,txnType,Transaction,APP031
-CTRL032,timeliness,DF08,,Facility,APP023
-CTRL033,completeness,DF09,endDate,Loan,APP040
-CTRL034,validity,DF10,dbEntityId,Party,APP039
-CTRL035,consistency,DF11,merchantId,Transaction,APP046
-CTRL036,reconciliation,DF12,contractType,Loan,APP005
-CTRL037,accuracy,DF01,amount,Deposit,APP021
-CTRL038,timeliness,DF02,,Party,APP027
-CTRL039,completeness,DF03,date,Transaction,APP019
-CTRL040,validity,DF04,status,Loan,APP038
-CTRL041,consistency,DF05,currency,Deposit,APP025
-CTRL042,reconciliation,DF06,clientId,Party,APP009
-CTRL043,accuracy,DF07,txnType,Transaction,APP001
-CTRL044,timeliness,DF08,,Facility,APP010
-CTRL045,completeness,DF09,endDate,Loan,APP006
-CTRL046,validity,DF10,dbEntityId,Party,APP012
-CTRL047,consistency,DF11,merchantId,Transaction,APP016
-CTRL048,reconciliation,DF12,contractType,Loan,APP008
-CTRL049,accuracy,DF01,amount,Deposit,APP004
-CTRL050,timeliness,DF02,,Party,APP024
-CTRL051,completeness,DF03,date,Transaction,APP031
-CTRL052,validity,DF04,status,Loan,APP023
-CTRL053,consistency,DF05,currency,Deposit,APP040
-CTRL054,reconciliation,DF06,clientId,Party,APP039
-CTRL055,accuracy,DF07,txnType,Transaction,APP046
-CTRL056,timeliness,DF08,,Facility,APP005
-CTRL057,completeness,DF09,endDate,Loan,APP021
-CTRL058,validity,DF10,dbEntityId,Party,APP027
-CTRL059,consistency,DF11,merchantId,Transaction,APP019
-CTRL060,reconciliation,DF12,contractType,Loan,APP038
-CTRL061,accuracy,DF01,amount,Deposit,APP025
-CTRL062,timeliness,DF02,,Party,APP009
-CTRL063,completeness,DF03,date,Transaction,APP001
-CTRL064,validity,DF04,status,Loan,APP010
-CTRL065,consistency,DF05,currency,Deposit,APP006
-CTRL066,reconciliation,DF06,clientId,Party,APP012
-CTRL067,accuracy,DF07,txnType,Transaction,APP016
-CTRL068,timeliness,DF08,,Facility,APP008
-CTRL069,completeness,DF09,endDate,Loan,APP004
-CTRL070,validity,DF10,dbEntityId,Party,APP024
-CTRL071,consistency,DF11,merchantId,Transaction,APP031
-CTRL072,reconciliation,DF12,contractType,Loan,APP023
-CTRL073,accuracy,DF01,amount,Deposit,APP040
-CTRL074,timeliness,DF02,,Party,APP039
-CTRL075,completeness,DF03,date,Transaction,APP046
-CTRL076,validity,DF04,status,Loan,APP005
-CTRL077,consistency,DF05,currency,Deposit,APP021
-CTRL078,reconciliation,DF06,clientId,Party,APP027
-CTRL079,accuracy,DF07,txnType,Transaction,APP019
-CTRL080,timeliness,DF08,,Facility,APP038
-CTRL081,completeness,DF09,endDate,Loan,APP025
-CTRL082,validity,DF10,dbEntityId,Party,APP009
-CTRL083,consistency,DF11,merchantId,Transaction,APP001
-CTRL084,reconciliation,DF12,contractType,Loan,APP010
-CTRL085,accuracy,DF01,amount,Deposit,APP006
-CTRL086,timeliness,DF02,,Party,APP012
-CTRL087,completeness,DF03,date,Transaction,APP016
-CTRL088,validity,DF04,status,Loan,APP008
-CTRL089,consistency,DF05,currency,Deposit,APP004
-CTRL090,reconciliation,DF06,clientId,Party,APP024
-CTRL091,accuracy,DF07,txnType,Transaction,APP031
-CTRL092,timeliness,DF08,,Facility,APP023
-CTRL093,completeness,DF09,endDate,Loan,APP040
-CTRL094,validity,DF10,dbEntityId,Party,APP039
-CTRL095,consistency,DF11,merchantId,Transaction,APP046
-CTRL096,reconciliation,DF12,contractType,Loan,APP005
-CTRL097,accuracy,DF01,amount,Deposit,APP021
-CTRL098,timeliness,DF02,,Party,APP027
-CTRL099,completeness,DF03,date,Transaction,APP019
-CTRL100,validity,DF04,status,Loan,APP038
+Control ID,Control Type,Data Feed ID,Data Attribute,EDM Data Class,Application ID,Description
+CTRL001,accuracy,DF01,amount,Loan,APP010,accuracy control CTRL001 applied to amount (Loan) within application APP010.
+CTRL002,timeliness,DF02,,Party,APP009,timeliness control CTRL002 applied to  (Party) within application APP009.
+CTRL003,completeness,DF03,contractId,Transaction,APP001,completeness control CTRL003 applied to contractId (Transaction) within application APP001.
+CTRL004,validity,DF04,startDate,Loan,APP025,validity control CTRL004 applied to startDate (Loan) within application APP025.
+CTRL005,consistency,DF05,currency,Deposit,APP006,consistency control CTRL005 applied to currency (Deposit) within application APP006.
+CTRL006,reconciliation,DF06,clientId,Party,APP012,reconciliation control CTRL006 applied to clientId (Party) within application APP012.
+CTRL007,accuracy,DF07,txnType,Transaction,APP016,accuracy control CTRL007 applied to txnType (Transaction) within application APP016.
+CTRL008,timeliness,DF08,,Facility,APP008,timeliness control CTRL008 applied to  (Facility) within application APP008.
+CTRL009,completeness,DF09,endDate,Loan,APP040,completeness control CTRL009 applied to endDate (Loan) within application APP040.
+CTRL010,validity,DF10,dbEntityId,Party,APP024,validity control CTRL010 applied to dbEntityId (Party) within application APP024.
+CTRL011,consistency,DF11,merchantId,Transaction,APP031,consistency control CTRL011 applied to merchantId (Transaction) within application APP031.
+CTRL012,reconciliation,DF12,contractType,Loan,APP023,reconciliation control CTRL012 applied to contractType (Loan) within application APP023.
+CTRL013,accuracy,DF01,amount,Deposit,APP004,accuracy control CTRL013 applied to amount (Deposit) within application APP004.
+CTRL014,timeliness,DF02,,Party,APP039,timeliness control CTRL014 applied to  (Party) within application APP039.
+CTRL015,completeness,DF03,date,Transaction,APP046,completeness control CTRL015 applied to date (Transaction) within application APP046.
+CTRL016,validity,DF04,status,Loan,APP005,validity control CTRL016 applied to status (Loan) within application APP005.
+CTRL017,consistency,DF05,currency,Deposit,APP021,consistency control CTRL017 applied to currency (Deposit) within application APP021.
+CTRL018,reconciliation,DF06,clientId,Party,APP027,reconciliation control CTRL018 applied to clientId (Party) within application APP027.
+CTRL019,accuracy,DF07,txnType,Transaction,APP019,accuracy control CTRL019 applied to txnType (Transaction) within application APP019.
+CTRL020,timeliness,DF08,,Facility,APP038,timeliness control CTRL020 applied to  (Facility) within application APP038.
+CTRL021,completeness,DF09,endDate,Loan,APP025,completeness control CTRL021 applied to endDate (Loan) within application APP025.
+CTRL022,validity,DF10,dbEntityId,Party,APP009,validity control CTRL022 applied to dbEntityId (Party) within application APP009.
+CTRL023,consistency,DF11,merchantId,Transaction,APP001,consistency control CTRL023 applied to merchantId (Transaction) within application APP001.
+CTRL024,reconciliation,DF12,contractType,Loan,APP010,reconciliation control CTRL024 applied to contractType (Loan) within application APP010.
+CTRL025,accuracy,DF01,amount,Deposit,APP006,accuracy control CTRL025 applied to amount (Deposit) within application APP006.
+CTRL026,timeliness,DF02,,Party,APP012,timeliness control CTRL026 applied to  (Party) within application APP012.
+CTRL027,completeness,DF03,date,Transaction,APP016,completeness control CTRL027 applied to date (Transaction) within application APP016.
+CTRL028,validity,DF04,status,Loan,APP008,validity control CTRL028 applied to status (Loan) within application APP008.
+CTRL029,consistency,DF05,currency,Deposit,APP004,consistency control CTRL029 applied to currency (Deposit) within application APP004.
+CTRL030,reconciliation,DF06,clientId,Party,APP024,reconciliation control CTRL030 applied to clientId (Party) within application APP024.
+CTRL031,accuracy,DF07,txnType,Transaction,APP031,accuracy control CTRL031 applied to txnType (Transaction) within application APP031.
+CTRL032,timeliness,DF08,,Facility,APP023,timeliness control CTRL032 applied to  (Facility) within application APP023.
+CTRL033,completeness,DF09,endDate,Loan,APP040,completeness control CTRL033 applied to endDate (Loan) within application APP040.
+CTRL034,validity,DF10,dbEntityId,Party,APP039,validity control CTRL034 applied to dbEntityId (Party) within application APP039.
+CTRL035,consistency,DF11,merchantId,Transaction,APP046,consistency control CTRL035 applied to merchantId (Transaction) within application APP046.
+CTRL036,reconciliation,DF12,contractType,Loan,APP005,reconciliation control CTRL036 applied to contractType (Loan) within application APP005.
+CTRL037,accuracy,DF01,amount,Deposit,APP021,accuracy control CTRL037 applied to amount (Deposit) within application APP021.
+CTRL038,timeliness,DF02,,Party,APP027,timeliness control CTRL038 applied to  (Party) within application APP027.
+CTRL039,completeness,DF03,date,Transaction,APP019,completeness control CTRL039 applied to date (Transaction) within application APP019.
+CTRL040,validity,DF04,status,Loan,APP038,validity control CTRL040 applied to status (Loan) within application APP038.
+CTRL041,consistency,DF05,currency,Deposit,APP025,consistency control CTRL041 applied to currency (Deposit) within application APP025.
+CTRL042,reconciliation,DF06,clientId,Party,APP009,reconciliation control CTRL042 applied to clientId (Party) within application APP009.
+CTRL043,accuracy,DF07,txnType,Transaction,APP001,accuracy control CTRL043 applied to txnType (Transaction) within application APP001.
+CTRL044,timeliness,DF08,,Facility,APP010,timeliness control CTRL044 applied to  (Facility) within application APP010.
+CTRL045,completeness,DF09,endDate,Loan,APP006,completeness control CTRL045 applied to endDate (Loan) within application APP006.
+CTRL046,validity,DF10,dbEntityId,Party,APP012,validity control CTRL046 applied to dbEntityId (Party) within application APP012.
+CTRL047,consistency,DF11,merchantId,Transaction,APP016,consistency control CTRL047 applied to merchantId (Transaction) within application APP016.
+CTRL048,reconciliation,DF12,contractType,Loan,APP008,reconciliation control CTRL048 applied to contractType (Loan) within application APP008.
+CTRL049,accuracy,DF01,amount,Deposit,APP004,accuracy control CTRL049 applied to amount (Deposit) within application APP004.
+CTRL050,timeliness,DF02,,Party,APP024,timeliness control CTRL050 applied to  (Party) within application APP024.
+CTRL051,completeness,DF03,date,Transaction,APP031,completeness control CTRL051 applied to date (Transaction) within application APP031.
+CTRL052,validity,DF04,status,Loan,APP023,validity control CTRL052 applied to status (Loan) within application APP023.
+CTRL053,consistency,DF05,currency,Deposit,APP040,consistency control CTRL053 applied to currency (Deposit) within application APP040.
+CTRL054,reconciliation,DF06,clientId,Party,APP039,reconciliation control CTRL054 applied to clientId (Party) within application APP039.
+CTRL055,accuracy,DF07,txnType,Transaction,APP046,accuracy control CTRL055 applied to txnType (Transaction) within application APP046.
+CTRL056,timeliness,DF08,,Facility,APP005,timeliness control CTRL056 applied to  (Facility) within application APP005.
+CTRL057,completeness,DF09,endDate,Loan,APP021,completeness control CTRL057 applied to endDate (Loan) within application APP021.
+CTRL058,validity,DF10,dbEntityId,Party,APP027,validity control CTRL058 applied to dbEntityId (Party) within application APP027.
+CTRL059,consistency,DF11,merchantId,Transaction,APP019,consistency control CTRL059 applied to merchantId (Transaction) within application APP019.
+CTRL060,reconciliation,DF12,contractType,Loan,APP038,reconciliation control CTRL060 applied to contractType (Loan) within application APP038.
+CTRL061,accuracy,DF01,amount,Deposit,APP025,accuracy control CTRL061 applied to amount (Deposit) within application APP025.
+CTRL062,timeliness,DF02,,Party,APP009,timeliness control CTRL062 applied to  (Party) within application APP009.
+CTRL063,completeness,DF03,date,Transaction,APP001,completeness control CTRL063 applied to date (Transaction) within application APP001.
+CTRL064,validity,DF04,status,Loan,APP010,validity control CTRL064 applied to status (Loan) within application APP010.
+CTRL065,consistency,DF05,currency,Deposit,APP006,consistency control CTRL065 applied to currency (Deposit) within application APP006.
+CTRL066,reconciliation,DF06,clientId,Party,APP012,reconciliation control CTRL066 applied to clientId (Party) within application APP012.
+CTRL067,accuracy,DF07,txnType,Transaction,APP016,accuracy control CTRL067 applied to txnType (Transaction) within application APP016.
+CTRL068,timeliness,DF08,,Facility,APP008,timeliness control CTRL068 applied to  (Facility) within application APP008.
+CTRL069,completeness,DF09,endDate,Loan,APP004,completeness control CTRL069 applied to endDate (Loan) within application APP004.
+CTRL070,validity,DF10,dbEntityId,Party,APP024,validity control CTRL070 applied to dbEntityId (Party) within application APP024.
+CTRL071,consistency,DF11,merchantId,Transaction,APP031,consistency control CTRL071 applied to merchantId (Transaction) within application APP031.
+CTRL072,reconciliation,DF12,contractType,Loan,APP023,reconciliation control CTRL072 applied to contractType (Loan) within application APP023.
+CTRL073,accuracy,DF01,amount,Deposit,APP040,accuracy control CTRL073 applied to amount (Deposit) within application APP040.
+CTRL074,timeliness,DF02,,Party,APP039,timeliness control CTRL074 applied to  (Party) within application APP039.
+CTRL075,completeness,DF03,date,Transaction,APP046,completeness control CTRL075 applied to date (Transaction) within application APP046.
+CTRL076,validity,DF04,status,Loan,APP005,validity control CTRL076 applied to status (Loan) within application APP005.
+CTRL077,consistency,DF05,currency,Deposit,APP021,consistency control CTRL077 applied to currency (Deposit) within application APP021.
+CTRL078,reconciliation,DF06,clientId,Party,APP027,reconciliation control CTRL078 applied to clientId (Party) within application APP027.
+CTRL079,accuracy,DF07,txnType,Transaction,APP019,accuracy control CTRL079 applied to txnType (Transaction) within application APP019.
+CTRL080,timeliness,DF08,,Facility,APP038,timeliness control CTRL080 applied to  (Facility) within application APP038.
+CTRL081,completeness,DF09,endDate,Loan,APP025,completeness control CTRL081 applied to endDate (Loan) within application APP025.
+CTRL082,validity,DF10,dbEntityId,Party,APP009,validity control CTRL082 applied to dbEntityId (Party) within application APP009.
+CTRL083,consistency,DF11,merchantId,Transaction,APP001,consistency control CTRL083 applied to merchantId (Transaction) within application APP001.
+CTRL084,reconciliation,DF12,contractType,Loan,APP010,reconciliation control CTRL084 applied to contractType (Loan) within application APP010.
+CTRL085,accuracy,DF01,amount,Deposit,APP006,accuracy control CTRL085 applied to amount (Deposit) within application APP006.
+CTRL086,timeliness,DF02,,Party,APP012,timeliness control CTRL086 applied to  (Party) within application APP012.
+CTRL087,completeness,DF03,date,Transaction,APP016,completeness control CTRL087 applied to date (Transaction) within application APP016.
+CTRL088,validity,DF04,status,Loan,APP008,validity control CTRL088 applied to status (Loan) within application APP008.
+CTRL089,consistency,DF05,currency,Deposit,APP004,consistency control CTRL089 applied to currency (Deposit) within application APP004.
+CTRL090,reconciliation,DF06,clientId,Party,APP024,reconciliation control CTRL090 applied to clientId (Party) within application APP024.
+CTRL091,accuracy,DF07,txnType,Transaction,APP031,accuracy control CTRL091 applied to txnType (Transaction) within application APP031.
+CTRL092,timeliness,DF08,,Facility,APP023,timeliness control CTRL092 applied to  (Facility) within application APP023.
+CTRL093,completeness,DF09,endDate,Loan,APP040,completeness control CTRL093 applied to endDate (Loan) within application APP040.
+CTRL094,validity,DF10,dbEntityId,Party,APP039,validity control CTRL094 applied to dbEntityId (Party) within application APP039.
+CTRL095,consistency,DF11,merchantId,Transaction,APP046,consistency control CTRL095 applied to merchantId (Transaction) within application APP046.
+CTRL096,reconciliation,DF12,contractType,Loan,APP005,reconciliation control CTRL096 applied to contractType (Loan) within application APP005.
+CTRL097,accuracy,DF01,amount,Deposit,APP021,accuracy control CTRL097 applied to amount (Deposit) within application APP021.
+CTRL098,timeliness,DF02,,Party,APP027,timeliness control CTRL098 applied to  (Party) within application APP027.
+CTRL099,completeness,DF03,date,Transaction,APP019,completeness control CTRL099 applied to date (Transaction) within application APP019.
+CTRL100,validity,DF04,status,Loan,APP038,validity control CTRL100 applied to status (Loan) within application APP038.

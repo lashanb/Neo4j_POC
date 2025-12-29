@@ -1,0 +1,106 @@
+name,definition,pii,sdpModelId
+AccountNumber,Unique identifier for the deposit account assigned by the core banking system.,True,SDPEDM01
+AccountHolderName,Full legal name of the primary account holder as registered in the bank's records.,True,SDPEDM01
+AccountHolderID,Unique internal customer identifier linking the account to the customer profile.,False,SDPEDM01
+AccountCurrency,The ISO 4217 currency code representing the denomination of the deposit account.,False,SDPEDM01
+CurrentBalance,"The total amount of funds currently present in the account, including uncleared funds.",False,SDPEDM01
+AvailableBalance,The amount of funds in the account that is immediately available for withdrawal or transfer.,False,SDPEDM01
+OpenDate,The date on which the deposit account was formally opened and activated.,False,SDPEDM01
+Status,"Current operational status of the account (e.g., Active, Dormant, Closed, Frozen).",False,SDPEDM01
+ProductCode,"Internal code identifying the specific deposit product type (e.g., SavPlus, CheckStd).",False,SDPEDM01
+InterestRate,The annual percentage rate (APR) currently applied to the account balance for interest calculation.,False,SDPEDM01
+InterestAccruedYTD,Total interest earned by the account holder during the current calendar year.,False,SDPEDM01
+OverdraftLimit,The maximum negative balance allowed on the account before overdraft fees are incurred or transactions rejected.,False,SDPEDM01
+BranchCode,Identifier for the physical bank branch where the account is domiciled.,False,SDPEDM01
+LastTransactionDate,The date of the most recent financial activity (debit or credit) on the account.,False,SDPEDM01
+StatementFrequency,"The schedule on which account statements are generated and sent to the customer (e.g., Monthly, Quarterly).",False,SDPEDM01
+AccountTitle,"The specific designation or nickname given to the account by the customer (e.g., 'Vacation Fund').",True,SDPEDM01
+JointAccountIndicator,Boolean flag indicating whether the account is held by more than one individual.,False,SDPEDM01
+TaxWithholdingStatus,Indicator of whether the account is subject to backup tax withholding regulations.,False,SDPEDM01
+LienAmount,The portion of the account balance that is currently held as collateral or under legal hold.,False,SDPEDM01
+ClosureReason,"The recorded reason for the closure of the account, if applicable.",False,SDPEDM01
+AverageMonthlyBalance,The calculated average balance of the account over the preceding 30-day period.,False,SDPEDM01
+FacilityID,Unique identifier for the credit facility agreement.,False,SDPEDM02
+BorrowerName,Legal name of the entity or individual to whom the facility is granted.,True,SDPEDM02
+FacilityType,"Classification of the credit facility (e.g., Revolving Credit, Term Loan, Letter of Credit).",False,SDPEDM02
+CommittedAmount,The total amount of funds the bank has committed to lend under the facility agreement.,False,SDPEDM02
+UncommittedAmount,The portion of the facility that is available but can be withdrawn by the bank at its discretion.,False,SDPEDM02
+Currency,The base currency in which the facility limits and usage are denominated.,False,SDPEDM02
+EffectiveDate,The date on which the facility agreement becomes active and funds can be drawn.,False,SDPEDM02
+ExpiryDate,The final date on which the facility is available for drawing; typically the maturity date.,False,SDPEDM02
+ReviewDate,The scheduled date for the periodic credit review of the facility and borrower.,False,SDPEDM02
+RiskRating,Internal credit risk grade assigned to the facility based on borrower probability of default.,False,SDPEDM02
+UtilizationAmount,The current total outstanding balance drawn against the facility.,False,SDPEDM02
+AvailableHeadroom,The remaining amount that can be drawn from the facility (Committed - Utilization).,False,SDPEDM02
+SyndicatedFlag,Indicates if the facility is part of a syndicated loan involving multiple lenders.,False,SDPEDM02
+LeadArranger,Name of the bank responsible for organizing the syndicated facility.,False,SDPEDM02
+CovenantStatus,Current compliance status regarding financial covenants stipulated in the agreement.,False,SDPEDM02
+CollateralLinkID,Reference ID to the collateral pool securing this specific facility.,False,SDPEDM02
+InterestBaseRate,"The benchmark rate (e.g., SOFR, LIBOR) used as the basis for interest calculation.",False,SDPEDM02
+MarginSpread,The additional percentage points added to the base rate to determine the final interest rate.,False,SDPEDM02
+FacilityFee,"Annual fee charged for the availability of the credit facility, regardless of utilization.",False,SDPEDM02
+GoverningLaw,The legal jurisdiction under whose laws the facility agreement is enforced.,False,SDPEDM02
+CrossDefaultClause,Boolean indicating if a default on other obligations triggers a default on this facility.,False,SDPEDM02
+LoanID,Unique identifier for the specific loan account.,False,SDPEDM03
+BorrowerID,Unique customer identifier for the borrower.,False,SDPEDM03
+LoanAmount,The initial principal amount disbursed to the borrower.,False,SDPEDM03
+OutstandingPrincipal,The remaining principal amount that has not yet been repaid.,False,SDPEDM03
+InterestType,Specifies if the interest rate is Fixed or Floating/Variable.,False,SDPEDM03
+CurrentInterestRate,The specific interest rate currently being applied to the outstanding principal.,False,SDPEDM03
+TermMonths,The duration of the loan repayment period in months.,False,SDPEDM03
+DisbursementDate,The date on which the loan funds were released to the borrower.,False,SDPEDM03
+MaturityDate,The final deadline for the full repayment of the loan principal and interest.,False,SDPEDM03
+RepaymentFrequency,"The interval at which loan payments are due (e.g., Monthly, Bi-weekly).",False,SDPEDM03
+NextPaymentDate,The due date for the upcoming scheduled loan payment.,False,SDPEDM03
+ArrearsAmount,The total amount of overdue payments currently outstanding.,False,SDPEDM03
+DaysPastDue,The number of days the loan account has been in delinquency status.,False,SDPEDM03
+LoanPurpose,"The stated reason for the loan (e.g., Mortgage, Auto, Personal, Working Capital).",False,SDPEDM03
+AmortizationType,"The method used to calculate schedule payments (e.g., Straight-line, Declining Balance).",False,SDPEDM03
+GuarantorName,Name of the individual or entity guaranteeing the loan repayment.,True,SDPEDM03
+OriginationFee,Fee charged by the lender for processing the new loan application.,False,SDPEDM03
+PrepaymentPenalty,The fee structure applied if the borrower pays off the loan before maturity.,False,SDPEDM03
+SecuritizationStatus,Indicates if the loan has been packaged into a security and sold to investors.,False,SDPEDM03
+RestructuredFlag,Indicates if the terms of the loan have been modified due to borrower financial distress.,False,SDPEDM03
+CreditScoreAtOrigination,The borrower's credit score at the time the loan was approved.,True,SDPEDM03
+PartyID,Unique immutable identifier for the party (individual or organization).,False,SDPEDM04
+FullName,The complete legal name of the party.,True,SDPEDM04
+ShortName,An abbreviated or trading name used by the party.,True,SDPEDM04
+PartyType,"Classification of the party (e.g., Individual, Corporation, Trust, Government).",False,SDPEDM04
+TaxID,"Government-issued tax identification number (e.g., SSN, EIN, VAT).",True,SDPEDM04
+DateOfBirthOrIncorporation,The date an individual was born or a company was legally formed.,True,SDPEDM04
+CountryOfResidence,The primary country where the party legally resides or is domiciled.,False,SDPEDM04
+AddressLine1,Building number and street name of the registered address.,True,SDPEDM04
+City,City or town of the registered address.,True,SDPEDM04
+PostalCode,Postal or ZIP code of the registered address.,True,SDPEDM04
+EmailAddress,Primary electronic mail contact address.,True,SDPEDM04
+PhoneNumber,Primary telephone contact number including country code.,True,SDPEDM04
+KYCStatus,"Current status of Know Your Customer (KYC) verification (e.g., Verified, Pending, Expired).",False,SDPEDM04
+RiskCategory,"Anti-Money Laundering (AML) risk classification (e.g., Low, Medium, High).",False,SDPEDM04
+PEPStatus,Indicates if the party is considered a Politically Exposed Person.,False,SDPEDM04
+RelationshipManager,Name of the bank employee responsible for managing the relationship.,False,SDPEDM04
+Sector,"Industry sector classification code (e.g., NAICS, SIC) for corporate parties.",False,SDPEDM04
+LegalForm,"The legal structure of the organization (e.g., LLC, Plc, GmbH).",False,SDPEDM04
+ParentCompanyID,Identifier of the parent company if the party is a subsidiary.,False,SDPEDM04
+SourceOfWealth,Description of the origin of the party's accumulated wealth.,True,SDPEDM04
+BlacklistStatus,Indicates if the party appears on any internal or external sanctions lists.,False,SDPEDM04
+TransactionID,Unique identifier for the individual financial transaction.,False,SDPEDM05
+TransactionType,"Categorization of the transaction (e.g., Wire, ACH, ATM, POS).",False,SDPEDM05
+BookingDate,The date the transaction was posted to the account ledger.,False,SDPEDM05
+ValueDate,The date on which the funds become effective for interest calculation.,False,SDPEDM05
+Amount,The numerical value of the transaction.,False,SDPEDM05
+Currency,The currency in which the transaction amount is denominated.,False,SDPEDM05
+DebitorAccount,The account number from which funds are being debited.,True,SDPEDM05
+CreditorAccount,The account number to which funds are being credited.,True,SDPEDM05
+DebitorName,Name of the party sending the funds.,True,SDPEDM05
+CreditorName,Name of the party receiving the funds.,True,SDPEDM05
+ExchangeRate,The rate applied if the transaction involves currency conversion.,False,SDPEDM05
+ReferenceString,The description or reference text accompanying the transaction.,True,SDPEDM05
+Channel,"The medium through which the transaction was initiated (e.g., Mobile App, Branch, Online).",False,SDPEDM05
+MerchantCategoryCode,Four-digit number listed in ISO 18245 for retail financial services.,False,SDPEDM05
+TransactionStatus,"Current processing state (e.g., Pending, Completed, Failed, Reversed).",False,SDPEDM05
+FeeAmount,Any service charge applied directly to this transaction.,False,SDPEDM05
+BatchID,Identifier for the batch file if the transaction was processed in bulk.,False,SDPEDM05
+AuthorizationCode,Code generated by the issuing bank approving the transaction.,False,SDPEDM05
+InitiatorID,User ID or System ID that initiated the transaction request.,False,SDPEDM05
+GeoLocation,Latitude and Longitude coordinates where the transaction took place.,True,SDPEDM05
+FraudScore,Real-time risk score assigned by the fraud detection engine.,False,SDPEDM05

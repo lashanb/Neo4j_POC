@@ -1,51 +1,52 @@
-ApplicationID,Name,ITOwner,CIO,OwningOrgUnit,ProcessCapability
-APP001,Trading Platform,David Brown,Thomas White,Global Markets,Securities Trading
-APP002,Procurement System,Jane Doe,Robert Johnson,Operations,Spend Management
-APP003,General Ledger,William Rodriguez,Barbara Jackson,Finance,Financial Accounting
-APP004,Online Banking Portal,Jennifer Garcia,Patricia Anderson,Retail Banking,Digital Banking
-APP005,Compliance Tracker,James Wilson,Charles Thomas,Compliance,Regulatory Compliance
-APP006,Mobile Banking App,David Brown,Thomas White,Retail Banking,Digital Banking
-APP007,HR Portal,Karen Moore,Barbara Jackson,Human Resources,Human Capital Management
-APP008,Risk Management Tool,Joseph Thomas,Robert Johnson,Risk Management,Credit Risk Analysis
-APP009,CRM Platform,Linda Martinez,Patricia Anderson,Retail Banking,Customer Relationship Management
-APP010,Loan Origination System,Peter Jones,Charles Thomas,Corporate Banking,Loan Processing
-APP011,Data Warehouse,Susan Miller,Thomas White,Technology,Business Intelligence
-APP012,Customer Onboarding App,Mary Williams,Robert Johnson,Retail Banking,Client Lifecycle Management
-APP013,ERP System,Michael Davis,Patricia Anderson,Technology,Enterprise Resource Planning
-APP014,Billing System,Richard Taylor,Barbara Jackson,Operations,Billing and Invoicing
-APP015,Fraud Detection System,Donna Anderson,Charles Thomas,Risk Management,Fraud Monitoring
-APP016,Trading Platform,John Smith,Thomas White,Investment Banking,Securities Trading
-APP017,Procurement System,Jane Doe,Robert Johnson,Operations,Spend Management
-APP018,General Ledger,William Rodriguez,Barbara Jackson,Finance,Financial Accounting
-APP019,Online Banking Portal,Jennifer Garcia,Patricia Anderson,Retail Banking,Digital Banking
-APP020,Compliance Tracker,James Wilson,Charles Thomas,Compliance,Regulatory Compliance
-APP021,Mobile Banking App,David Brown,Thomas White,Retail Banking,Digital Banking
-APP022,HR Portal,Karen Moore,Barbara Jackson,Human Resources,Human Capital Management
-APP023,Risk Management Tool,Joseph Thomas,Robert Johnson,Risk Management,Credit Risk Analysis
-APP024,CRM Platform,Linda Martinez,Patricia Anderson,Retail Banking,Customer Relationship Management
-APP025,Loan Origination System,Peter Jones,Charles Thomas,Corporate Banking,Loan Processing
-APP026,Data Warehouse,Susan Miller,Thomas White,Technology,Business Intelligence
-APP027,Customer Onboarding App,Mary Williams,Robert Johnson,Retail Banking,Client Lifecycle Management
-APP028,ERP System,Michael Davis,Patricia Anderson,Technology,Enterprise Resource Planning
-APP029,Billing System,Richard Taylor,Barbara Jackson,Operations,Billing and Invoicing
-APP030,Fraud Detection System,Donna Anderson,Charles Thomas,Risk Management,Fraud Monitoring
-APP031,Trading Platform,John Smith,Thomas White,Investment Banking,Securities Trading
-APP032,Procurement System,Jane Doe,Robert Johnson,Operations,Spend Management
-APP033,General Ledger,William Rodriguez,Barbara Jackson,Finance,Financial Accounting
-APP034,Online Banking Portal,Jennifer Garcia,Patricia Anderson,Retail Banking,Digital Banking
-APP035,Compliance Tracker,James Wilson,Charles Thomas,Compliance,Regulatory Compliance
-APP036,Mobile Banking App,.gemini-generated,Thomas White,Retail Banking,Digital Banking
-APP037,HR Portal,Karen Moore,Barbara Jackson,Human Resources,Human Capital Management
-APP038,Risk Management Tool,Joseph Thomas,Robert Johnson,Risk Management,Credit Risk Analysis
-APP039,CRM Platform,Linda Martinez,Patricia Anderson,Retail Banking,Customer Relationship Management
-APP040,Loan Origination System,Peter Jones,Charles Thomas,Corporate Banking,Loan Processing
-APP041,Data Warehouse,Susan Miller,Thomas White,Technology,Business Intelligence
-APP042,Customer Onboarding App,Mary Williams,Robert Johnson,Retail Banking,Client Lifecycle Management
-APP043,ERP System,Michael Davis,Patricia Anderson,Technology,Enterprise Resource Planning
-APP044,Billing System,Richard Taylor,Barbara Jackson,Operations,Billing and Invoicing
-APP045,Fraud Detection System,Donna Anderson,Charles Thomas,Risk Management,Fraud Monitoring
-APP046,Trading Platform,John Smith,Thomas White,Investment Banking,Securities Trading
-APP047,Procurement System,Jane Doe,Robert Johnson,Operations,Spend Management
-APP048,General Ledger,William Rodriguez,Barbara Jackson,Finance,Financial Accounting
-APP049,Online Banking Portal,Jennifer Garcia,Patricia Anderson,Retail Banking,Digital Banking
-APP050,Compliance Tracker,James Wilson,Charles Thomas,Compliance,Regulatory Compliance
+ApplicationID,Name,ITOwner,CIO,OwningOrgUnit,ProcessCapability,Description
+APP001,Trading Platform,David Brown,Thomas White,Global Markets,Securities Trading,Trading Platform is a Securities Trading application managed by David Brown within the Global Markets unit.
+APP002,Procurement System,Jane Doe,Robert Johnson,Operations,Spend Management,Procurement System is a Spend Management application managed by Jane Doe within the Operations unit.
+APP003,General Ledger,William Rodriguez,Barbara Jackson,Finance,Financial Accounting,General Ledger is a Financial Accounting application managed by William Rodriguez within the Finance unit.
+APP004,Online Banking Portal,Jennifer Garcia,Patricia Anderson,Retail Banking,Digital Banking,Online Banking Portal is a Digital Banking application managed by Jennifer Garcia within the Retail Banking unit.
+APP005,Compliance Tracker,James Wilson,Charles Thomas,Compliance,Regulatory Compliance,Compliance Tracker is a Regulatory Compliance application managed by James Wilson within the Compliance unit.
+APP006,Mobile Banking App,David Brown,Thomas White,Retail Banking,Digital Banking,Mobile Banking App is a Digital Banking application managed by David Brown within the Retail Banking unit.
+APP007,HR Portal,Karen Moore,Barbara Jackson,Human Resources,Human Capital Management,HR Portal is a Human Capital Management application managed by Karen Moore within the Human Resources unit.
+APP008,Risk Management Tool,Joseph Thomas,Robert Johnson,Risk Management,Credit Risk Analysis,Risk Management Tool is a Credit Risk Analysis application managed by Joseph Thomas within the Risk Management unit.
+APP009,CRM Platform,Linda Martinez,Patricia Anderson,Retail Banking,Customer Relationship Management,CRM Platform is a Customer Relationship Management application managed by Linda Martinez within the Retail Banking unit.
+APP010,Loan Origination System,Peter Jones,Charles Thomas,Corporate Banking,Loan Processing,Loan Origination System is a Loan Processing application managed by Peter Jones within the Corporate Banking unit.
+APP011,Data Warehouse,Susan Miller,Thomas White,Technology,Business Intelligence,Data Warehouse is a Business Intelligence application managed by Susan Miller within the Technology unit.
+APP012,Customer Onboarding App,Mary Williams,Robert Johnson,Retail Banking,Client Lifecycle Management,Customer Onboarding App is a Client Lifecycle Management application managed by Mary Williams within the Retail Banking unit.
+APP013,ERP System,Michael Davis,Patricia Anderson,Technology,Enterprise Resource Planning,ERP System is a Enterprise Resource Planning application managed by Michael Davis within the Technology unit.
+APP014,Billing System,Richard Taylor,Barbara Jackson,Operations,Billing and Invoicing,Billing System is a Billing and Invoicing application managed by Richard Taylor within the Operations unit.
+APP015,Fraud Detection System,Donna Anderson,Charles Thomas,Risk Management,Fraud Monitoring,Fraud Detection System is a Fraud Monitoring application managed by Donna Anderson within the Risk Management unit.
+APP016,Trading Platform,John Smith,Thomas White,Investment Banking,Securities Trading,Trading Platform is a Securities Trading application managed by John Smith within the Investment Banking unit.
+APP017,Procurement System,Jane Doe,Robert Johnson,Operations,Spend Management,Procurement System is a Spend Management application managed by Jane Doe within the Operations unit.
+APP018,General Ledger,William Rodriguez,Barbara Jackson,Finance,Financial Accounting,General Ledger is a Financial Accounting application managed by William Rodriguez within the Finance unit.
+APP019,Online Banking Portal,Jennifer Garcia,Patricia Anderson,Retail Banking,Digital Banking,Online Banking Portal is a Digital Banking application managed by Jennifer Garcia within the Retail Banking unit.
+APP020,Compliance Tracker,James Wilson,Charles Thomas,Compliance,Regulatory Compliance,Compliance Tracker is a Regulatory Compliance application managed by James Wilson within the Compliance unit.
+APP021,Mobile Banking App,David Brown,Thomas White,Retail Banking,Digital Banking,Mobile Banking App is a Digital Banking application managed by David Brown within the Retail Banking unit.
+APP022,HR Portal,Karen Moore,Barbara Jackson,Human Resources,Human Capital Management,HR Portal is a Human Capital Management application managed by Karen Moore within the Human Resources unit.
+APP023,Risk Management Tool,Joseph Thomas,Robert Johnson,Risk Management,Credit Risk Analysis,Risk Management Tool is a Credit Risk Analysis application managed by Joseph Thomas within the Risk Management unit.
+APP024,CRM Platform,Linda Martinez,Patricia Anderson,Retail Banking,Customer Relationship Management,CRM Platform is a Customer Relationship Management application managed by Linda Martinez within the Retail Banking unit.
+APP025,Loan Origination System,Peter Jones,Charles Thomas,Corporate Banking,Loan Processing,Loan Origination System is a Loan Processing application managed by Peter Jones within the Corporate Banking unit.
+APP026,Data Warehouse,Susan Miller,Thomas White,Technology,Business Intelligence,Data Warehouse is a Business Intelligence application managed by Susan Miller within the Technology unit.
+APP027,Customer Onboarding App,Mary Williams,Robert Johnson,Retail Banking,Client Lifecycle Management,Customer Onboarding App is a Client Lifecycle Management application managed by Mary Williams within the Retail Banking unit.
+APP028,ERP System,Michael Davis,Patricia Anderson,Technology,Enterprise Resource Planning,ERP System is a Enterprise Resource Planning application managed by Michael Davis within the Technology unit.
+APP029,Billing System,Richard Taylor,Barbara Jackson,Operations,Billing and Invoicing,Billing System is a Billing and Invoicing application managed by Richard Taylor within the Operations unit.
+APP030,Fraud Detection System,Donna Anderson,Charles Thomas,Risk Management,Fraud Monitoring,Fraud Detection System is a Fraud Monitoring application managed by Donna Anderson within the Risk Management unit.
+APP031,Trading Platform,John Smith,Thomas White,Investment Banking,Securities Trading,Trading Platform is a Securities Trading application managed by John Smith within the Investment Banking unit.
+APP032,Procurement System,Jane Doe,Robert Johnson,Operations,Spend Management,Procurement System is a Spend Management application managed by Jane Doe within the Operations unit.
+APP033,General Ledger,William Rodriguez,Barbara Jackson,Finance,Financial Accounting,General Ledger is a Financial Accounting application managed by William Rodriguez within the Finance unit.
+APP034,Online Banking Portal,Jennifer Garcia,Patricia Anderson,Retail Banking,Digital Banking,Online Banking Portal is a Digital Banking application managed by Jennifer Garcia within the Retail Banking unit.
+APP035,Compliance Tracker,James Wilson,Charles Thomas,Compliance,Regulatory Compliance,Compliance Tracker is a Regulatory Compliance application managed by James Wilson within the Compliance unit.
+APP036,Mobile Banking App,.gemini-generated,Thomas White,Retail Banking,Digital Banking,Mobile Banking App is a Digital Banking application managed by .gemini-generated within the Retail Banking unit.
+APP037,HR Portal,Karen Moore,Barbara Jackson,Human Resources,Human Capital Management,HR Portal is a Human Capital Management application managed by Karen Moore within the Human Resources unit.
+APP038,Risk Management Tool,Joseph Thomas,Robert Johnson,Risk Management,Credit Risk Analysis,Risk Management Tool is a Credit Risk Analysis application managed by Joseph Thomas within the Risk Management unit.
+APP039,CRM Platform,Linda Martinez,Patricia Anderson,Retail Banking,Customer Relationship Management,CRM Platform is a Customer Relationship Management application managed by Linda Martinez within the Retail Banking unit.
+APP040,Loan Origination System,Peter Jones,Charles Thomas,Corporate Banking,Loan Processing,Loan Origination System is a Loan Processing application managed by Peter Jones within the Corporate Banking unit.
+APP041,Data Warehouse,Susan Miller,Thomas White,Technology,Business Intelligence,Data Warehouse is a Business Intelligence application managed by Susan Miller within the Technology unit.
+APP042,Customer Onboarding App,Mary Williams,Robert Johnson,Retail Banking,Client Lifecycle Management,Customer Onboarding App is a Client Lifecycle Management application managed by Mary Williams within the Retail Banking unit.
+APP043,ERP System,Michael Davis,Patricia Anderson,Technology,Enterprise Resource Planning,ERP System is a Enterprise Resource Planning application managed by Michael Davis within the Technology unit.
+APP044,Billing System,Richard Taylor,Barbara Jackson,Operations,Billing and Invoicing,Billing System is a Billing and Invoicing application managed by Richard Taylor within the Operations unit.
+APP045,Fraud Detection System,Donna Anderson,Charles Thomas,Risk Management,Fraud Monitoring,Fraud Detection System is a Fraud Monitoring application managed by Donna Anderson within the Risk Management unit.
+APP046,Trading Platform,John Smith,Thomas White,Investment Banking,Securities Trading,Trading Platform is a Securities Trading application managed by John Smith within the Investment Banking unit.
+APP047,Procurement System,Jane Doe,Robert Johnson,Operations,Spend Management,Procurement System is a Spend Management application managed by Jane Doe within the Operations unit.
+APP048,General Ledger,William Rodriguez,Barbara Jackson,Finance,Financial Accounting,General Ledger is a Financial Accounting application managed by William Rodriguez within the Finance unit.
+APP049,Online Banking Portal,Jennifer Garcia,Patricia Anderson,Retail Banking,Digital Banking,Online Banking Portal is a Digital Banking application managed by Jennifer Garcia within the Retail Banking unit.
+APP050,Compliance Tracker,James Wilson,Charles Thomas,Compliance,Regulatory Compliance,Compliance Tracker is a Regulatory Compliance application managed by James Wilson within the Compliance unit.
+APP999,Vista,Sarah Connor,Thomas White,Technology,Enterprise Data Platform,Vista is the central bank-wide data platform for all data aggregation and analytics.

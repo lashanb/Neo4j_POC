@@ -1,0 +1,6 @@
+id,name,protocolUri,edmDataClassId
+SDPEDM01,Global Deposit Model v2.0,https://api.fin-inst.com/schema/deposit/v2,EDM01
+SDPEDM02,Global Facility Model v2.0,https://api.fin-inst.com/schema/facility/v2,EDM02
+SDPEDM03,Global Loan Model v2.0,https://api.fin-inst.com/schema/loan/v2,EDM03
+SDPEDM04,Global Party Model v2.0,https://api.fin-inst.com/schema/party/v2,EDM04
+SDPEDM05,Global Transaction Model v2.0,https://api.fin-inst.com/schema/transaction/v2,EDM05

@@ -1,0 +1,6 @@
+id,name,description
+EDM01,Deposit,Funds placed into an account for safekeeping or interest.
+EDM02,Facility,Credit arrangements allowing borrowers to draw funds.
+EDM03,Loan,Financial agreements where money is lent to a borrower.
+EDM04,Party,Individuals or organizations involved in financial relationships.
+EDM05,Transaction,Exchanges of funds between accounts or parties.

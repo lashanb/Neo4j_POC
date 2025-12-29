@@ -1,249 +1,249 @@
-contractId,contractType,dbEntityId,clientId,startDate,endDate,currency,amount,status
-K14,Collateral,DB2,C31,2024-11-09,2028-07-31,SGD,1985058.15,Active
-K15,Collateral,DB4,C30,2023-09-01,2026-02-22,USD,6766309.02,Pending
-K16,Collateral,DB3,C7,2020-11-01,2021-09-01,GBP,1996741.71,Pending
-K17,Collateral,DB2,C18,2023-10-25,2025-02-03,SGD,2573083.83,Active
-K19,Collateral,DB4,C31,2022-01-04,2023-06-08,GBP,8660038.9,Active
-K21,Collateral,DB2,C13,2024-09-22,2028-12-05,EUR,2255238.89,Active
-K32,Collateral,DB3,C3,2020-10-13,2024-10-31,USD,3402209.73,Active
-K33,Collateral,DB5,C46,2022-03-24,2023-08-16,SGD,5652977.96,Active
-K41,Collateral,DB5,C22,2022-12-26,2027-01-27,USD,1241883.34,Closed
-K52,Collateral,DB2,C10,2023-04-07,2026-07-12,USD,8937332.28,Active
-K54,Collateral,DB5,C36,2023-11-19,2025-02-14,JPY,3241249.78,Closed
-K55,Collateral,DB2,C48,2024-04-17,2027-03-06,SGD,4555690.6,Active
-K56,Collateral,DB2,C18,2022-05-11,2027-02-22,SGD,867085.2,Closed
-K60,Collateral,DB4,C1,2020-03-01,2024-12-12,EUR,3056265.26,Closed
-K62,Collateral,DB2,C30,2023-04-23,2025-09-07,GBP,9809147.58,Pending
-K65,Collateral,DB3,C6,2023-03-23,2025-04-10,SGD,291894.54,Pending
-K70,Collateral,DB4,C46,2024-11-23,2029-03-09,GBP,852365.13,Pending
-K73,Collateral,DB3,C41,2024-03-03,2025-04-03,SGD,7102355.57,Closed
-K76,Collateral,DB3,C2,2024-11-05,2028-10-04,SGD,8524433.08,Active
-K86,Collateral,DB1,C1,2021-01-27,2025-02-21,JPY,2914959.34,Closed
-K90,Collateral,DB4,C29,2021-12-02,2026-10-05,EUR,8615649.99,Closed
-K93,Collateral,DB5,C31,2020-01-09,2022-10-21,EUR,423134.57,Closed
-K94,Collateral,DB1,C44,2022-05-28,2026-11-02,GBP,9246719.34,Pending
-K100,Collateral,DB3,C12,2024-01-01,2027-05-27,JPY,4415261.37,Closed
-K102,Collateral,DB3,C43,2022-10-21,2025-08-09,SGD,8154303.74,Pending
-K104,Collateral,DB4,C4,2024-05-17,2024-11-15,GBP,5232549.99,Pending
-K105,Collateral,DB1,C14,2024-03-28,2028-03-27,EUR,5537274.43,Closed
-K106,Collateral,DB1,C2,2023-09-23,2028-02-19,JPY,8013205.96,Pending
-K109,Collateral,DB2,C30,2023-07-14,2026-09-24,JPY,1531955.49,Active
-K112,Collateral,DB3,C22,2021-04-06,2024-04-04,JPY,7652439.51,Closed
-K114,Collateral,DB4,C25,2020-05-15,2022-08-24,GBP,5003753.63,Active
-K117,Collateral,DB1,C22,2022-11-17,2026-11-12,JPY,3862093.04,Closed
-K121,Collateral,DB5,C44,2021-03-28,2023-02-06,GBP,1782838.13,Active
-K125,Collateral,DB4,C7,2022-07-27,2024-03-05,GBP,3875506.55,Closed
-K127,Collateral,DB3,C50,2020-06-01,2024-04-22,GBP,6109943.48,Closed
-K129,Collateral,DB1,C38,2020-05-02,2022-07-23,EUR,7350361.7,Active
-K130,Collateral,DB2,C13,2022-07-05,2024-10-31,GBP,7886476.83,Closed
-K132,Collateral,DB1,C10,2022-11-18,2024-01-07,GBP,8615391.91,Pending
-K136,Collateral,DB1,C9,2022-07-27,2026-09-13,USD,9467989.18,Closed
-K141,Collateral,DB1,C43,2021-08-12,2022-10-16,GBP,6452874.23,Pending
-K153,Collateral,DB4,C27,2023-07-09,2025-11-29,USD,3194228.66,Closed
-K159,Collateral,DB5,C50,2024-11-18,2026-08-23,JPY,6174375.48,Pending
-K165,Collateral,DB4,C39,2022-04-25,2025-04-16,SGD,4200419.01,Active
-K172,Collateral,DB3,C8,2023-06-10,2027-11-29,SGD,306479.93,Closed
-K173,Collateral,DB3,C6,2021-06-17,2026-06-12,SGD,8460395.16,Active
-K174,Collateral,DB5,C6,2023-09-15,2027-07-02,SGD,8718191.72,Pending
-K178,Collateral,DB5,C42,2024-03-15,2027-04-19,JPY,3299761.59,Pending
-K179,Collateral,DB1,C31,2022-09-09,2024-01-11,SGD,6350712.69,Closed
-K188,Collateral,DB2,C39,2022-08-21,2026-10-22,USD,3164860.69,Closed
-K195,Collateral,DB4,C50,2021-08-25,2024-03-15,EUR,7803427.97,Pending
-K201,Collateral,DB2,C49,2020-04-29,2022-06-05,SGD,4541154.59,Active
-K204,Collateral,DB1,C8,2023-07-28,2027-08-24,SGD,6007716.52,Active
-K206,Collateral,DB2,C43,2022-01-17,2025-09-26,USD,5282497.12,Closed
-K210,Collateral,DB4,C41,2021-06-27,2026-05-07,GBP,8133827.05,Active
-K212,Collateral,DB5,C31,2022-08-21,2026-01-07,EUR,462545.64,Pending
-K214,Collateral,DB4,C22,2023-09-19,2026-06-14,GBP,5012411.94,Closed
-K217,Collateral,DB2,C45,2022-08-10,2025-08-07,SGD,3580315.14,Active
-K218,Collateral,DB3,C41,2022-12-31,2026-12-09,USD,842907.53,Pending
-K228,Collateral,DB1,C24,2021-03-07,2022-12-31,JPY,5765546.33,Closed
-K230,Collateral,DB4,C37,2024-01-27,2027-07-06,USD,1340735.14,Closed
-K231,Collateral,DB5,C23,2020-08-18,2023-08-24,GBP,8791805.5,Pending
-K239,Collateral,DB4,C31,2020-07-05,2021-11-20,SGD,2119827.83,Pending
-K247,Collateral,DB3,C3,2023-02-10,2027-11-20,SGD,606461.11,Pending
-K260,Collateral,DB3,C12,2024-01-26,2027-07-05,SGD,9130029.19,Closed
-K263,Collateral,DB3,C36,2024-02-28,2026-06-06,EUR,2949114.82,Pending
-K264,Collateral,DB3,C50,2024-08-14,2027-03-29,GBP,2975481.25,Closed
-K265,Collateral,DB3,C48,2020-09-02,2023-02-08,SGD,2218469.4,Pending
-K271,Collateral,DB2,C48,2023-05-18,2028-04-14,EUR,8779757.36,Active
-K274,Collateral,DB3,C46,2022-10-24,2024-03-19,GBP,239433.54,Closed
-K276,Collateral,DB1,C12,2022-10-15,2023-10-07,GBP,4826795.58,Active
-K277,Collateral,DB2,C29,2020-01-22,2022-01-05,EUR,9544944.74,Closed
-K281,Collateral,DB5,C24,2024-01-25,2025-06-01,SGD,7049213.2,Closed
-K285,Collateral,DB1,C33,2021-09-30,2026-04-05,SGD,8106051.62,Closed
-K286,Collateral,DB4,C37,2021-02-13,2024-06-28,USD,5632092.27,Pending
-K288,Collateral,DB3,C45,2020-08-14,2021-05-13,USD,5457518.69,Active
-K290,Collateral,DB4,C25,2023-07-30,2026-03-02,SGD,894474.93,Pending
-K293,Collateral,DB3,C10,2021-12-14,2023-10-31,EUR,1965956.47,Pending
-K294,Collateral,DB5,C50,2020-12-16,2021-08-18,USD,2482596.31,Active
-K298,Collateral,DB3,C18,2024-06-07,2026-03-01,USD,5611509.37,Pending
-K299,Collateral,DB5,C32,2021-06-28,2025-06-29,USD,9725673.33,Pending
-K302,Collateral,DB5,C34,2024-10-13,2027-08-04,GBP,3945348.58,Closed
-K304,Collateral,DB5,C39,2020-06-09,2022-06-08,USD,8748842.54,Active
-K316,Collateral,DB3,C4,2020-01-29,2021-10-17,JPY,6413513.06,Pending
-K317,Collateral,DB1,C1,2024-02-10,2028-04-19,JPY,5561271.25,Active
-K322,Collateral,DB4,C25,2020-04-08,2021-04-14,JPY,4812450.49,Pending
-K329,Collateral,DB3,C2,2022-11-24,2026-10-13,EUR,7857126.58,Closed
-K334,Collateral,DB1,C2,2023-10-26,2027-06-07,USD,3603751.44,Active
-K340,Collateral,DB3,C28,2023-03-26,2025-07-27,JPY,1447632.27,Closed
-K344,Collateral,DB2,C29,2020-03-24,2024-10-18,EUR,8329689.91,Active
-K345,Collateral,DB2,C41,2023-06-25,2027-09-30,EUR,2496009.56,Pending
-K346,Collateral,DB4,C5,2021-04-23,2025-10-23,SGD,9907936.08,Closed
-K347,Collateral,DB5,C3,2024-12-13,2027-09-09,EUR,7046179.44,Pending
-K356,Collateral,DB2,C26,2024-10-05,2027-08-24,GBP,1945230.56,Pending
-K361,Collateral,DB5,C12,2022-12-16,2025-06-03,EUR,9194957.54,Pending
-K367,Collateral,DB4,C44,2024-04-19,2028-06-14,SGD,4214741.31,Closed
-K381,Collateral,DB2,C28,2023-01-17,2023-11-22,GBP,4997677.98,Closed
-K383,Collateral,DB1,C8,2020-05-22,2021-06-09,GBP,4468730.89,Active
-K387,Collateral,DB1,C1,2021-12-03,2025-04-29,EUR,8189379.37,Closed
-K399,Collateral,DB4,C45,2024-04-05,2029-01-20,SGD,916035.34,Pending
-K419,Collateral,DB1,C38,2021-02-18,2025-03-14,JPY,716600.35,Pending
-K421,Collateral,DB3,C15,2022-10-10,2025-01-18,USD,9441191.39,Active
-K428,Collateral,DB3,C44,2021-02-10,2022-09-18,USD,5865005.63,Closed
-K436,Collateral,DB3,C12,2024-04-09,2026-07-26,USD,3256887.92,Active
-K446,Collateral,DB4,C42,2021-02-27,2022-07-14,EUR,1824606.44,Pending
-K448,Collateral,DB5,C3,2020-01-06,2024-06-10,GBP,6063647.81,Pending
-K452,Collateral,DB2,C27,2023-04-14,2026-03-26,SGD,8829529.52,Closed
-K462,Collateral,DB2,C24,2020-10-10,2024-11-12,SGD,3757076.48,Closed
-K463,Collateral,DB4,C17,2020-05-18,2022-05-07,GBP,8387079.65,Pending
-K470,Collateral,DB5,C21,2020-09-27,2023-05-29,EUR,5244912.96,Active
-K471,Collateral,DB1,C27,2024-12-30,2028-06-02,GBP,1567177.44,Pending
-K475,Collateral,DB3,C45,2023-06-02,2024-02-16,GBP,587980.66,Closed
-K478,Collateral,DB5,C42,2022-04-17,2026-11-14,USD,1960563.34,Active
-K479,Collateral,DB5,C24,2023-06-19,2028-02-10,USD,5201170.06,Active
-K480,Collateral,DB2,C50,2020-07-22,2022-10-17,JPY,8805392.65,Active
-K489,Collateral,DB5,C7,2023-12-20,2026-02-25,USD,5163985.8,Pending
-K492,Collateral,DB3,C44,2022-01-16,2022-11-08,GBP,7240703.66,Pending
-K501,Collateral,DB2,C21,2022-11-30,2025-09-13,GBP,7811517.66,Closed
-K504,Collateral,DB4,C26,2021-02-06,2025-01-14,SGD,9656745.62,Closed
-K514,Collateral,DB1,C43,2020-01-29,2022-04-04,JPY,2772773.78,Pending
-K517,Collateral,DB3,C11,2023-01-17,2027-06-25,USD,5526573.76,Active
-K524,Collateral,DB4,C42,2022-04-24,2024-12-18,GBP,1219259.91,Pending
-K526,Collateral,DB3,C40,2023-09-23,2025-03-27,USD,8639500.17,Pending
-K527,Collateral,DB1,C27,2021-02-09,2024-04-23,SGD,555126.02,Closed
-K533,Collateral,DB3,C8,2020-09-30,2024-01-13,SGD,7477865.75,Active
-K534,Collateral,DB1,C36,2020-11-14,2023-08-17,JPY,101680.18,Active
-K536,Collateral,DB3,C46,2023-11-12,2026-03-20,SGD,1228831.25,Pending
-K540,Collateral,DB1,C41,2022-11-15,2023-12-20,JPY,1319869.98,Closed
-K542,Collateral,DB5,C50,2023-09-06,2027-06-15,GBP,6948995.35,Active
-K543,Collateral,DB5,C39,2021-02-02,2022-03-01,EUR,5090690.18,Closed
-K545,Collateral,DB5,C45,2021-02-18,2022-05-26,JPY,3059240.04,Pending
-K556,Collateral,DB2,C44,2021-08-24,2023-10-15,USD,1951068.16,Active
-K557,Collateral,DB1,C28,2024-05-15,2025-07-13,EUR,5610326.34,Active
-K570,Collateral,DB4,C41,2022-03-14,2024-12-22,SGD,4386947.84,Active
-K582,Collateral,DB3,C40,2022-09-14,2025-12-02,EUR,6965235.48,Active
-K584,Collateral,DB3,C24,2021-11-19,2026-05-15,GBP,6827843.78,Closed
-K585,Collateral,DB3,C50,2024-01-31,2027-03-03,EUR,4921016.69,Active
-K590,Collateral,DB5,C33,2022-06-23,2023-09-20,USD,4028173.06,Pending
-K598,Collateral,DB5,C1,2024-02-21,2029-01-28,JPY,8832139.01,Closed
-K610,Collateral,DB5,C27,2020-01-04,2024-11-04,EUR,8760760.58,Pending
-K612,Collateral,DB2,C17,2024-11-24,2025-12-09,SGD,7682003.01,Active
-K613,Collateral,DB3,C13,2022-05-30,2026-04-04,USD,7120573.49,Active
-K616,Collateral,DB5,C24,2022-03-22,2025-09-19,JPY,2828049.37,Pending
-K618,Collateral,DB3,C20,2024-10-03,2028-05-11,JPY,3509127.41,Pending
-K621,Collateral,DB1,C6,2020-06-10,2021-11-01,GBP,4769519.73,Pending
-K626,Collateral,DB3,C43,2020-09-26,2022-10-11,SGD,4113964.57,Active
-K631,Collateral,DB4,C37,2024-11-21,2026-10-14,SGD,7722675.21,Closed
-K632,Collateral,DB5,C2,2023-11-26,2028-03-19,SGD,1251056.18,Active
-K638,Collateral,DB5,C1,2021-01-07,2021-12-13,JPY,9584131.6,Closed
-K642,Collateral,DB3,C45,2023-11-21,2025-01-20,USD,217017.79,Active
-K647,Collateral,DB4,C13,2022-04-18,2024-02-09,GBP,8020370.84,Pending
-K652,Collateral,DB1,C23,2022-12-05,2023-07-13,JPY,2069685.3,Pending
-K654,Collateral,DB5,C19,2023-10-20,2024-09-24,SGD,6353950.69,Active
-K657,Collateral,DB3,C29,2022-04-11,2026-02-28,EUR,7504165.43,Pending
-K663,Collateral,DB4,C35,2023-01-13,2025-05-08,EUR,5530598.22,Active
-K664,Collateral,DB5,C28,2024-08-02,2026-01-26,JPY,6433886.44,Pending
-K665,Collateral,DB5,C15,2022-08-20,2025-01-27,USD,4474417.03,Closed
-K667,Collateral,DB5,C1,2022-12-04,2025-01-09,SGD,9474879.37,Closed
-K668,Collateral,DB3,C39,2022-07-19,2023-02-02,GBP,7987997.1,Pending
-K669,Collateral,DB5,C28,2023-03-06,2024-09-22,SGD,2573971.57,Pending
-K672,Collateral,DB5,C29,2020-12-08,2024-12-31,EUR,7034678.72,Closed
-K677,Collateral,DB2,C13,2020-08-09,2024-02-22,EUR,8190782.17,Active
-K682,Collateral,DB3,C1,2020-12-16,2022-10-10,GBP,7964464.93,Pending
-K687,Collateral,DB3,C47,2021-08-22,2022-04-02,GBP,2581892.79,Active
-K688,Collateral,DB5,C19,2024-02-16,2028-07-31,JPY,7000673.97,Active
-K691,Collateral,DB1,C50,2024-08-09,2027-02-26,JPY,3852531.34,Active
-K694,Collateral,DB3,C8,2022-05-29,2024-09-15,USD,5279685.34,Active
-K696,Collateral,DB4,C34,2020-04-08,2023-12-18,JPY,7043008.81,Closed
-K698,Collateral,DB1,C24,2024-03-06,2025-02-12,JPY,7460426.67,Closed
-K702,Collateral,DB1,C50,2024-09-30,2029-06-10,JPY,3643837.32,Closed
-K704,Collateral,DB3,C21,2021-05-06,2024-10-30,JPY,9915483.61,Closed
-K705,Collateral,DB3,C39,2023-02-28,2025-12-18,GBP,5675132.56,Active
-K713,Collateral,DB4,C8,2022-11-04,2025-04-14,GBP,7502018.71,Pending
-K714,Collateral,DB1,C20,2020-02-05,2024-02-22,JPY,507704.3,Pending
-K718,Collateral,DB2,C49,2020-09-21,2023-06-14,GBP,4861132.77,Active
-K720,Collateral,DB3,C44,2022-04-07,2027-02-10,JPY,986987.02,Pending
-K730,Collateral,DB5,C46,2023-04-15,2025-01-27,USD,9048333.4,Closed
-K735,Collateral,DB2,C6,2021-04-16,2023-09-12,SGD,5255106.66,Pending
-K741,Collateral,DB3,C10,2023-07-01,2025-09-09,GBP,1157037.19,Active
-K750,Collateral,DB1,C36,2024-05-30,2027-12-02,SGD,5209654.16,Pending
-K752,Collateral,DB3,C40,2023-12-04,2025-05-07,USD,6930534.29,Active
-K753,Collateral,DB1,C47,2023-12-11,2028-01-22,JPY,1220398.7,Pending
-K754,Collateral,DB4,C21,2024-08-24,2025-11-24,SGD,346629.92,Closed
-K756,Collateral,DB3,C6,2020-10-10,2021-11-27,JPY,7102063.28,Pending
-K761,Collateral,DB2,C14,2020-01-18,2023-12-13,JPY,6628759.15,Closed
-K765,Collateral,DB2,C11,2020-06-01,2021-07-09,EUR,6149788.58,Pending
-K769,Collateral,DB5,C14,2022-10-19,2026-03-31,GBP,6159332.07,Active
-K772,Collateral,DB5,C47,2021-02-07,2025-01-15,SGD,4975794.09,Active
-K777,Collateral,DB5,C40,2022-11-01,2025-03-29,USD,8337223.42,Active
-K778,Collateral,DB4,C3,2022-10-23,2025-03-13,GBP,4866805.68,Pending
-K789,Collateral,DB1,C7,2020-09-27,2023-02-06,JPY,7685183.83,Pending
-K791,Collateral,DB1,C18,2024-07-11,2026-10-22,GBP,1659210.55,Active
-K794,Collateral,DB1,C9,2022-11-18,2026-05-28,USD,4760282.23,Pending
-K795,Collateral,DB1,C6,2020-06-05,2021-07-06,SGD,3979975.93,Pending
-K797,Collateral,DB5,C9,2024-07-15,2025-06-20,USD,8147225.08,Pending
-K798,Collateral,DB3,C44,2023-12-25,2025-01-07,SGD,4758404.16,Active
-K801,Collateral,DB2,C19,2022-12-27,2026-03-01,EUR,6083958.29,Active
-K802,Collateral,DB1,C21,2024-04-27,2025-05-22,JPY,6529568.99,Closed
-K803,Collateral,DB5,C27,2024-07-13,2027-08-11,GBP,6246660.9,Pending
-K804,Collateral,DB1,C22,2021-05-09,2024-07-19,GBP,8157765.48,Pending
-K805,Collateral,DB5,C22,2023-09-01,2028-07-22,JPY,6971918.25,Active
-K806,Collateral,DB1,C38,2020-08-30,2025-04-20,JPY,4682793.5,Pending
-K808,Collateral,DB1,C6,2023-03-23,2025-07-20,GBP,8188632.54,Pending
-K817,Collateral,DB4,C9,2021-03-23,2025-10-05,USD,1458480.66,Closed
-K818,Collateral,DB5,C12,2023-11-17,2028-10-16,SGD,5143207.65,Pending
-K823,Collateral,DB1,C44,2020-10-01,2022-08-14,JPY,8001172.58,Closed
-K832,Collateral,DB2,C14,2023-04-05,2025-01-31,JPY,7370175.0,Closed
-K837,Collateral,DB4,C50,2020-11-01,2022-10-04,GBP,7369703.21,Pending
-K839,Collateral,DB1,C34,2020-07-30,2021-02-19,USD,6886445.57,Closed
-K844,Collateral,DB3,C17,2023-11-09,2025-11-24,GBP,7829239.86,Closed
-K845,Collateral,DB3,C4,2020-07-12,2023-03-02,EUR,9560496.42,Closed
-K849,Collateral,DB1,C32,2022-02-17,2026-12-24,GBP,6563366.79,Active
-K850,Collateral,DB3,C10,2020-04-27,2024-07-16,EUR,9055713.68,Pending
-K851,Collateral,DB4,C28,2020-01-12,2023-05-31,SGD,8456086.62,Active
-K855,Collateral,DB1,C41,2021-08-16,2023-10-17,EUR,4916385.07,Pending
-K857,Collateral,DB1,C35,2022-01-10,2025-04-05,EUR,5046873.1,Closed
-K863,Collateral,DB3,C8,2023-08-17,2026-01-03,JPY,5504259.49,Closed
-K865,Collateral,DB2,C45,2021-03-14,2025-12-09,EUR,5578736.53,Closed
-K868,Collateral,DB2,C14,2022-05-31,2025-03-28,GBP,6434274.47,Pending
-K874,Collateral,DB1,C7,2022-02-20,2024-07-03,USD,9256127.32,Active
-K878,Collateral,DB5,C32,2021-11-16,2022-10-12,USD,8915839.55,Active
-K879,Collateral,DB2,C25,2021-11-02,2025-09-30,EUR,1450405.68,Pending
-K885,Collateral,DB5,C15,2022-02-08,2024-06-07,JPY,9467898.31,Pending
-K890,Collateral,DB4,C50,2024-12-18,2025-08-04,GBP,8754570.48,Closed
-K899,Collateral,DB5,C44,2024-06-24,2025-08-29,JPY,9004566.86,Closed
-K903,Collateral,DB1,C19,2022-12-13,2025-10-18,GBP,723200.14,Active
-K905,Collateral,DB4,C20,2024-02-19,2027-12-15,JPY,1406347.09,Closed
-K917,Collateral,DB2,C32,2020-09-28,2024-02-08,EUR,6071401.56,Pending
-K920,Collateral,DB4,C29,2021-11-01,2026-05-29,EUR,1721524.4,Pending
-K921,Collateral,DB2,C38,2023-08-09,2028-03-07,JPY,952171.95,Active
-K924,Collateral,DB3,C36,2021-09-11,2023-03-25,SGD,518105.85,Closed
-K925,Collateral,DB5,C48,2024-12-23,2027-03-05,SGD,2322750.19,Active
-K928,Collateral,DB3,C41,2024-12-10,2028-02-17,SGD,9745161.61,Active
-K952,Collateral,DB3,C12,2021-08-09,2022-06-27,USD,9987360.92,Closed
-K953,Collateral,DB5,C43,2020-11-22,2023-08-10,USD,1280256.65,Closed
-K955,Collateral,DB1,C15,2021-09-14,2025-07-13,SGD,7279484.95,Closed
-K961,Collateral,DB4,C33,2021-09-19,2023-11-09,EUR,5470137.34,Pending
-K964,Collateral,DB2,C20,2021-05-24,2024-08-22,SGD,4925803.77,Active
-K965,Collateral,DB5,C44,2024-11-02,2029-02-11,JPY,5764881.31,Closed
-K971,Collateral,DB4,C37,2022-10-10,2023-06-23,JPY,9023957.47,Closed
-K972,Collateral,DB5,C2,2020-03-04,2024-07-26,EUR,3839602.17,Closed
-K977,Collateral,DB4,C14,2024-10-25,2029-10-19,EUR,7976952.32,Pending
-K979,Collateral,DB5,C12,2023-06-03,2025-04-27,USD,6315654.97,Pending
-K980,Collateral,DB2,C43,2021-08-02,2025-04-24,SGD,2752565.94,Pending
-K981,Collateral,DB5,C47,2024-07-13,2028-06-20,USD,5270468.9,Closed
-K985,Collateral,DB4,C42,2023-12-13,2027-03-01,USD,2099706.04,Closed
-K990,Collateral,DB2,C28,2022-10-20,2026-07-27,GBP,1528351.3,Active
-K991,Collateral,DB4,C17,2021-10-27,2023-11-08,JPY,653661.49,Pending
-K998,Collateral,DB3,C46,2024-01-03,2028-08-18,SGD,8779936.15,Active
+contractId,contractType,dbEntityId,clientId,startDate,endDate,currency,amount,status,Description
+K14,Collateral,DB2,C31,2024-11-09,2028-07-31,SGD,1985058.15,Active,"Collateral contract K14 of type Collateral valued at 1985058.15 SGD, valid from 2024-11-09 to 2028-07-31."
+K15,Collateral,DB4,C30,2023-09-01,2026-02-22,USD,6766309.02,Pending,"Collateral contract K15 of type Collateral valued at 6766309.02 USD, valid from 2023-09-01 to 2026-02-22."
+K16,Collateral,DB3,C7,2020-11-01,2021-09-01,GBP,1996741.71,Pending,"Collateral contract K16 of type Collateral valued at 1996741.71 GBP, valid from 2020-11-01 to 2021-09-01."
+K17,Collateral,DB2,C18,2023-10-25,2025-02-03,SGD,2573083.83,Active,"Collateral contract K17 of type Collateral valued at 2573083.83 SGD, valid from 2023-10-25 to 2025-02-03."
+K19,Collateral,DB4,C31,2022-01-04,2023-06-08,GBP,8660038.9,Active,"Collateral contract K19 of type Collateral valued at 8660038.9 GBP, valid from 2022-01-04 to 2023-06-08."
+K21,Collateral,DB2,C13,2024-09-22,2028-12-05,EUR,2255238.89,Active,"Collateral contract K21 of type Collateral valued at 2255238.89 EUR, valid from 2024-09-22 to 2028-12-05."
+K32,Collateral,DB3,C3,2020-10-13,2024-10-31,USD,3402209.73,Active,"Collateral contract K32 of type Collateral valued at 3402209.73 USD, valid from 2020-10-13 to 2024-10-31."
+K33,Collateral,DB5,C46,2022-03-24,2023-08-16,SGD,5652977.96,Active,"Collateral contract K33 of type Collateral valued at 5652977.96 SGD, valid from 2022-03-24 to 2023-08-16."
+K41,Collateral,DB5,C22,2022-12-26,2027-01-27,USD,1241883.34,Closed,"Collateral contract K41 of type Collateral valued at 1241883.34 USD, valid from 2022-12-26 to 2027-01-27."
+K52,Collateral,DB2,C10,2023-04-07,2026-07-12,USD,8937332.28,Active,"Collateral contract K52 of type Collateral valued at 8937332.28 USD, valid from 2023-04-07 to 2026-07-12."
+K54,Collateral,DB5,C36,2023-11-19,2025-02-14,JPY,3241249.78,Closed,"Collateral contract K54 of type Collateral valued at 3241249.78 JPY, valid from 2023-11-19 to 2025-02-14."
+K55,Collateral,DB2,C48,2024-04-17,2027-03-06,SGD,4555690.6,Active,"Collateral contract K55 of type Collateral valued at 4555690.6 SGD, valid from 2024-04-17 to 2027-03-06."
+K56,Collateral,DB2,C18,2022-05-11,2027-02-22,SGD,867085.2,Closed,"Collateral contract K56 of type Collateral valued at 867085.2 SGD, valid from 2022-05-11 to 2027-02-22."
+K60,Collateral,DB4,C1,2020-03-01,2024-12-12,EUR,3056265.26,Closed,"Collateral contract K60 of type Collateral valued at 3056265.26 EUR, valid from 2020-03-01 to 2024-12-12."
+K62,Collateral,DB2,C30,2023-04-23,2025-09-07,GBP,9809147.58,Pending,"Collateral contract K62 of type Collateral valued at 9809147.58 GBP, valid from 2023-04-23 to 2025-09-07."
+K65,Collateral,DB3,C6,2023-03-23,2025-04-10,SGD,291894.54,Pending,"Collateral contract K65 of type Collateral valued at 291894.54 SGD, valid from 2023-03-23 to 2025-04-10."
+K70,Collateral,DB4,C46,2024-11-23,2029-03-09,GBP,852365.13,Pending,"Collateral contract K70 of type Collateral valued at 852365.13 GBP, valid from 2024-11-23 to 2029-03-09."
+K73,Collateral,DB3,C41,2024-03-03,2025-04-03,SGD,7102355.57,Closed,"Collateral contract K73 of type Collateral valued at 7102355.57 SGD, valid from 2024-03-03 to 2025-04-03."
+K76,Collateral,DB3,C2,2024-11-05,2028-10-04,SGD,8524433.08,Active,"Collateral contract K76 of type Collateral valued at 8524433.08 SGD, valid from 2024-11-05 to 2028-10-04."
+K86,Collateral,DB1,C1,2021-01-27,2025-02-21,JPY,2914959.34,Closed,"Collateral contract K86 of type Collateral valued at 2914959.34 JPY, valid from 2021-01-27 to 2025-02-21."
+K90,Collateral,DB4,C29,2021-12-02,2026-10-05,EUR,8615649.99,Closed,"Collateral contract K90 of type Collateral valued at 8615649.99 EUR, valid from 2021-12-02 to 2026-10-05."
+K93,Collateral,DB5,C31,2020-01-09,2022-10-21,EUR,423134.57,Closed,"Collateral contract K93 of type Collateral valued at 423134.57 EUR, valid from 2020-01-09 to 2022-10-21."
+K94,Collateral,DB1,C44,2022-05-28,2026-11-02,GBP,9246719.34,Pending,"Collateral contract K94 of type Collateral valued at 9246719.34 GBP, valid from 2022-05-28 to 2026-11-02."
+K100,Collateral,DB3,C12,2024-01-01,2027-05-27,JPY,4415261.37,Closed,"Collateral contract K100 of type Collateral valued at 4415261.37 JPY, valid from 2024-01-01 to 2027-05-27."
+K102,Collateral,DB3,C43,2022-10-21,2025-08-09,SGD,8154303.74,Pending,"Collateral contract K102 of type Collateral valued at 8154303.74 SGD, valid from 2022-10-21 to 2025-08-09."
+K104,Collateral,DB4,C4,2024-05-17,2024-11-15,GBP,5232549.99,Pending,"Collateral contract K104 of type Collateral valued at 5232549.99 GBP, valid from 2024-05-17 to 2024-11-15."
+K105,Collateral,DB1,C14,2024-03-28,2028-03-27,EUR,5537274.43,Closed,"Collateral contract K105 of type Collateral valued at 5537274.43 EUR, valid from 2024-03-28 to 2028-03-27."
+K106,Collateral,DB1,C2,2023-09-23,2028-02-19,JPY,8013205.96,Pending,"Collateral contract K106 of type Collateral valued at 8013205.96 JPY, valid from 2023-09-23 to 2028-02-19."
+K109,Collateral,DB2,C30,2023-07-14,2026-09-24,JPY,1531955.49,Active,"Collateral contract K109 of type Collateral valued at 1531955.49 JPY, valid from 2023-07-14 to 2026-09-24."
+K112,Collateral,DB3,C22,2021-04-06,2024-04-04,JPY,7652439.51,Closed,"Collateral contract K112 of type Collateral valued at 7652439.51 JPY, valid from 2021-04-06 to 2024-04-04."
+K114,Collateral,DB4,C25,2020-05-15,2022-08-24,GBP,5003753.63,Active,"Collateral contract K114 of type Collateral valued at 5003753.63 GBP, valid from 2020-05-15 to 2022-08-24."
+K117,Collateral,DB1,C22,2022-11-17,2026-11-12,JPY,3862093.04,Closed,"Collateral contract K117 of type Collateral valued at 3862093.04 JPY, valid from 2022-11-17 to 2026-11-12."
+K121,Collateral,DB5,C44,2021-03-28,2023-02-06,GBP,1782838.13,Active,"Collateral contract K121 of type Collateral valued at 1782838.13 GBP, valid from 2021-03-28 to 2023-02-06."
+K125,Collateral,DB4,C7,2022-07-27,2024-03-05,GBP,3875506.55,Closed,"Collateral contract K125 of type Collateral valued at 3875506.55 GBP, valid from 2022-07-27 to 2024-03-05."
+K127,Collateral,DB3,C50,2020-06-01,2024-04-22,GBP,6109943.48,Closed,"Collateral contract K127 of type Collateral valued at 6109943.48 GBP, valid from 2020-06-01 to 2024-04-22."
+K129,Collateral,DB1,C38,2020-05-02,2022-07-23,EUR,7350361.7,Active,"Collateral contract K129 of type Collateral valued at 7350361.7 EUR, valid from 2020-05-02 to 2022-07-23."
+K130,Collateral,DB2,C13,2022-07-05,2024-10-31,GBP,7886476.83,Closed,"Collateral contract K130 of type Collateral valued at 7886476.83 GBP, valid from 2022-07-05 to 2024-10-31."
+K132,Collateral,DB1,C10,2022-11-18,2024-01-07,GBP,8615391.91,Pending,"Collateral contract K132 of type Collateral valued at 8615391.91 GBP, valid from 2022-11-18 to 2024-01-07."
+K136,Collateral,DB1,C9,2022-07-27,2026-09-13,USD,9467989.18,Closed,"Collateral contract K136 of type Collateral valued at 9467989.18 USD, valid from 2022-07-27 to 2026-09-13."
+K141,Collateral,DB1,C43,2021-08-12,2022-10-16,GBP,6452874.23,Pending,"Collateral contract K141 of type Collateral valued at 6452874.23 GBP, valid from 2021-08-12 to 2022-10-16."
+K153,Collateral,DB4,C27,2023-07-09,2025-11-29,USD,3194228.66,Closed,"Collateral contract K153 of type Collateral valued at 3194228.66 USD, valid from 2023-07-09 to 2025-11-29."
+K159,Collateral,DB5,C50,2024-11-18,2026-08-23,JPY,6174375.48,Pending,"Collateral contract K159 of type Collateral valued at 6174375.48 JPY, valid from 2024-11-18 to 2026-08-23."
+K165,Collateral,DB4,C39,2022-04-25,2025-04-16,SGD,4200419.01,Active,"Collateral contract K165 of type Collateral valued at 4200419.01 SGD, valid from 2022-04-25 to 2025-04-16."
+K172,Collateral,DB3,C8,2023-06-10,2027-11-29,SGD,306479.93,Closed,"Collateral contract K172 of type Collateral valued at 306479.93 SGD, valid from 2023-06-10 to 2027-11-29."
+K173,Collateral,DB3,C6,2021-06-17,2026-06-12,SGD,8460395.16,Active,"Collateral contract K173 of type Collateral valued at 8460395.16 SGD, valid from 2021-06-17 to 2026-06-12."
+K174,Collateral,DB5,C6,2023-09-15,2027-07-02,SGD,8718191.72,Pending,"Collateral contract K174 of type Collateral valued at 8718191.72 SGD, valid from 2023-09-15 to 2027-07-02."
+K178,Collateral,DB5,C42,2024-03-15,2027-04-19,JPY,3299761.59,Pending,"Collateral contract K178 of type Collateral valued at 3299761.59 JPY, valid from 2024-03-15 to 2027-04-19."
+K179,Collateral,DB1,C31,2022-09-09,2024-01-11,SGD,6350712.69,Closed,"Collateral contract K179 of type Collateral valued at 6350712.69 SGD, valid from 2022-09-09 to 2024-01-11."
+K188,Collateral,DB2,C39,2022-08-21,2026-10-22,USD,3164860.69,Closed,"Collateral contract K188 of type Collateral valued at 3164860.69 USD, valid from 2022-08-21 to 2026-10-22."
+K195,Collateral,DB4,C50,2021-08-25,2024-03-15,EUR,7803427.97,Pending,"Collateral contract K195 of type Collateral valued at 7803427.97 EUR, valid from 2021-08-25 to 2024-03-15."
+K201,Collateral,DB2,C49,2020-04-29,2022-06-05,SGD,4541154.59,Active,"Collateral contract K201 of type Collateral valued at 4541154.59 SGD, valid from 2020-04-29 to 2022-06-05."
+K204,Collateral,DB1,C8,2023-07-28,2027-08-24,SGD,6007716.52,Active,"Collateral contract K204 of type Collateral valued at 6007716.52 SGD, valid from 2023-07-28 to 2027-08-24."
+K206,Collateral,DB2,C43,2022-01-17,2025-09-26,USD,5282497.12,Closed,"Collateral contract K206 of type Collateral valued at 5282497.12 USD, valid from 2022-01-17 to 2025-09-26."
+K210,Collateral,DB4,C41,2021-06-27,2026-05-07,GBP,8133827.05,Active,"Collateral contract K210 of type Collateral valued at 8133827.05 GBP, valid from 2021-06-27 to 2026-05-07."
+K212,Collateral,DB5,C31,2022-08-21,2026-01-07,EUR,462545.64,Pending,"Collateral contract K212 of type Collateral valued at 462545.64 EUR, valid from 2022-08-21 to 2026-01-07."
+K214,Collateral,DB4,C22,2023-09-19,2026-06-14,GBP,5012411.94,Closed,"Collateral contract K214 of type Collateral valued at 5012411.94 GBP, valid from 2023-09-19 to 2026-06-14."
+K217,Collateral,DB2,C45,2022-08-10,2025-08-07,SGD,3580315.14,Active,"Collateral contract K217 of type Collateral valued at 3580315.14 SGD, valid from 2022-08-10 to 2025-08-07."
+K218,Collateral,DB3,C41,2022-12-31,2026-12-09,USD,842907.53,Pending,"Collateral contract K218 of type Collateral valued at 842907.53 USD, valid from 2022-12-31 to 2026-12-09."
+K228,Collateral,DB1,C24,2021-03-07,2022-12-31,JPY,5765546.33,Closed,"Collateral contract K228 of type Collateral valued at 5765546.33 JPY, valid from 2021-03-07 to 2022-12-31."
+K230,Collateral,DB4,C37,2024-01-27,2027-07-06,USD,1340735.14,Closed,"Collateral contract K230 of type Collateral valued at 1340735.14 USD, valid from 2024-01-27 to 2027-07-06."
+K231,Collateral,DB5,C23,2020-08-18,2023-08-24,GBP,8791805.5,Pending,"Collateral contract K231 of type Collateral valued at 8791805.5 GBP, valid from 2020-08-18 to 2023-08-24."
+K239,Collateral,DB4,C31,2020-07-05,2021-11-20,SGD,2119827.83,Pending,"Collateral contract K239 of type Collateral valued at 2119827.83 SGD, valid from 2020-07-05 to 2021-11-20."
+K247,Collateral,DB3,C3,2023-02-10,2027-11-20,SGD,606461.11,Pending,"Collateral contract K247 of type Collateral valued at 606461.11 SGD, valid from 2023-02-10 to 2027-11-20."
+K260,Collateral,DB3,C12,2024-01-26,2027-07-05,SGD,9130029.19,Closed,"Collateral contract K260 of type Collateral valued at 9130029.19 SGD, valid from 2024-01-26 to 2027-07-05."
+K263,Collateral,DB3,C36,2024-02-28,2026-06-06,EUR,2949114.82,Pending,"Collateral contract K263 of type Collateral valued at 2949114.82 EUR, valid from 2024-02-28 to 2026-06-06."
+K264,Collateral,DB3,C50,2024-08-14,2027-03-29,GBP,2975481.25,Closed,"Collateral contract K264 of type Collateral valued at 2975481.25 GBP, valid from 2024-08-14 to 2027-03-29."
+K265,Collateral,DB3,C48,2020-09-02,2023-02-08,SGD,2218469.4,Pending,"Collateral contract K265 of type Collateral valued at 2218469.4 SGD, valid from 2020-09-02 to 2023-02-08."
+K271,Collateral,DB2,C48,2023-05-18,2028-04-14,EUR,8779757.36,Active,"Collateral contract K271 of type Collateral valued at 8779757.36 EUR, valid from 2023-05-18 to 2028-04-14."
+K274,Collateral,DB3,C46,2022-10-24,2024-03-19,GBP,239433.54,Closed,"Collateral contract K274 of type Collateral valued at 239433.54 GBP, valid from 2022-10-24 to 2024-03-19."
+K276,Collateral,DB1,C12,2022-10-15,2023-10-07,GBP,4826795.58,Active,"Collateral contract K276 of type Collateral valued at 4826795.58 GBP, valid from 2022-10-15 to 2023-10-07."
+K277,Collateral,DB2,C29,2020-01-22,2022-01-05,EUR,9544944.74,Closed,"Collateral contract K277 of type Collateral valued at 9544944.74 EUR, valid from 2020-01-22 to 2022-01-05."
+K281,Collateral,DB5,C24,2024-01-25,2025-06-01,SGD,7049213.2,Closed,"Collateral contract K281 of type Collateral valued at 7049213.2 SGD, valid from 2024-01-25 to 2025-06-01."
+K285,Collateral,DB1,C33,2021-09-30,2026-04-05,SGD,8106051.62,Closed,"Collateral contract K285 of type Collateral valued at 8106051.62 SGD, valid from 2021-09-30 to 2026-04-05."
+K286,Collateral,DB4,C37,2021-02-13,2024-06-28,USD,5632092.27,Pending,"Collateral contract K286 of type Collateral valued at 5632092.27 USD, valid from 2021-02-13 to 2024-06-28."
+K288,Collateral,DB3,C45,2020-08-14,2021-05-13,USD,5457518.69,Active,"Collateral contract K288 of type Collateral valued at 5457518.69 USD, valid from 2020-08-14 to 2021-05-13."
+K290,Collateral,DB4,C25,2023-07-30,2026-03-02,SGD,894474.93,Pending,"Collateral contract K290 of type Collateral valued at 894474.93 SGD, valid from 2023-07-30 to 2026-03-02."
+K293,Collateral,DB3,C10,2021-12-14,2023-10-31,EUR,1965956.47,Pending,"Collateral contract K293 of type Collateral valued at 1965956.47 EUR, valid from 2021-12-14 to 2023-10-31."
+K294,Collateral,DB5,C50,2020-12-16,2021-08-18,USD,2482596.31,Active,"Collateral contract K294 of type Collateral valued at 2482596.31 USD, valid from 2020-12-16 to 2021-08-18."
+K298,Collateral,DB3,C18,2024-06-07,2026-03-01,USD,5611509.37,Pending,"Collateral contract K298 of type Collateral valued at 5611509.37 USD, valid from 2024-06-07 to 2026-03-01."
+K299,Collateral,DB5,C32,2021-06-28,2025-06-29,USD,9725673.33,Pending,"Collateral contract K299 of type Collateral valued at 9725673.33 USD, valid from 2021-06-28 to 2025-06-29."
+K302,Collateral,DB5,C34,2024-10-13,2027-08-04,GBP,3945348.58,Closed,"Collateral contract K302 of type Collateral valued at 3945348.58 GBP, valid from 2024-10-13 to 2027-08-04."
+K304,Collateral,DB5,C39,2020-06-09,2022-06-08,USD,8748842.54,Active,"Collateral contract K304 of type Collateral valued at 8748842.54 USD, valid from 2020-06-09 to 2022-06-08."
+K316,Collateral,DB3,C4,2020-01-29,2021-10-17,JPY,6413513.06,Pending,"Collateral contract K316 of type Collateral valued at 6413513.06 JPY, valid from 2020-01-29 to 2021-10-17."
+K317,Collateral,DB1,C1,2024-02-10,2028-04-19,JPY,5561271.25,Active,"Collateral contract K317 of type Collateral valued at 5561271.25 JPY, valid from 2024-02-10 to 2028-04-19."
+K322,Collateral,DB4,C25,2020-04-08,2021-04-14,JPY,4812450.49,Pending,"Collateral contract K322 of type Collateral valued at 4812450.49 JPY, valid from 2020-04-08 to 2021-04-14."
+K329,Collateral,DB3,C2,2022-11-24,2026-10-13,EUR,7857126.58,Closed,"Collateral contract K329 of type Collateral valued at 7857126.58 EUR, valid from 2022-11-24 to 2026-10-13."
+K334,Collateral,DB1,C2,2023-10-26,2027-06-07,USD,3603751.44,Active,"Collateral contract K334 of type Collateral valued at 3603751.44 USD, valid from 2023-10-26 to 2027-06-07."
+K340,Collateral,DB3,C28,2023-03-26,2025-07-27,JPY,1447632.27,Closed,"Collateral contract K340 of type Collateral valued at 1447632.27 JPY, valid from 2023-03-26 to 2025-07-27."
+K344,Collateral,DB2,C29,2020-03-24,2024-10-18,EUR,8329689.91,Active,"Collateral contract K344 of type Collateral valued at 8329689.91 EUR, valid from 2020-03-24 to 2024-10-18."
+K345,Collateral,DB2,C41,2023-06-25,2027-09-30,EUR,2496009.56,Pending,"Collateral contract K345 of type Collateral valued at 2496009.56 EUR, valid from 2023-06-25 to 2027-09-30."
+K346,Collateral,DB4,C5,2021-04-23,2025-10-23,SGD,9907936.08,Closed,"Collateral contract K346 of type Collateral valued at 9907936.08 SGD, valid from 2021-04-23 to 2025-10-23."
+K347,Collateral,DB5,C3,2024-12-13,2027-09-09,EUR,7046179.44,Pending,"Collateral contract K347 of type Collateral valued at 7046179.44 EUR, valid from 2024-12-13 to 2027-09-09."
+K356,Collateral,DB2,C26,2024-10-05,2027-08-24,GBP,1945230.56,Pending,"Collateral contract K356 of type Collateral valued at 1945230.56 GBP, valid from 2024-10-05 to 2027-08-24."
+K361,Collateral,DB5,C12,2022-12-16,2025-06-03,EUR,9194957.54,Pending,"Collateral contract K361 of type Collateral valued at 9194957.54 EUR, valid from 2022-12-16 to 2025-06-03."
+K367,Collateral,DB4,C44,2024-04-19,2028-06-14,SGD,4214741.31,Closed,"Collateral contract K367 of type Collateral valued at 4214741.31 SGD, valid from 2024-04-19 to 2028-06-14."
+K381,Collateral,DB2,C28,2023-01-17,2023-11-22,GBP,4997677.98,Closed,"Collateral contract K381 of type Collateral valued at 4997677.98 GBP, valid from 2023-01-17 to 2023-11-22."
+K383,Collateral,DB1,C8,2020-05-22,2021-06-09,GBP,4468730.89,Active,"Collateral contract K383 of type Collateral valued at 4468730.89 GBP, valid from 2020-05-22 to 2021-06-09."
+K387,Collateral,DB1,C1,2021-12-03,2025-04-29,EUR,8189379.37,Closed,"Collateral contract K387 of type Collateral valued at 8189379.37 EUR, valid from 2021-12-03 to 2025-04-29."
+K399,Collateral,DB4,C45,2024-04-05,2029-01-20,SGD,916035.34,Pending,"Collateral contract K399 of type Collateral valued at 916035.34 SGD, valid from 2024-04-05 to 2029-01-20."
+K419,Collateral,DB1,C38,2021-02-18,2025-03-14,JPY,716600.35,Pending,"Collateral contract K419 of type Collateral valued at 716600.35 JPY, valid from 2021-02-18 to 2025-03-14."
+K421,Collateral,DB3,C15,2022-10-10,2025-01-18,USD,9441191.39,Active,"Collateral contract K421 of type Collateral valued at 9441191.39 USD, valid from 2022-10-10 to 2025-01-18."
+K428,Collateral,DB3,C44,2021-02-10,2022-09-18,USD,5865005.63,Closed,"Collateral contract K428 of type Collateral valued at 5865005.63 USD, valid from 2021-02-10 to 2022-09-18."
+K436,Collateral,DB3,C12,2024-04-09,2026-07-26,USD,3256887.92,Active,"Collateral contract K436 of type Collateral valued at 3256887.92 USD, valid from 2024-04-09 to 2026-07-26."
+K446,Collateral,DB4,C42,2021-02-27,2022-07-14,EUR,1824606.44,Pending,"Collateral contract K446 of type Collateral valued at 1824606.44 EUR, valid from 2021-02-27 to 2022-07-14."
+K448,Collateral,DB5,C3,2020-01-06,2024-06-10,GBP,6063647.81,Pending,"Collateral contract K448 of type Collateral valued at 6063647.81 GBP, valid from 2020-01-06 to 2024-06-10."
+K452,Collateral,DB2,C27,2023-04-14,2026-03-26,SGD,8829529.52,Closed,"Collateral contract K452 of type Collateral valued at 8829529.52 SGD, valid from 2023-04-14 to 2026-03-26."
+K462,Collateral,DB2,C24,2020-10-10,2024-11-12,SGD,3757076.48,Closed,"Collateral contract K462 of type Collateral valued at 3757076.48 SGD, valid from 2020-10-10 to 2024-11-12."
+K463,Collateral,DB4,C17,2020-05-18,2022-05-07,GBP,8387079.65,Pending,"Collateral contract K463 of type Collateral valued at 8387079.65 GBP, valid from 2020-05-18 to 2022-05-07."
+K470,Collateral,DB5,C21,2020-09-27,2023-05-29,EUR,5244912.96,Active,"Collateral contract K470 of type Collateral valued at 5244912.96 EUR, valid from 2020-09-27 to 2023-05-29."
+K471,Collateral,DB1,C27,2024-12-30,2028-06-02,GBP,1567177.44,Pending,"Collateral contract K471 of type Collateral valued at 1567177.44 GBP, valid from 2024-12-30 to 2028-06-02."
+K475,Collateral,DB3,C45,2023-06-02,2024-02-16,GBP,587980.66,Closed,"Collateral contract K475 of type Collateral valued at 587980.66 GBP, valid from 2023-06-02 to 2024-02-16."
+K478,Collateral,DB5,C42,2022-04-17,2026-11-14,USD,1960563.34,Active,"Collateral contract K478 of type Collateral valued at 1960563.34 USD, valid from 2022-04-17 to 2026-11-14."
+K479,Collateral,DB5,C24,2023-06-19,2028-02-10,USD,5201170.06,Active,"Collateral contract K479 of type Collateral valued at 5201170.06 USD, valid from 2023-06-19 to 2028-02-10."
+K480,Collateral,DB2,C50,2020-07-22,2022-10-17,JPY,8805392.65,Active,"Collateral contract K480 of type Collateral valued at 8805392.65 JPY, valid from 2020-07-22 to 2022-10-17."
+K489,Collateral,DB5,C7,2023-12-20,2026-02-25,USD,5163985.8,Pending,"Collateral contract K489 of type Collateral valued at 5163985.8 USD, valid from 2023-12-20 to 2026-02-25."
+K492,Collateral,DB3,C44,2022-01-16,2022-11-08,GBP,7240703.66,Pending,"Collateral contract K492 of type Collateral valued at 7240703.66 GBP, valid from 2022-01-16 to 2022-11-08."
+K501,Collateral,DB2,C21,2022-11-30,2025-09-13,GBP,7811517.66,Closed,"Collateral contract K501 of type Collateral valued at 7811517.66 GBP, valid from 2022-11-30 to 2025-09-13."
+K504,Collateral,DB4,C26,2021-02-06,2025-01-14,SGD,9656745.62,Closed,"Collateral contract K504 of type Collateral valued at 9656745.62 SGD, valid from 2021-02-06 to 2025-01-14."
+K514,Collateral,DB1,C43,2020-01-29,2022-04-04,JPY,2772773.78,Pending,"Collateral contract K514 of type Collateral valued at 2772773.78 JPY, valid from 2020-01-29 to 2022-04-04."
+K517,Collateral,DB3,C11,2023-01-17,2027-06-25,USD,5526573.76,Active,"Collateral contract K517 of type Collateral valued at 5526573.76 USD, valid from 2023-01-17 to 2027-06-25."
+K524,Collateral,DB4,C42,2022-04-24,2024-12-18,GBP,1219259.91,Pending,"Collateral contract K524 of type Collateral valued at 1219259.91 GBP, valid from 2022-04-24 to 2024-12-18."
+K526,Collateral,DB3,C40,2023-09-23,2025-03-27,USD,8639500.17,Pending,"Collateral contract K526 of type Collateral valued at 8639500.17 USD, valid from 2023-09-23 to 2025-03-27."
+K527,Collateral,DB1,C27,2021-02-09,2024-04-23,SGD,555126.02,Closed,"Collateral contract K527 of type Collateral valued at 555126.02 SGD, valid from 2021-02-09 to 2024-04-23."
+K533,Collateral,DB3,C8,2020-09-30,2024-01-13,SGD,7477865.75,Active,"Collateral contract K533 of type Collateral valued at 7477865.75 SGD, valid from 2020-09-30 to 2024-01-13."
+K534,Collateral,DB1,C36,2020-11-14,2023-08-17,JPY,101680.18,Active,"Collateral contract K534 of type Collateral valued at 101680.18 JPY, valid from 2020-11-14 to 2023-08-17."
+K536,Collateral,DB3,C46,2023-11-12,2026-03-20,SGD,1228831.25,Pending,"Collateral contract K536 of type Collateral valued at 1228831.25 SGD, valid from 2023-11-12 to 2026-03-20."
+K540,Collateral,DB1,C41,2022-11-15,2023-12-20,JPY,1319869.98,Closed,"Collateral contract K540 of type Collateral valued at 1319869.98 JPY, valid from 2022-11-15 to 2023-12-20."
+K542,Collateral,DB5,C50,2023-09-06,2027-06-15,GBP,6948995.35,Active,"Collateral contract K542 of type Collateral valued at 6948995.35 GBP, valid from 2023-09-06 to 2027-06-15."
+K543,Collateral,DB5,C39,2021-02-02,2022-03-01,EUR,5090690.18,Closed,"Collateral contract K543 of type Collateral valued at 5090690.18 EUR, valid from 2021-02-02 to 2022-03-01."
+K545,Collateral,DB5,C45,2021-02-18,2022-05-26,JPY,3059240.04,Pending,"Collateral contract K545 of type Collateral valued at 3059240.04 JPY, valid from 2021-02-18 to 2022-05-26."
+K556,Collateral,DB2,C44,2021-08-24,2023-10-15,USD,1951068.16,Active,"Collateral contract K556 of type Collateral valued at 1951068.16 USD, valid from 2021-08-24 to 2023-10-15."
+K557,Collateral,DB1,C28,2024-05-15,2025-07-13,EUR,5610326.34,Active,"Collateral contract K557 of type Collateral valued at 5610326.34 EUR, valid from 2024-05-15 to 2025-07-13."
+K570,Collateral,DB4,C41,2022-03-14,2024-12-22,SGD,4386947.84,Active,"Collateral contract K570 of type Collateral valued at 4386947.84 SGD, valid from 2022-03-14 to 2024-12-22."
+K582,Collateral,DB3,C40,2022-09-14,2025-12-02,EUR,6965235.48,Active,"Collateral contract K582 of type Collateral valued at 6965235.48 EUR, valid from 2022-09-14 to 2025-12-02."
+K584,Collateral,DB3,C24,2021-11-19,2026-05-15,GBP,6827843.78,Closed,"Collateral contract K584 of type Collateral valued at 6827843.78 GBP, valid from 2021-11-19 to 2026-05-15."
+K585,Collateral,DB3,C50,2024-01-31,2027-03-03,EUR,4921016.69,Active,"Collateral contract K585 of type Collateral valued at 4921016.69 EUR, valid from 2024-01-31 to 2027-03-03."
+K590,Collateral,DB5,C33,2022-06-23,2023-09-20,USD,4028173.06,Pending,"Collateral contract K590 of type Collateral valued at 4028173.06 USD, valid from 2022-06-23 to 2023-09-20."
+K598,Collateral,DB5,C1,2024-02-21,2029-01-28,JPY,8832139.01,Closed,"Collateral contract K598 of type Collateral valued at 8832139.01 JPY, valid from 2024-02-21 to 2029-01-28."
+K610,Collateral,DB5,C27,2020-01-04,2024-11-04,EUR,8760760.58,Pending,"Collateral contract K610 of type Collateral valued at 8760760.58 EUR, valid from 2020-01-04 to 2024-11-04."
+K612,Collateral,DB2,C17,2024-11-24,2025-12-09,SGD,7682003.01,Active,"Collateral contract K612 of type Collateral valued at 7682003.01 SGD, valid from 2024-11-24 to 2025-12-09."
+K613,Collateral,DB3,C13,2022-05-30,2026-04-04,USD,7120573.49,Active,"Collateral contract K613 of type Collateral valued at 7120573.49 USD, valid from 2022-05-30 to 2026-04-04."
+K616,Collateral,DB5,C24,2022-03-22,2025-09-19,JPY,2828049.37,Pending,"Collateral contract K616 of type Collateral valued at 2828049.37 JPY, valid from 2022-03-22 to 2025-09-19."
+K618,Collateral,DB3,C20,2024-10-03,2028-05-11,JPY,3509127.41,Pending,"Collateral contract K618 of type Collateral valued at 3509127.41 JPY, valid from 2024-10-03 to 2028-05-11."
+K621,Collateral,DB1,C6,2020-06-10,2021-11-01,GBP,4769519.73,Pending,"Collateral contract K621 of type Collateral valued at 4769519.73 GBP, valid from 2020-06-10 to 2021-11-01."
+K626,Collateral,DB3,C43,2020-09-26,2022-10-11,SGD,4113964.57,Active,"Collateral contract K626 of type Collateral valued at 4113964.57 SGD, valid from 2020-09-26 to 2022-10-11."
+K631,Collateral,DB4,C37,2024-11-21,2026-10-14,SGD,7722675.21,Closed,"Collateral contract K631 of type Collateral valued at 7722675.21 SGD, valid from 2024-11-21 to 2026-10-14."
+K632,Collateral,DB5,C2,2023-11-26,2028-03-19,SGD,1251056.18,Active,"Collateral contract K632 of type Collateral valued at 1251056.18 SGD, valid from 2023-11-26 to 2028-03-19."
+K638,Collateral,DB5,C1,2021-01-07,2021-12-13,JPY,9584131.6,Closed,"Collateral contract K638 of type Collateral valued at 9584131.6 JPY, valid from 2021-01-07 to 2021-12-13."
+K642,Collateral,DB3,C45,2023-11-21,2025-01-20,USD,217017.79,Active,"Collateral contract K642 of type Collateral valued at 217017.79 USD, valid from 2023-11-21 to 2025-01-20."
+K647,Collateral,DB4,C13,2022-04-18,2024-02-09,GBP,8020370.84,Pending,"Collateral contract K647 of type Collateral valued at 8020370.84 GBP, valid from 2022-04-18 to 2024-02-09."
+K652,Collateral,DB1,C23,2022-12-05,2023-07-13,JPY,2069685.3,Pending,"Collateral contract K652 of type Collateral valued at 2069685.3 JPY, valid from 2022-12-05 to 2023-07-13."
+K654,Collateral,DB5,C19,2023-10-20,2024-09-24,SGD,6353950.69,Active,"Collateral contract K654 of type Collateral valued at 6353950.69 SGD, valid from 2023-10-20 to 2024-09-24."
+K657,Collateral,DB3,C29,2022-04-11,2026-02-28,EUR,7504165.43,Pending,"Collateral contract K657 of type Collateral valued at 7504165.43 EUR, valid from 2022-04-11 to 2026-02-28."
+K663,Collateral,DB4,C35,2023-01-13,2025-05-08,EUR,5530598.22,Active,"Collateral contract K663 of type Collateral valued at 5530598.22 EUR, valid from 2023-01-13 to 2025-05-08."
+K664,Collateral,DB5,C28,2024-08-02,2026-01-26,JPY,6433886.44,Pending,"Collateral contract K664 of type Collateral valued at 6433886.44 JPY, valid from 2024-08-02 to 2026-01-26."
+K665,Collateral,DB5,C15,2022-08-20,2025-01-27,USD,4474417.03,Closed,"Collateral contract K665 of type Collateral valued at 4474417.03 USD, valid from 2022-08-20 to 2025-01-27."
+K667,Collateral,DB5,C1,2022-12-04,2025-01-09,SGD,9474879.37,Closed,"Collateral contract K667 of type Collateral valued at 9474879.37 SGD, valid from 2022-12-04 to 2025-01-09."
+K668,Collateral,DB3,C39,2022-07-19,2023-02-02,GBP,7987997.1,Pending,"Collateral contract K668 of type Collateral valued at 7987997.1 GBP, valid from 2022-07-19 to 2023-02-02."
+K669,Collateral,DB5,C28,2023-03-06,2024-09-22,SGD,2573971.57,Pending,"Collateral contract K669 of type Collateral valued at 2573971.57 SGD, valid from 2023-03-06 to 2024-09-22."
+K672,Collateral,DB5,C29,2020-12-08,2024-12-31,EUR,7034678.72,Closed,"Collateral contract K672 of type Collateral valued at 7034678.72 EUR, valid from 2020-12-08 to 2024-12-31."
+K677,Collateral,DB2,C13,2020-08-09,2024-02-22,EUR,8190782.17,Active,"Collateral contract K677 of type Collateral valued at 8190782.17 EUR, valid from 2020-08-09 to 2024-02-22."
+K682,Collateral,DB3,C1,2020-12-16,2022-10-10,GBP,7964464.93,Pending,"Collateral contract K682 of type Collateral valued at 7964464.93 GBP, valid from 2020-12-16 to 2022-10-10."
+K687,Collateral,DB3,C47,2021-08-22,2022-04-02,GBP,2581892.79,Active,"Collateral contract K687 of type Collateral valued at 2581892.79 GBP, valid from 2021-08-22 to 2022-04-02."
+K688,Collateral,DB5,C19,2024-02-16,2028-07-31,JPY,7000673.97,Active,"Collateral contract K688 of type Collateral valued at 7000673.97 JPY, valid from 2024-02-16 to 2028-07-31."
+K691,Collateral,DB1,C50,2024-08-09,2027-02-26,JPY,3852531.34,Active,"Collateral contract K691 of type Collateral valued at 3852531.34 JPY, valid from 2024-08-09 to 2027-02-26."
+K694,Collateral,DB3,C8,2022-05-29,2024-09-15,USD,5279685.34,Active,"Collateral contract K694 of type Collateral valued at 5279685.34 USD, valid from 2022-05-29 to 2024-09-15."
+K696,Collateral,DB4,C34,2020-04-08,2023-12-18,JPY,7043008.81,Closed,"Collateral contract K696 of type Collateral valued at 7043008.81 JPY, valid from 2020-04-08 to 2023-12-18."
+K698,Collateral,DB1,C24,2024-03-06,2025-02-12,JPY,7460426.67,Closed,"Collateral contract K698 of type Collateral valued at 7460426.67 JPY, valid from 2024-03-06 to 2025-02-12."
+K702,Collateral,DB1,C50,2024-09-30,2029-06-10,JPY,3643837.32,Closed,"Collateral contract K702 of type Collateral valued at 3643837.32 JPY, valid from 2024-09-30 to 2029-06-10."
+K704,Collateral,DB3,C21,2021-05-06,2024-10-30,JPY,9915483.61,Closed,"Collateral contract K704 of type Collateral valued at 9915483.61 JPY, valid from 2021-05-06 to 2024-10-30."
+K705,Collateral,DB3,C39,2023-02-28,2025-12-18,GBP,5675132.56,Active,"Collateral contract K705 of type Collateral valued at 5675132.56 GBP, valid from 2023-02-28 to 2025-12-18."
+K713,Collateral,DB4,C8,2022-11-04,2025-04-14,GBP,7502018.71,Pending,"Collateral contract K713 of type Collateral valued at 7502018.71 GBP, valid from 2022-11-04 to 2025-04-14."
+K714,Collateral,DB1,C20,2020-02-05,2024-02-22,JPY,507704.3,Pending,"Collateral contract K714 of type Collateral valued at 507704.3 JPY, valid from 2020-02-05 to 2024-02-22."
+K718,Collateral,DB2,C49,2020-09-21,2023-06-14,GBP,4861132.77,Active,"Collateral contract K718 of type Collateral valued at 4861132.77 GBP, valid from 2020-09-21 to 2023-06-14."
+K720,Collateral,DB3,C44,2022-04-07,2027-02-10,JPY,986987.02,Pending,"Collateral contract K720 of type Collateral valued at 986987.02 JPY, valid from 2022-04-07 to 2027-02-10."
+K730,Collateral,DB5,C46,2023-04-15,2025-01-27,USD,9048333.4,Closed,"Collateral contract K730 of type Collateral valued at 9048333.4 USD, valid from 2023-04-15 to 2025-01-27."
+K735,Collateral,DB2,C6,2021-04-16,2023-09-12,SGD,5255106.66,Pending,"Collateral contract K735 of type Collateral valued at 5255106.66 SGD, valid from 2021-04-16 to 2023-09-12."
+K741,Collateral,DB3,C10,2023-07-01,2025-09-09,GBP,1157037.19,Active,"Collateral contract K741 of type Collateral valued at 1157037.19 GBP, valid from 2023-07-01 to 2025-09-09."
+K750,Collateral,DB1,C36,2024-05-30,2027-12-02,SGD,5209654.16,Pending,"Collateral contract K750 of type Collateral valued at 5209654.16 SGD, valid from 2024-05-30 to 2027-12-02."
+K752,Collateral,DB3,C40,2023-12-04,2025-05-07,USD,6930534.29,Active,"Collateral contract K752 of type Collateral valued at 6930534.29 USD, valid from 2023-12-04 to 2025-05-07."
+K753,Collateral,DB1,C47,2023-12-11,2028-01-22,JPY,1220398.7,Pending,"Collateral contract K753 of type Collateral valued at 1220398.7 JPY, valid from 2023-12-11 to 2028-01-22."
+K754,Collateral,DB4,C21,2024-08-24,2025-11-24,SGD,346629.92,Closed,"Collateral contract K754 of type Collateral valued at 346629.92 SGD, valid from 2024-08-24 to 2025-11-24."
+K756,Collateral,DB3,C6,2020-10-10,2021-11-27,JPY,7102063.28,Pending,"Collateral contract K756 of type Collateral valued at 7102063.28 JPY, valid from 2020-10-10 to 2021-11-27."
+K761,Collateral,DB2,C14,2020-01-18,2023-12-13,JPY,6628759.15,Closed,"Collateral contract K761 of type Collateral valued at 6628759.15 JPY, valid from 2020-01-18 to 2023-12-13."
+K765,Collateral,DB2,C11,2020-06-01,2021-07-09,EUR,6149788.58,Pending,"Collateral contract K765 of type Collateral valued at 6149788.58 EUR, valid from 2020-06-01 to 2021-07-09."
+K769,Collateral,DB5,C14,2022-10-19,2026-03-31,GBP,6159332.07,Active,"Collateral contract K769 of type Collateral valued at 6159332.07 GBP, valid from 2022-10-19 to 2026-03-31."
+K772,Collateral,DB5,C47,2021-02-07,2025-01-15,SGD,4975794.09,Active,"Collateral contract K772 of type Collateral valued at 4975794.09 SGD, valid from 2021-02-07 to 2025-01-15."
+K777,Collateral,DB5,C40,2022-11-01,2025-03-29,USD,8337223.42,Active,"Collateral contract K777 of type Collateral valued at 8337223.42 USD, valid from 2022-11-01 to 2025-03-29."
+K778,Collateral,DB4,C3,2022-10-23,2025-03-13,GBP,4866805.68,Pending,"Collateral contract K778 of type Collateral valued at 4866805.68 GBP, valid from 2022-10-23 to 2025-03-13."
+K789,Collateral,DB1,C7,2020-09-27,2023-02-06,JPY,7685183.83,Pending,"Collateral contract K789 of type Collateral valued at 7685183.83 JPY, valid from 2020-09-27 to 2023-02-06."
+K791,Collateral,DB1,C18,2024-07-11,2026-10-22,GBP,1659210.55,Active,"Collateral contract K791 of type Collateral valued at 1659210.55 GBP, valid from 2024-07-11 to 2026-10-22."
+K794,Collateral,DB1,C9,2022-11-18,2026-05-28,USD,4760282.23,Pending,"Collateral contract K794 of type Collateral valued at 4760282.23 USD, valid from 2022-11-18 to 2026-05-28."
+K795,Collateral,DB1,C6,2020-06-05,2021-07-06,SGD,3979975.93,Pending,"Collateral contract K795 of type Collateral valued at 3979975.93 SGD, valid from 2020-06-05 to 2021-07-06."
+K797,Collateral,DB5,C9,2024-07-15,2025-06-20,USD,8147225.08,Pending,"Collateral contract K797 of type Collateral valued at 8147225.08 USD, valid from 2024-07-15 to 2025-06-20."
+K798,Collateral,DB3,C44,2023-12-25,2025-01-07,SGD,4758404.16,Active,"Collateral contract K798 of type Collateral valued at 4758404.16 SGD, valid from 2023-12-25 to 2025-01-07."
+K801,Collateral,DB2,C19,2022-12-27,2026-03-01,EUR,6083958.29,Active,"Collateral contract K801 of type Collateral valued at 6083958.29 EUR, valid from 2022-12-27 to 2026-03-01."
+K802,Collateral,DB1,C21,2024-04-27,2025-05-22,JPY,6529568.99,Closed,"Collateral contract K802 of type Collateral valued at 6529568.99 JPY, valid from 2024-04-27 to 2025-05-22."
+K803,Collateral,DB5,C27,2024-07-13,2027-08-11,GBP,6246660.9,Pending,"Collateral contract K803 of type Collateral valued at 6246660.9 GBP, valid from 2024-07-13 to 2027-08-11."
+K804,Collateral,DB1,C22,2021-05-09,2024-07-19,GBP,8157765.48,Pending,"Collateral contract K804 of type Collateral valued at 8157765.48 GBP, valid from 2021-05-09 to 2024-07-19."
+K805,Collateral,DB5,C22,2023-09-01,2028-07-22,JPY,6971918.25,Active,"Collateral contract K805 of type Collateral valued at 6971918.25 JPY, valid from 2023-09-01 to 2028-07-22."
+K806,Collateral,DB1,C38,2020-08-30,2025-04-20,JPY,4682793.5,Pending,"Collateral contract K806 of type Collateral valued at 4682793.5 JPY, valid from 2020-08-30 to 2025-04-20."
+K808,Collateral,DB1,C6,2023-03-23,2025-07-20,GBP,8188632.54,Pending,"Collateral contract K808 of type Collateral valued at 8188632.54 GBP, valid from 2023-03-23 to 2025-07-20."
+K817,Collateral,DB4,C9,2021-03-23,2025-10-05,USD,1458480.66,Closed,"Collateral contract K817 of type Collateral valued at 1458480.66 USD, valid from 2021-03-23 to 2025-10-05."
+K818,Collateral,DB5,C12,2023-11-17,2028-10-16,SGD,5143207.65,Pending,"Collateral contract K818 of type Collateral valued at 5143207.65 SGD, valid from 2023-11-17 to 2028-10-16."
+K823,Collateral,DB1,C44,2020-10-01,2022-08-14,JPY,8001172.58,Closed,"Collateral contract K823 of type Collateral valued at 8001172.58 JPY, valid from 2020-10-01 to 2022-08-14."
+K832,Collateral,DB2,C14,2023-04-05,2025-01-31,JPY,7370175.0,Closed,"Collateral contract K832 of type Collateral valued at 7370175.0 JPY, valid from 2023-04-05 to 2025-01-31."
+K837,Collateral,DB4,C50,2020-11-01,2022-10-04,GBP,7369703.21,Pending,"Collateral contract K837 of type Collateral valued at 7369703.21 GBP, valid from 2020-11-01 to 2022-10-04."
+K839,Collateral,DB1,C34,2020-07-30,2021-02-19,USD,6886445.57,Closed,"Collateral contract K839 of type Collateral valued at 6886445.57 USD, valid from 2020-07-30 to 2021-02-19."
+K844,Collateral,DB3,C17,2023-11-09,2025-11-24,GBP,7829239.86,Closed,"Collateral contract K844 of type Collateral valued at 7829239.86 GBP, valid from 2023-11-09 to 2025-11-24."
+K845,Collateral,DB3,C4,2020-07-12,2023-03-02,EUR,9560496.42,Closed,"Collateral contract K845 of type Collateral valued at 9560496.42 EUR, valid from 2020-07-12 to 2023-03-02."
+K849,Collateral,DB1,C32,2022-02-17,2026-12-24,GBP,6563366.79,Active,"Collateral contract K849 of type Collateral valued at 6563366.79 GBP, valid from 2022-02-17 to 2026-12-24."
+K850,Collateral,DB3,C10,2020-04-27,2024-07-16,EUR,9055713.68,Pending,"Collateral contract K850 of type Collateral valued at 9055713.68 EUR, valid from 2020-04-27 to 2024-07-16."
+K851,Collateral,DB4,C28,2020-01-12,2023-05-31,SGD,8456086.62,Active,"Collateral contract K851 of type Collateral valued at 8456086.62 SGD, valid from 2020-01-12 to 2023-05-31."
+K855,Collateral,DB1,C41,2021-08-16,2023-10-17,EUR,4916385.07,Pending,"Collateral contract K855 of type Collateral valued at 4916385.07 EUR, valid from 2021-08-16 to 2023-10-17."
+K857,Collateral,DB1,C35,2022-01-10,2025-04-05,EUR,5046873.1,Closed,"Collateral contract K857 of type Collateral valued at 5046873.1 EUR, valid from 2022-01-10 to 2025-04-05."
+K863,Collateral,DB3,C8,2023-08-17,2026-01-03,JPY,5504259.49,Closed,"Collateral contract K863 of type Collateral valued at 5504259.49 JPY, valid from 2023-08-17 to 2026-01-03."
+K865,Collateral,DB2,C45,2021-03-14,2025-12-09,EUR,5578736.53,Closed,"Collateral contract K865 of type Collateral valued at 5578736.53 EUR, valid from 2021-03-14 to 2025-12-09."
+K868,Collateral,DB2,C14,2022-05-31,2025-03-28,GBP,6434274.47,Pending,"Collateral contract K868 of type Collateral valued at 6434274.47 GBP, valid from 2022-05-31 to 2025-03-28."
+K874,Collateral,DB1,C7,2022-02-20,2024-07-03,USD,9256127.32,Active,"Collateral contract K874 of type Collateral valued at 9256127.32 USD, valid from 2022-02-20 to 2024-07-03."
+K878,Collateral,DB5,C32,2021-11-16,2022-10-12,USD,8915839.55,Active,"Collateral contract K878 of type Collateral valued at 8915839.55 USD, valid from 2021-11-16 to 2022-10-12."
+K879,Collateral,DB2,C25,2021-11-02,2025-09-30,EUR,1450405.68,Pending,"Collateral contract K879 of type Collateral valued at 1450405.68 EUR, valid from 2021-11-02 to 2025-09-30."
+K885,Collateral,DB5,C15,2022-02-08,2024-06-07,JPY,9467898.31,Pending,"Collateral contract K885 of type Collateral valued at 9467898.31 JPY, valid from 2022-02-08 to 2024-06-07."
+K890,Collateral,DB4,C50,2024-12-18,2025-08-04,GBP,8754570.48,Closed,"Collateral contract K890 of type Collateral valued at 8754570.48 GBP, valid from 2024-12-18 to 2025-08-04."
+K899,Collateral,DB5,C44,2024-06-24,2025-08-29,JPY,9004566.86,Closed,"Collateral contract K899 of type Collateral valued at 9004566.86 JPY, valid from 2024-06-24 to 2025-08-29."
+K903,Collateral,DB1,C19,2022-12-13,2025-10-18,GBP,723200.14,Active,"Collateral contract K903 of type Collateral valued at 723200.14 GBP, valid from 2022-12-13 to 2025-10-18."
+K905,Collateral,DB4,C20,2024-02-19,2027-12-15,JPY,1406347.09,Closed,"Collateral contract K905 of type Collateral valued at 1406347.09 JPY, valid from 2024-02-19 to 2027-12-15."
+K917,Collateral,DB2,C32,2020-09-28,2024-02-08,EUR,6071401.56,Pending,"Collateral contract K917 of type Collateral valued at 6071401.56 EUR, valid from 2020-09-28 to 2024-02-08."
+K920,Collateral,DB4,C29,2021-11-01,2026-05-29,EUR,1721524.4,Pending,"Collateral contract K920 of type Collateral valued at 1721524.4 EUR, valid from 2021-11-01 to 2026-05-29."
+K921,Collateral,DB2,C38,2023-08-09,2028-03-07,JPY,952171.95,Active,"Collateral contract K921 of type Collateral valued at 952171.95 JPY, valid from 2023-08-09 to 2028-03-07."
+K924,Collateral,DB3,C36,2021-09-11,2023-03-25,SGD,518105.85,Closed,"Collateral contract K924 of type Collateral valued at 518105.85 SGD, valid from 2021-09-11 to 2023-03-25."
+K925,Collateral,DB5,C48,2024-12-23,2027-03-05,SGD,2322750.19,Active,"Collateral contract K925 of type Collateral valued at 2322750.19 SGD, valid from 2024-12-23 to 2027-03-05."
+K928,Collateral,DB3,C41,2024-12-10,2028-02-17,SGD,9745161.61,Active,"Collateral contract K928 of type Collateral valued at 9745161.61 SGD, valid from 2024-12-10 to 2028-02-17."
+K952,Collateral,DB3,C12,2021-08-09,2022-06-27,USD,9987360.92,Closed,"Collateral contract K952 of type Collateral valued at 9987360.92 USD, valid from 2021-08-09 to 2022-06-27."
+K953,Collateral,DB5,C43,2020-11-22,2023-08-10,USD,1280256.65,Closed,"Collateral contract K953 of type Collateral valued at 1280256.65 USD, valid from 2020-11-22 to 2023-08-10."
+K955,Collateral,DB1,C15,2021-09-14,2025-07-13,SGD,7279484.95,Closed,"Collateral contract K955 of type Collateral valued at 7279484.95 SGD, valid from 2021-09-14 to 2025-07-13."
+K961,Collateral,DB4,C33,2021-09-19,2023-11-09,EUR,5470137.34,Pending,"Collateral contract K961 of type Collateral valued at 5470137.34 EUR, valid from 2021-09-19 to 2023-11-09."
+K964,Collateral,DB2,C20,2021-05-24,2024-08-22,SGD,4925803.77,Active,"Collateral contract K964 of type Collateral valued at 4925803.77 SGD, valid from 2021-05-24 to 2024-08-22."
+K965,Collateral,DB5,C44,2024-11-02,2029-02-11,JPY,5764881.31,Closed,"Collateral contract K965 of type Collateral valued at 5764881.31 JPY, valid from 2024-11-02 to 2029-02-11."
+K971,Collateral,DB4,C37,2022-10-10,2023-06-23,JPY,9023957.47,Closed,"Collateral contract K971 of type Collateral valued at 9023957.47 JPY, valid from 2022-10-10 to 2023-06-23."
+K972,Collateral,DB5,C2,2020-03-04,2024-07-26,EUR,3839602.17,Closed,"Collateral contract K972 of type Collateral valued at 3839602.17 EUR, valid from 2020-03-04 to 2024-07-26."
+K977,Collateral,DB4,C14,2024-10-25,2029-10-19,EUR,7976952.32,Pending,"Collateral contract K977 of type Collateral valued at 7976952.32 EUR, valid from 2024-10-25 to 2029-10-19."
+K979,Collateral,DB5,C12,2023-06-03,2025-04-27,USD,6315654.97,Pending,"Collateral contract K979 of type Collateral valued at 6315654.97 USD, valid from 2023-06-03 to 2025-04-27."
+K980,Collateral,DB2,C43,2021-08-02,2025-04-24,SGD,2752565.94,Pending,"Collateral contract K980 of type Collateral valued at 2752565.94 SGD, valid from 2021-08-02 to 2025-04-24."
+K981,Collateral,DB5,C47,2024-07-13,2028-06-20,USD,5270468.9,Closed,"Collateral contract K981 of type Collateral valued at 5270468.9 USD, valid from 2024-07-13 to 2028-06-20."
+K985,Collateral,DB4,C42,2023-12-13,2027-03-01,USD,2099706.04,Closed,"Collateral contract K985 of type Collateral valued at 2099706.04 USD, valid from 2023-12-13 to 2027-03-01."
+K990,Collateral,DB2,C28,2022-10-20,2026-07-27,GBP,1528351.3,Active,"Collateral contract K990 of type Collateral valued at 1528351.3 GBP, valid from 2022-10-20 to 2026-07-27."
+K991,Collateral,DB4,C17,2021-10-27,2023-11-08,JPY,653661.49,Pending,"Collateral contract K991 of type Collateral valued at 653661.49 JPY, valid from 2021-10-27 to 2023-11-08."
+K998,Collateral,DB3,C46,2024-01-03,2028-08-18,SGD,8779936.15,Active,"Collateral contract K998 of type Collateral valued at 8779936.15 SGD, valid from 2024-01-03 to 2028-08-18."

@@ -3,7 +3,8 @@ MERGE (db:DBLegalEntity {dbEntityId: row.dbEntityId})
 SET db.name = row.name,
     db.region = row.region,
     db.country = row.country,
-    db.lei = row.lei;
+    db.lei = row.lei,
+    db.description = row.Description;
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/clients.csv' AS row
 MERGE (c:ClientCorporate {clientId: row.clientId})
@@ -20,15 +21,14 @@ SET p.name = row.name,
 
 WITH row, p
 MATCH (c:ClientCorporate {clientId: row.clientId})
-MERGE (p)-[:UBO_OR_DIRECTOR_OF]->(c);
-
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/applications.csv' AS row
 MERGE (a:Application {applicationId: row.ApplicationID})
 SET a.name = row.Name,
     a.itOwner = row.ITOwner,
     a.cio = row.CIO,
     a.owningOrgUnit = row.OwningOrgUnit,
-    a.processCapability = row.ProcessCapability;
+    a.processCapability = row.ProcessCapability,
+    a.description = row.Description;
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/contracts.csv' AS row
 MERGE (k:Contract {contractId: row.contractId})
@@ -153,10 +153,35 @@ SET a.name = row.Name,
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/DataFeeds.csv' AS row
 MERGE (df:DataFeed {dataFeedId: row.DataFeed_ID})
-SET df.edm_data_class = row.`EDM Data Class`
+SET df.edm_data_class = row.`EDM Data Class`,
+    df.protocolUri = row.`Protocol URI`
 WITH row, df
 MATCH (a:Application {applicationId: row.Application_ID})
-MERGE (a)-[:OWNS_FEED]->(df);
+MERGE (a)-[:OWNS_FEED]->(df)
+WITH row, df
+MATCH (sdp:SDPModel {sdpModelId: row.`SDP Model ID`})
+MERGE (df)-[:CONFORMS_TO]->(sdp);
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/edm_data_classes.csv' AS row
+MERGE (edm:EDMDataClass {edmId: row.id})
+SET edm.name = row.name,
+    edm.description = row.description;
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/sdp_models.csv' AS row
+MERGE (sdp:SDPModel {sdpModelId: row.id})
+SET sdp.name = row.name,
+    sdp.protocolUri = row.protocolUri
+WITH row, sdp
+MATCH (edm:EDMDataClass {edmId: row.edmDataClassId})
+MERGE (sdp)-[:IMPLEMENTS]->(edm);
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/sdp_attributes.csv' AS row
+MERGE (attr:SDPAttribute {name: row.name, sdpModelId: row.sdpModelId})
+SET attr.definition = row.definition,
+    attr.pii = toBoolean(row.pii)
+WITH row, attr
+MATCH (sdp:SDPModel {sdpModelId: row.sdpModelId})
+MERGE (sdp)-[:HAS_ATTRIBUTE]->(attr);
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/ControlRegistry.csv' AS row
 MERGE (cr:Control {controlId: row.`Control ID`})
@@ -199,5 +224,15 @@ FOREACH (_ IN CASE WHEN t IS NOT NULL THEN [1] ELSE [] END |
     MERGE (adj)-[:ADJUSTS_TRANSACTION]->(t)
 );
 
-
-
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/logical_data_flows.csv' AS row
+MERGE (ldf:LogicalDataFlow {flowId: row.FlowID})
+SET ldf.owner = row.DataFlowOwner
+WITH row, ldf
+MATCH (fromApp:Application {applicationId: row.FromAppID})
+MERGE (fromApp)-[:SENDS_DATA_FLOW]->(ldf)
+WITH row, ldf
+MATCH (toApp:Application {applicationId: row.ToAppID})
+MERGE (ldf)-[:FLOWS_TO]->(toApp)
+WITH row, ldf
+MATCH (edm:EDMDataClass {edmId: row.EDMDataClassID})
+MERGE (ldf)-[:CARRIES_DATA]->(edm);

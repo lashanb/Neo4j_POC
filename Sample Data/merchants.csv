@@ -1,201 +1,201 @@
-merchantId,name,industry,country
-M1,Merchant 1,Retail,CN
-M2,Merchant 2,Tech,UK
-M3,Merchant 3,Services,UK
-M4,Merchant 4,Services,SG
-M5,Merchant 5,Metals,DE
-M6,Merchant 6,Services,UK
-M7,Merchant 7,Services,CN
-M8,Merchant 8,Services,SG
-M9,Merchant 9,Tech,UK
-M10,Merchant 10,Services,SG
-M11,Merchant 11,Energy,SG
-M12,Merchant 12,Metals,UK
-M13,Merchant 13,Services,US
-M14,Merchant 14,Tech,SG
-M15,Merchant 15,Energy,US
-M16,Merchant 16,Retail,CN
-M17,Merchant 17,Metals,SG
-M18,Merchant 18,Metals,SG
-M19,Merchant 19,Retail,CN
-M20,Merchant 20,Tech,CN
-M21,Merchant 21,Services,UK
-M22,Merchant 22,Tech,US
-M23,Merchant 23,Metals,UK
-M24,Merchant 24,Metals,SG
-M25,Merchant 25,Tech,DE
-M26,Merchant 26,Services,CN
-M27,Merchant 27,Tech,US
-M28,Merchant 28,Retail,CN
-M29,Merchant 29,Services,CN
-M30,Merchant 30,Services,SG
-M31,Merchant 31,Energy,CN
-M32,Merchant 32,Energy,SG
-M33,Merchant 33,Tech,DE
-M34,Merchant 34,Metals,SG
-M35,Merchant 35,Tech,SG
-M36,Merchant 36,Energy,UK
-M37,Merchant 37,Services,UK
-M38,Merchant 38,Retail,DE
-M39,Merchant 39,Metals,UK
-M40,Merchant 40,Tech,DE
-M41,Merchant 41,Services,UK
-M42,Merchant 42,Retail,UK
-M43,Merchant 43,Energy,UK
-M44,Merchant 44,Retail,CN
-M45,Merchant 45,Energy,SG
-M46,Merchant 46,Energy,DE
-M47,Merchant 47,Metals,CN
-M48,Merchant 48,Services,CN
-M49,Merchant 49,Services,US
-M50,Merchant 50,Services,SG
-M51,Merchant 51,Metals,CN
-M52,Merchant 52,Energy,UK
-M53,Merchant 53,Energy,UK
-M54,Merchant 54,Tech,SG
-M55,Merchant 55,Services,DE
-M56,Merchant 56,Retail,UK
-M57,Merchant 57,Metals,CN
-M58,Merchant 58,Services,CN
-M59,Merchant 59,Retail,US
-M60,Merchant 60,Services,US
-M61,Merchant 61,Metals,UK
-M62,Merchant 62,Retail,UK
-M63,Merchant 63,Energy,CN
-M64,Merchant 64,Metals,SG
-M65,Merchant 65,Retail,US
-M66,Merchant 66,Services,DE
-M67,Merchant 67,Tech,DE
-M68,Merchant 68,Tech,US
-M69,Merchant 69,Services,UK
-M70,Merchant 70,Metals,SG
-M71,Merchant 71,Energy,CN
-M72,Merchant 72,Services,DE
-M73,Merchant 73,Services,US
-M74,Merchant 74,Services,SG
-M75,Merchant 75,Energy,SG
-M76,Merchant 76,Tech,CN
-M77,Merchant 77,Retail,CN
-M78,Merchant 78,Retail,DE
-M79,Merchant 79,Metals,US
-M80,Merchant 80,Energy,SG
-M81,Merchant 81,Services,US
-M82,Merchant 82,Services,CN
-M83,Merchant 83,Energy,DE
-M84,Merchant 84,Metals,CN
-M85,Merchant 85,Energy,DE
-M86,Merchant 86,Retail,UK
-M87,Merchant 87,Metals,DE
-M88,Merchant 88,Metals,CN
-M89,Merchant 89,Metals,UK
-M90,Merchant 90,Tech,US
-M91,Merchant 91,Tech,SG
-M92,Merchant 92,Retail,SG
-M93,Merchant 93,Energy,CN
-M94,Merchant 94,Tech,UK
-M95,Merchant 95,Retail,SG
-M96,Merchant 96,Tech,US
-M97,Merchant 97,Metals,US
-M98,Merchant 98,Metals,US
-M99,Merchant 99,Energy,CN
-M100,Merchant 100,Services,DE
-M101,Merchant 101,Retail,SG
-M102,Merchant 102,Metals,US
-M103,Merchant 103,Tech,CN
-M104,Merchant 104,Retail,UK
-M105,Merchant 105,Retail,UK
-M106,Merchant 106,Metals,US
-M107,Merchant 107,Energy,SG
-M108,Merchant 108,Metals,UK
-M109,Merchant 109,Services,CN
-M110,Merchant 110,Services,US
-M111,Merchant 111,Services,US
-M112,Merchant 112,Services,UK
-M113,Merchant 113,Services,SG
-M114,Merchant 114,Retail,US
-M115,Merchant 115,Services,US
-M116,Merchant 116,Metals,DE
-M117,Merchant 117,Tech,SG
-M118,Merchant 118,Retail,DE
-M119,Merchant 119,Retail,US
-M120,Merchant 120,Services,UK
-M121,Merchant 121,Energy,SG
-M122,Merchant 122,Metals,SG
-M123,Merchant 123,Retail,US
-M124,Merchant 124,Metals,UK
-M125,Merchant 125,Metals,CN
-M126,Merchant 126,Services,UK
-M127,Merchant 127,Metals,UK
-M128,Merchant 128,Metals,DE
-M129,Merchant 129,Tech,CN
-M130,Merchant 130,Tech,SG
-M131,Merchant 131,Energy,US
-M132,Merchant 132,Tech,SG
-M133,Merchant 133,Retail,US
-M134,Merchant 134,Energy,CN
-M135,Merchant 135,Energy,UK
-M136,Merchant 136,Services,CN
-M137,Merchant 137,Services,UK
-M138,Merchant 138,Services,DE
-M139,Merchant 139,Services,US
-M140,Merchant 140,Energy,UK
-M141,Merchant 141,Retail,CN
-M142,Merchant 142,Metals,US
-M143,Merchant 143,Energy,SG
-M144,Merchant 144,Retail,CN
-M145,Merchant 145,Services,UK
-M146,Merchant 146,Tech,US
-M147,Merchant 147,Energy,CN
-M148,Merchant 148,Energy,CN
-M149,Merchant 149,Services,SG
-M150,Merchant 150,Metals,US
-M151,Merchant 151,Services,US
-M152,Merchant 152,Metals,CN
-M153,Merchant 153,Metals,CN
-M154,Merchant 154,Metals,UK
-M155,Merchant 155,Metals,DE
-M156,Merchant 156,Services,US
-M157,Merchant 157,Retail,CN
-M158,Merchant 158,Services,UK
-M159,Merchant 159,Services,CN
-M160,Merchant 160,Tech,SG
-M161,Merchant 161,Tech,UK
-M162,Merchant 162,Retail,DE
-M163,Merchant 163,Services,SG
-M164,Merchant 164,Retail,DE
-M165,Merchant 165,Energy,UK
-M166,Merchant 166,Tech,UK
-M167,Merchant 167,Retail,US
-M168,Merchant 168,Metals,US
-M169,Merchant 169,Services,CN
-M170,Merchant 170,Services,UK
-M171,Merchant 171,Retail,US
-M172,Merchant 172,Metals,CN
-M173,Merchant 173,Metals,UK
-M174,Merchant 174,Retail,DE
-M175,Merchant 175,Metals,UK
-M176,Merchant 176,Services,UK
-M177,Merchant 177,Retail,CN
-M178,Merchant 178,Retail,US
-M179,Merchant 179,Metals,UK
-M180,Merchant 180,Energy,CN
-M181,Merchant 181,Tech,UK
-M182,Merchant 182,Services,DE
-M183,Merchant 183,Energy,SG
-M184,Merchant 184,Retail,US
-M185,Merchant 185,Services,US
-M186,Merchant 186,Energy,US
-M187,Merchant 187,Services,SG
-M188,Merchant 188,Services,SG
-M189,Merchant 189,Metals,CN
-M190,Merchant 190,Energy,DE
-M191,Merchant 191,Retail,US
-M192,Merchant 192,Energy,CN
-M193,Merchant 193,Tech,US
-M194,Merchant 194,Retail,CN
-M195,Merchant 195,Metals,SG
-M196,Merchant 196,Retail,CN
-M197,Merchant 197,Services,CN
-M198,Merchant 198,Metals,UK
-M199,Merchant 199,Retail,CN
-M200,Merchant 200,Retail,SG
+merchantId,name,industry,country,Description
+M1,Merchant 1,Retail,CN,"Merchant 1 operates in the Retail sector, located in CN."
+M2,Merchant 2,Tech,UK,"Merchant 2 operates in the Tech sector, located in UK."
+M3,Merchant 3,Services,UK,"Merchant 3 operates in the Services sector, located in UK."
+M4,Merchant 4,Services,SG,"Merchant 4 operates in the Services sector, located in SG."
+M5,Merchant 5,Metals,DE,"Merchant 5 operates in the Metals sector, located in DE."
+M6,Merchant 6,Services,UK,"Merchant 6 operates in the Services sector, located in UK."
+M7,Merchant 7,Services,CN,"Merchant 7 operates in the Services sector, located in CN."
+M8,Merchant 8,Services,SG,"Merchant 8 operates in the Services sector, located in SG."
+M9,Merchant 9,Tech,UK,"Merchant 9 operates in the Tech sector, located in UK."
+M10,Merchant 10,Services,SG,"Merchant 10 operates in the Services sector, located in SG."
+M11,Merchant 11,Energy,SG,"Merchant 11 operates in the Energy sector, located in SG."
+M12,Merchant 12,Metals,UK,"Merchant 12 operates in the Metals sector, located in UK."
+M13,Merchant 13,Services,US,"Merchant 13 operates in the Services sector, located in US."
+M14,Merchant 14,Tech,SG,"Merchant 14 operates in the Tech sector, located in SG."
+M15,Merchant 15,Energy,US,"Merchant 15 operates in the Energy sector, located in US."
+M16,Merchant 16,Retail,CN,"Merchant 16 operates in the Retail sector, located in CN."
+M17,Merchant 17,Metals,SG,"Merchant 17 operates in the Metals sector, located in SG."
+M18,Merchant 18,Metals,SG,"Merchant 18 operates in the Metals sector, located in SG."
+M19,Merchant 19,Retail,CN,"Merchant 19 operates in the Retail sector, located in CN."
+M20,Merchant 20,Tech,CN,"Merchant 20 operates in the Tech sector, located in CN."
+M21,Merchant 21,Services,UK,"Merchant 21 operates in the Services sector, located in UK."
+M22,Merchant 22,Tech,US,"Merchant 22 operates in the Tech sector, located in US."
+M23,Merchant 23,Metals,UK,"Merchant 23 operates in the Metals sector, located in UK."
+M24,Merchant 24,Metals,SG,"Merchant 24 operates in the Metals sector, located in SG."
+M25,Merchant 25,Tech,DE,"Merchant 25 operates in the Tech sector, located in DE."
+M26,Merchant 26,Services,CN,"Merchant 26 operates in the Services sector, located in CN."
+M27,Merchant 27,Tech,US,"Merchant 27 operates in the Tech sector, located in US."
+M28,Merchant 28,Retail,CN,"Merchant 28 operates in the Retail sector, located in CN."
+M29,Merchant 29,Services,CN,"Merchant 29 operates in the Services sector, located in CN."
+M30,Merchant 30,Services,SG,"Merchant 30 operates in the Services sector, located in SG."
+M31,Merchant 31,Energy,CN,"Merchant 31 operates in the Energy sector, located in CN."
+M32,Merchant 32,Energy,SG,"Merchant 32 operates in the Energy sector, located in SG."
+M33,Merchant 33,Tech,DE,"Merchant 33 operates in the Tech sector, located in DE."
+M34,Merchant 34,Metals,SG,"Merchant 34 operates in the Metals sector, located in SG."
+M35,Merchant 35,Tech,SG,"Merchant 35 operates in the Tech sector, located in SG."
+M36,Merchant 36,Energy,UK,"Merchant 36 operates in the Energy sector, located in UK."
+M37,Merchant 37,Services,UK,"Merchant 37 operates in the Services sector, located in UK."
+M38,Merchant 38,Retail,DE,"Merchant 38 operates in the Retail sector, located in DE."
+M39,Merchant 39,Metals,UK,"Merchant 39 operates in the Metals sector, located in UK."
+M40,Merchant 40,Tech,DE,"Merchant 40 operates in the Tech sector, located in DE."
+M41,Merchant 41,Services,UK,"Merchant 41 operates in the Services sector, located in UK."
+M42,Merchant 42,Retail,UK,"Merchant 42 operates in the Retail sector, located in UK."
+M43,Merchant 43,Energy,UK,"Merchant 43 operates in the Energy sector, located in UK."
+M44,Merchant 44,Retail,CN,"Merchant 44 operates in the Retail sector, located in CN."
+M45,Merchant 45,Energy,SG,"Merchant 45 operates in the Energy sector, located in SG."
+M46,Merchant 46,Energy,DE,"Merchant 46 operates in the Energy sector, located in DE."
+M47,Merchant 47,Metals,CN,"Merchant 47 operates in the Metals sector, located in CN."
+M48,Merchant 48,Services,CN,"Merchant 48 operates in the Services sector, located in CN."
+M49,Merchant 49,Services,US,"Merchant 49 operates in the Services sector, located in US."
+M50,Merchant 50,Services,SG,"Merchant 50 operates in the Services sector, located in SG."
+M51,Merchant 51,Metals,CN,"Merchant 51 operates in the Metals sector, located in CN."
+M52,Merchant 52,Energy,UK,"Merchant 52 operates in the Energy sector, located in UK."
+M53,Merchant 53,Energy,UK,"Merchant 53 operates in the Energy sector, located in UK."
+M54,Merchant 54,Tech,SG,"Merchant 54 operates in the Tech sector, located in SG."
+M55,Merchant 55,Services,DE,"Merchant 55 operates in the Services sector, located in DE."
+M56,Merchant 56,Retail,UK,"Merchant 56 operates in the Retail sector, located in UK."
+M57,Merchant 57,Metals,CN,"Merchant 57 operates in the Metals sector, located in CN."
+M58,Merchant 58,Services,CN,"Merchant 58 operates in the Services sector, located in CN."
+M59,Merchant 59,Retail,US,"Merchant 59 operates in the Retail sector, located in US."
+M60,Merchant 60,Services,US,"Merchant 60 operates in the Services sector, located in US."
+M61,Merchant 61,Metals,UK,"Merchant 61 operates in the Metals sector, located in UK."
+M62,Merchant 62,Retail,UK,"Merchant 62 operates in the Retail sector, located in UK."
+M63,Merchant 63,Energy,CN,"Merchant 63 operates in the Energy sector, located in CN."
+M64,Merchant 64,Metals,SG,"Merchant 64 operates in the Metals sector, located in SG."
+M65,Merchant 65,Retail,US,"Merchant 65 operates in the Retail sector, located in US."
+M66,Merchant 66,Services,DE,"Merchant 66 operates in the Services sector, located in DE."
+M67,Merchant 67,Tech,DE,"Merchant 67 operates in the Tech sector, located in DE."
+M68,Merchant 68,Tech,US,"Merchant 68 operates in the Tech sector, located in US."
+M69,Merchant 69,Services,UK,"Merchant 69 operates in the Services sector, located in UK."
+M70,Merchant 70,Metals,SG,"Merchant 70 operates in the Metals sector, located in SG."
+M71,Merchant 71,Energy,CN,"Merchant 71 operates in the Energy sector, located in CN."
+M72,Merchant 72,Services,DE,"Merchant 72 operates in the Services sector, located in DE."
+M73,Merchant 73,Services,US,"Merchant 73 operates in the Services sector, located in US."
+M74,Merchant 74,Services,SG,"Merchant 74 operates in the Services sector, located in SG."
+M75,Merchant 75,Energy,SG,"Merchant 75 operates in the Energy sector, located in SG."
+M76,Merchant 76,Tech,CN,"Merchant 76 operates in the Tech sector, located in CN."
+M77,Merchant 77,Retail,CN,"Merchant 77 operates in the Retail sector, located in CN."
+M78,Merchant 78,Retail,DE,"Merchant 78 operates in the Retail sector, located in DE."
+M79,Merchant 79,Metals,US,"Merchant 79 operates in the Metals sector, located in US."
+M80,Merchant 80,Energy,SG,"Merchant 80 operates in the Energy sector, located in SG."
+M81,Merchant 81,Services,US,"Merchant 81 operates in the Services sector, located in US."
+M82,Merchant 82,Services,CN,"Merchant 82 operates in the Services sector, located in CN."
+M83,Merchant 83,Energy,DE,"Merchant 83 operates in the Energy sector, located in DE."
+M84,Merchant 84,Metals,CN,"Merchant 84 operates in the Metals sector, located in CN."
+M85,Merchant 85,Energy,DE,"Merchant 85 operates in the Energy sector, located in DE."
+M86,Merchant 86,Retail,UK,"Merchant 86 operates in the Retail sector, located in UK."
+M87,Merchant 87,Metals,DE,"Merchant 87 operates in the Metals sector, located in DE."
+M88,Merchant 88,Metals,CN,"Merchant 88 operates in the Metals sector, located in CN."
+M89,Merchant 89,Metals,UK,"Merchant 89 operates in the Metals sector, located in UK."
+M90,Merchant 90,Tech,US,"Merchant 90 operates in the Tech sector, located in US."
+M91,Merchant 91,Tech,SG,"Merchant 91 operates in the Tech sector, located in SG."
+M92,Merchant 92,Retail,SG,"Merchant 92 operates in the Retail sector, located in SG."
+M93,Merchant 93,Energy,CN,"Merchant 93 operates in the Energy sector, located in CN."
+M94,Merchant 94,Tech,UK,"Merchant 94 operates in the Tech sector, located in UK."
+M95,Merchant 95,Retail,SG,"Merchant 95 operates in the Retail sector, located in SG."
+M96,Merchant 96,Tech,US,"Merchant 96 operates in the Tech sector, located in US."
+M97,Merchant 97,Metals,US,"Merchant 97 operates in the Metals sector, located in US."
+M98,Merchant 98,Metals,US,"Merchant 98 operates in the Metals sector, located in US."
+M99,Merchant 99,Energy,CN,"Merchant 99 operates in the Energy sector, located in CN."
+M100,Merchant 100,Services,DE,"Merchant 100 operates in the Services sector, located in DE."
+M101,Merchant 101,Retail,SG,"Merchant 101 operates in the Retail sector, located in SG."
+M102,Merchant 102,Metals,US,"Merchant 102 operates in the Metals sector, located in US."
+M103,Merchant 103,Tech,CN,"Merchant 103 operates in the Tech sector, located in CN."
+M104,Merchant 104,Retail,UK,"Merchant 104 operates in the Retail sector, located in UK."
+M105,Merchant 105,Retail,UK,"Merchant 105 operates in the Retail sector, located in UK."
+M106,Merchant 106,Metals,US,"Merchant 106 operates in the Metals sector, located in US."
+M107,Merchant 107,Energy,SG,"Merchant 107 operates in the Energy sector, located in SG."
+M108,Merchant 108,Metals,UK,"Merchant 108 operates in the Metals sector, located in UK."
+M109,Merchant 109,Services,CN,"Merchant 109 operates in the Services sector, located in CN."
+M110,Merchant 110,Services,US,"Merchant 110 operates in the Services sector, located in US."
+M111,Merchant 111,Services,US,"Merchant 111 operates in the Services sector, located in US."
+M112,Merchant 112,Services,UK,"Merchant 112 operates in the Services sector, located in UK."
+M113,Merchant 113,Services,SG,"Merchant 113 operates in the Services sector, located in SG."
+M114,Merchant 114,Retail,US,"Merchant 114 operates in the Retail sector, located in US."
+M115,Merchant 115,Services,US,"Merchant 115 operates in the Services sector, located in US."
+M116,Merchant 116,Metals,DE,"Merchant 116 operates in the Metals sector, located in DE."
+M117,Merchant 117,Tech,SG,"Merchant 117 operates in the Tech sector, located in SG."
+M118,Merchant 118,Retail,DE,"Merchant 118 operates in the Retail sector, located in DE."
+M119,Merchant 119,Retail,US,"Merchant 119 operates in the Retail sector, located in US."
+M120,Merchant 120,Services,UK,"Merchant 120 operates in the Services sector, located in UK."
+M121,Merchant 121,Energy,SG,"Merchant 121 operates in the Energy sector, located in SG."
+M122,Merchant 122,Metals,SG,"Merchant 122 operates in the Metals sector, located in SG."
+M123,Merchant 123,Retail,US,"Merchant 123 operates in the Retail sector, located in US."
+M124,Merchant 124,Metals,UK,"Merchant 124 operates in the Metals sector, located in UK."
+M125,Merchant 125,Metals,CN,"Merchant 125 operates in the Metals sector, located in CN."
+M126,Merchant 126,Services,UK,"Merchant 126 operates in the Services sector, located in UK."
+M127,Merchant 127,Metals,UK,"Merchant 127 operates in the Metals sector, located in UK."
+M128,Merchant 128,Metals,DE,"Merchant 128 operates in the Metals sector, located in DE."
+M129,Merchant 129,Tech,CN,"Merchant 129 operates in the Tech sector, located in CN."
+M130,Merchant 130,Tech,SG,"Merchant 130 operates in the Tech sector, located in SG."
+M131,Merchant 131,Energy,US,"Merchant 131 operates in the Energy sector, located in US."
+M132,Merchant 132,Tech,SG,"Merchant 132 operates in the Tech sector, located in SG."
+M133,Merchant 133,Retail,US,"Merchant 133 operates in the Retail sector, located in US."
+M134,Merchant 134,Energy,CN,"Merchant 134 operates in the Energy sector, located in CN."
+M135,Merchant 135,Energy,UK,"Merchant 135 operates in the Energy sector, located in UK."
+M136,Merchant 136,Services,CN,"Merchant 136 operates in the Services sector, located in CN."
+M137,Merchant 137,Services,UK,"Merchant 137 operates in the Services sector, located in UK."
+M138,Merchant 138,Services,DE,"Merchant 138 operates in the Services sector, located in DE."
+M139,Merchant 139,Services,US,"Merchant 139 operates in the Services sector, located in US."
+M140,Merchant 140,Energy,UK,"Merchant 140 operates in the Energy sector, located in UK."
+M141,Merchant 141,Retail,CN,"Merchant 141 operates in the Retail sector, located in CN."
+M142,Merchant 142,Metals,US,"Merchant 142 operates in the Metals sector, located in US."
+M143,Merchant 143,Energy,SG,"Merchant 143 operates in the Energy sector, located in SG."
+M144,Merchant 144,Retail,CN,"Merchant 144 operates in the Retail sector, located in CN."
+M145,Merchant 145,Services,UK,"Merchant 145 operates in the Services sector, located in UK."
+M146,Merchant 146,Tech,US,"Merchant 146 operates in the Tech sector, located in US."
+M147,Merchant 147,Energy,CN,"Merchant 147 operates in the Energy sector, located in CN."
+M148,Merchant 148,Energy,CN,"Merchant 148 operates in the Energy sector, located in CN."
+M149,Merchant 149,Services,SG,"Merchant 149 operates in the Services sector, located in SG."
+M150,Merchant 150,Metals,US,"Merchant 150 operates in the Metals sector, located in US."
+M151,Merchant 151,Services,US,"Merchant 151 operates in the Services sector, located in US."
+M152,Merchant 152,Metals,CN,"Merchant 152 operates in the Metals sector, located in CN."
+M153,Merchant 153,Metals,CN,"Merchant 153 operates in the Metals sector, located in CN."
+M154,Merchant 154,Metals,UK,"Merchant 154 operates in the Metals sector, located in UK."
+M155,Merchant 155,Metals,DE,"Merchant 155 operates in the Metals sector, located in DE."
+M156,Merchant 156,Services,US,"Merchant 156 operates in the Services sector, located in US."
+M157,Merchant 157,Retail,CN,"Merchant 157 operates in the Retail sector, located in CN."
+M158,Merchant 158,Services,UK,"Merchant 158 operates in the Services sector, located in UK."
+M159,Merchant 159,Services,CN,"Merchant 159 operates in the Services sector, located in CN."
+M160,Merchant 160,Tech,SG,"Merchant 160 operates in the Tech sector, located in SG."
+M161,Merchant 161,Tech,UK,"Merchant 161 operates in the Tech sector, located in UK."
+M162,Merchant 162,Retail,DE,"Merchant 162 operates in the Retail sector, located in DE."
+M163,Merchant 163,Services,SG,"Merchant 163 operates in the Services sector, located in SG."
+M164,Merchant 164,Retail,DE,"Merchant 164 operates in the Retail sector, located in DE."
+M165,Merchant 165,Energy,UK,"Merchant 165 operates in the Energy sector, located in UK."
+M166,Merchant 166,Tech,UK,"Merchant 166 operates in the Tech sector, located in UK."
+M167,Merchant 167,Retail,US,"Merchant 167 operates in the Retail sector, located in US."
+M168,Merchant 168,Metals,US,"Merchant 168 operates in the Metals sector, located in US."
+M169,Merchant 169,Services,CN,"Merchant 169 operates in the Services sector, located in CN."
+M170,Merchant 170,Services,UK,"Merchant 170 operates in the Services sector, located in UK."
+M171,Merchant 171,Retail,US,"Merchant 171 operates in the Retail sector, located in US."
+M172,Merchant 172,Metals,CN,"Merchant 172 operates in the Metals sector, located in CN."
+M173,Merchant 173,Metals,UK,"Merchant 173 operates in the Metals sector, located in UK."
+M174,Merchant 174,Retail,DE,"Merchant 174 operates in the Retail sector, located in DE."
+M175,Merchant 175,Metals,UK,"Merchant 175 operates in the Metals sector, located in UK."
+M176,Merchant 176,Services,UK,"Merchant 176 operates in the Services sector, located in UK."
+M177,Merchant 177,Retail,CN,"Merchant 177 operates in the Retail sector, located in CN."
+M178,Merchant 178,Retail,US,"Merchant 178 operates in the Retail sector, located in US."
+M179,Merchant 179,Metals,UK,"Merchant 179 operates in the Metals sector, located in UK."
+M180,Merchant 180,Energy,CN,"Merchant 180 operates in the Energy sector, located in CN."
+M181,Merchant 181,Tech,UK,"Merchant 181 operates in the Tech sector, located in UK."
+M182,Merchant 182,Services,DE,"Merchant 182 operates in the Services sector, located in DE."
+M183,Merchant 183,Energy,SG,"Merchant 183 operates in the Energy sector, located in SG."
+M184,Merchant 184,Retail,US,"Merchant 184 operates in the Retail sector, located in US."
+M185,Merchant 185,Services,US,"Merchant 185 operates in the Services sector, located in US."
+M186,Merchant 186,Energy,US,"Merchant 186 operates in the Energy sector, located in US."
+M187,Merchant 187,Services,SG,"Merchant 187 operates in the Services sector, located in SG."
+M188,Merchant 188,Services,SG,"Merchant 188 operates in the Services sector, located in SG."
+M189,Merchant 189,Metals,CN,"Merchant 189 operates in the Metals sector, located in CN."
+M190,Merchant 190,Energy,DE,"Merchant 190 operates in the Energy sector, located in DE."
+M191,Merchant 191,Retail,US,"Merchant 191 operates in the Retail sector, located in US."
+M192,Merchant 192,Energy,CN,"Merchant 192 operates in the Energy sector, located in CN."
+M193,Merchant 193,Tech,US,"Merchant 193 operates in the Tech sector, located in US."
+M194,Merchant 194,Retail,CN,"Merchant 194 operates in the Retail sector, located in CN."
+M195,Merchant 195,Metals,SG,"Merchant 195 operates in the Metals sector, located in SG."
+M196,Merchant 196,Retail,CN,"Merchant 196 operates in the Retail sector, located in CN."
+M197,Merchant 197,Services,CN,"Merchant 197 operates in the Services sector, located in CN."
+M198,Merchant 198,Metals,UK,"Merchant 198 operates in the Metals sector, located in UK."
+M199,Merchant 199,Retail,CN,"Merchant 199 operates in the Retail sector, located in CN."
+M200,Merchant 200,Retail,SG,"Merchant 200 operates in the Retail sector, located in SG."

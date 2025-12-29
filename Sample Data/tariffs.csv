@@ -1,6 +1,6 @@
-tariffId,HSCode,description,ratePct
-TARIFF1,HS1299,Pharmaceuticals,4.37
-TARIFF2,HS7201,Steel,7.5
-TARIFF3,HS7601,Aluminium,5.0
-TARIFF4,HS8703,Motor Vehicles,10.0
-TARIFF5,HS0800,Agriculture,3.2
+tariffId,HSCode,description,ratePct,Description
+TARIFF1,HS1299,Pharmaceuticals,4.37,Tariff TARIFF1 for Pharmaceuticals (HS Code HS1299) applied at a rate of 4.37%.
+TARIFF2,HS7201,Steel,7.5,Tariff TARIFF2 for Steel (HS Code HS7201) applied at a rate of 7.5%.
+TARIFF3,HS7601,Aluminium,5.0,Tariff TARIFF3 for Aluminium (HS Code HS7601) applied at a rate of 5.0%.
+TARIFF4,HS8703,Motor Vehicles,10.0,Tariff TARIFF4 for Motor Vehicles (HS Code HS8703) applied at a rate of 10.0%.
+TARIFF5,HS0800,Agriculture,3.2,Tariff TARIFF5 for Agriculture (HS Code HS0800) applied at a rate of 3.2%.
