@@ -145,14 +145,6 @@ MATCH (t:Tariff {tariffId: row.tariffId})
 MATCH (txn:Transaction {txnId: row.txnId})
 MERGE (t)-[:APPLIES_TO]->(txn);
 
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/applications.csv' AS row
-MERGE (a:Application {applicationId: row.ApplicationID})
-SET a.name = row.Name,
-    a.itOwner = row.ITOwner,
-    a.cio = row.CIO,
-    a.owningOrgUnit = row.OwningOrgUnit,
-    a.processCapability = row.ProcessCapability;
-
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/DataFeeds.csv' AS row
 MERGE (df:DataFeed {dataFeedId: row.DataFeed_ID})
 SET df.edm_data_class = row.`EDM Data Class`,
