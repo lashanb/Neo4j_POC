@@ -21,6 +21,8 @@ SET p.name = row.name,
 
 WITH row, p
 MATCH (c:ClientCorporate {clientId: row.clientId})
+MERGE (p)-[:UBO_OR_DIRECTOR_OF]->(c);
+
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/lashanb/Neo4j_POC/main/Sample%20Data/applications.csv' AS row
 MERGE (a:Application {applicationId: row.ApplicationID})
 SET a.name = row.Name,
