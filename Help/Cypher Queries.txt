@@ -22,3 +22,21 @@ LIMIT 25;
 
 MATCH (n:YourLabel)
 RETURN count(n) AS totalNodes;
+
+Full clean up
+// 1. Delete nodes
+MATCH (n:YourLabel)
+DETACH DELETE n;
+
+// 2. Drop constraints
+SHOW CONSTRAINTS;
+
+// 3. Drop relevant constraint(s)
+DROP CONSTRAINT constraint_name;
+
+// 4. Drop indexes (if any)
+SHOW INDEXES;
+DROP INDEX index_name;
+
+// 5. Recheck labels
+CALL db.labels();
