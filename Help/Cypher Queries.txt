@@ -40,3 +40,107 @@ DROP INDEX index_name;
 
 // 5. Recheck labels
 CALL db.labels();
+
+//Find A nodes that do NOT have a relationship to B
+MATCH (a:LabelA)
+WHERE NOT (a)-[:RELATES_TO]->(:LabelB)
+RETURN a;
+
+//optional match
+MATCH (a:LabelA)
+OPTIONAL MATCH (a)-[:RELATES_TO]->(b:LabelB)
+WHERE b IS NULL
+RETURN a;
+
+//If relationship direction doesn’t matte
+MATCH (a:LabelA)
+WHERE NOT (a)--(:LabelB)
+RETURN a;
+
+//If A must exist but B is mandatory per governance rule
+MATCH (a:LabelA)
+WHERE NOT EXISTS {
+  MATCH (a)-[:RELATES_TO]->(:LabelB)
+}
+RETURN a;
+
+//Missing a specific B
+MATCH (a:LabelA)
+WHERE NOT (a)-[:RELATES_TO]->(:LabelB {type: 'Required'})
+RETURN a;
+
+
+// 2. Recreate with robust syntax
+CREATE (c:Monitoring_Check {
+    name: "Data Health: Failed Feeds",
+    description: "Lists all active data feeds where the most recent Data Quality summary indicates a failure.",
+    severity: "Critical",
+    node_type: "DataFeed", 
+    personas: ["CDO", "DataLead"], // This is definitely a List
+    
+    // IMPROVED QUERY LOGIC:
+    // Uses OPTIONAL MATCH so it returns "0 failures" instead of "Null/Empty" when everything is healthy.
+    // Also uses coalesce(f.name, ...) to handle cases where a feed might lack a name property.
+    query_syntax: "MATCH (all:DataFeed) WITH count(*) AS total_datafeeds OPTIONAL MATCH (f:DataFeed)-[:HAS_SUMMARY]->(dq:DQSummary) 
+	WHERE dq.passRatio = 0 WITH total_datafeeds, count(DISTINCT f) AS failed_count, collect(DISTINCT coalesce(f.name, 'ID: '+elementId(f))) AS failed_list 
+	RETURN failed_count, total_datafeeds, failed_list"
+});
+
+
+CREATE (c:Monitoring_Check {
+    name: "Significant Finance Adjustments Applications",
+    description: "Lists all applications that has published contracts that needed adjustments over 500.",
+    severity: "Critical",
+    node_type: "Application", 
+    personas: ["CDO", "DataLead"], // This is definitely a List
+    query_syntax: "MATCH (app:Application) WITH count(*) AS total_applications OPTIONAL MATCH (app:Application)-[:PUBLISHES]->(c:Contract)<-[:ADJUSTS_CONTRACT]-(a:Adjustment)
+	WHERE a.adjustmentAmount > 500 WITH total_applications, count(DISTINCT app) AS failed_count, collect(DISTINCT coalesce(app.name, 'ID: '+elementId(a))) AS failed_list
+	RETURN failed_count, total_applications, failed_list"
+});
+
+CREATE (c:Monitoring_Check {
+    name: "Rejected Adjustments Applications",
+    description: "Lists all applications that has published contracts that needed adjustments over 500.",
+    severity: "High",
+    node_type: "Application", 
+    personas: ["CDO", "DataLead"], // This is definitely a List
+    query_syntax: "MATCH (app:Application) WITH count(*) AS total_applications OPTIONAL MATCH (app:Application)-[:PUBLISHES]->(c:Contract)<-[:ADJUSTS_CONTRACT]-(a:Adjustment)
+	WHERE a.adjustmentAmount > 1000 WITH total_applications, count(DISTINCT app) AS failed_count, collect(DISTINCT coalesce(app.name, 'ID: '+elementId(a))) AS failed_list
+	RETURN failed_count, total_applications, failed_list"
+});
+
+//apps with logical and physcial flow EDN clas smiss match
+MATCH (a:Application)
+OPTIONAL MATCH (a)-[:HAS_LOGICAL_FLOW]->(:LogicalDataFlow)
+               -[:TAGGED_AS]->(lClass:DataClass)
+OPTIONAL MATCH (a)-[:HAS_PHYSICAL_FLOW]->(:PhysicalDataFlow)
+               -[:TAGGED_AS]->(pClass:DataClass)
+WITH a,
+     collect(DISTINCT lClass.name) AS logicalClasses,
+     collect(DISTINCT pClass.name) AS physicalClasses
+RETURN
+  a.name AS application,
+  logicalClasses,
+  physicalClasses,
+  [x IN logicalClasses WHERE NOT x IN physicalClasses] AS logical_only,
+  [x IN physicalClasses WHERE NOT x IN logicalClasses] AS physical_only
+WHERE
+  size([x IN logicalClasses WHERE NOT x IN physicalClasses]) > 0
+  OR
+  size([x IN physicalClasses WHERE NOT x IN logicalClasses]) > 0;
+  
+  If you want node-level detail (not just names)
+  
+  MATCH (a:Application)
+OPTIONAL MATCH (a)-[:HAS_LOGICAL_FLOW]->(:LogicalDataFlow)
+               -[:TAGGED_AS]->(lClass:DataClass)
+OPTIONAL MATCH (a)-[:HAS_PHYSICAL_FLOW]->(:PhysicalDataFlow)
+               -[:TAGGED_AS]->(pClass:DataClass)
+WITH a,
+     collect(DISTINCT lClass) AS logicalClasses,
+     collect(DISTINCT pClass) AS physicalClasses
+WITH a,
+     [x IN logicalClasses WHERE NOT x IN physicalClasses] AS logical_only,
+     [x IN physicalClasses WHERE NOT x IN logicalClasses] AS physical_only
+WHERE size(logical_only) > 0 OR size(physical_only) > 0
+RETURN a, logical_only, physical_only;
